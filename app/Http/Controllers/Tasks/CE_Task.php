@@ -20,12 +20,13 @@ class CE_Task implements InterfaceTask
     public $task_text;
     public $slug;
 
-    public function __construct($task)
+    public function __construct($task, $user_task)
     {
-        $this->number1 = 7;
-        $this->number2 = '7A';
-        $this->scale_of_notation1 = 8;
-        $this->scale_of_notation2 = 16;
+        $data = json_decode($user_task->data, true);
+        $this->number1 = $data['number1'];
+        $this->number2 = $data['number2'];
+        $this->scale_of_notation1 = $data['scale_of_notation1'];
+        $this->scale_of_notation2 = $data['scale_of_notation2'];
         $this->answer1 = $this->answerNumber($this->number1, $this->scale_of_notation1, $this->to_ci);
         $this->answer2 = $this->answerNumber($this->number2, $this->scale_of_notation2, $this->to_ci);
         $this->task_text = $this->replaceText($task->task_text);
@@ -115,4 +116,18 @@ class CE_Task implements InterfaceTask
         return (new TaskController)->fail();
     }
 
+    public static function getData()
+    {
+        $scale_of_notation1 = (int) rand(2, 16);
+        $scale_of_notation2 = (int) rand(2, 16);
+
+        $number1 = rand(0, 1000);
+        $number2 = rand($number1, 1000);
+        return [
+            'number1' => base_convert($number1, 10, $scale_of_notation1),
+            'number2' => base_convert($number2, 10, $scale_of_notation2),
+            'scale_of_notation1' => $scale_of_notation1,
+            'scale_of_notation2' => $scale_of_notation2,
+        ];
+    }
 }

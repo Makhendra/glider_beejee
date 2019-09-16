@@ -39,7 +39,7 @@
 
                             <div class="input-group">
                                 <input type="number" name="answer" id="answer" class="form-control"
-                                       placeholder="Отправить ответ"/>
+                                       placeholder="Отправить ответ" required/>
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-success">
                                         На проверку

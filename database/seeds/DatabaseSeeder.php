@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
+        (new TaskSeeder)->run();
+        (new UserSeeder())->run();
     }
 }

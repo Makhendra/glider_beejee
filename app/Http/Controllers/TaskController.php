@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 
 use App\Task;
+use App\UserTask;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -14,7 +16,6 @@ class TaskController extends Controller
         $tasks = Task::all();
         return view('tasks.index', compact('tasks', 'title'));
     }
-    //INSERT INTO `tasks` (`id`, `title`, `slug`, `interface`, `task_text`, `user_id`, `owner_id`, `created_at`, `updated_at`) VALUES (NULL, 'CE_Task', 'test', 'CE_Task', 'Сколько существует целых чисел x, для&nbsp;которых выполняется неравенство <br> <b> {number1}<sub>{scale_of_notation1}</sub> <&nbsp;x&nbsp;<&nbsp;{number2}<sub>{scale_of_notation2}</sub></b>?', '1', '1', NULL, NULL)
 
     public function show($id)
     {
@@ -22,15 +23,47 @@ class TaskController extends Controller
         return $this->getTask($task);
     }
 
-    public function next($slug)
+    public function nextTask($slug)
     {
+        $task = Task::findBySlug($slug);
+        $user_task = UserTask::where(
+            [
+                'task_id' => $task->id,
+                'user_id' => Auth::id(),
+                'status' => UserTask::NOT_SOLVED
+            ]
+        )->first();
+        $user_task->status = UserTask::SOLVED;
+        $user_task->save();
+        return redirect()->route('tasks.show', $task->id);
+    }
 
+    public function getUserTask($class, $id)
+    {
+        $user_task = UserTask::where(
+            [
+                'task_id' => $id,
+                'user_id' => Auth::id(),
+                'status' => UserTask::NOT_SOLVED
+            ]
+        )->first();
+        if (empty($user_task)) {
+            $user_task = UserTask::create([
+                'task_id' => $id,
+                'user_id' => Auth::id(),
+                'data' => json_encode(
+                    $class::getData()
+                )
+            ]);
+        }
+        return $user_task;
     }
 
     public function getTask($task)
     {
         $class = "App\Http\Controllers\Tasks\\$task->interface";
-        $data = (new $class($task))->generate();
+        $user_task = $this->getUserTask($class, $task->id);
+        $data = (new $class($task, $user_task))->generate();
         return view('tasks.show', compact('data'));
     }
 
@@ -38,7 +71,8 @@ class TaskController extends Controller
     {
         $task = Task::findBySlug($slug);
         $class = "App\Http\Controllers\Tasks\\$task->interface";
-        return (new $class($task))->check_answer($request);
+        $user_task = $this->getUserTask($class, $task->id);
+        return (new $class($task, $user_task))->check_answer($request);
     }
 
     public function success()

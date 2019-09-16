@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/', 'TaskController@index');
-Route::get('/tasks/{id}', 'TaskController@show')->name('tasks.show');
-Route::get('/tasks/{slug}', 'TaskController@nextTask')->name('tasks.next');
-Route::post('/tasks/{slug}/check_answer', 'TaskController@check_answer')->name('tasks.check_answers');
+Auth::routes();
+
+Route::middleware('auth')->group(function () {
+    Route::get('/', 'TaskController@index');
+    Route::get('/tasks/{id}', 'TaskController@show')->name('tasks.show');
+    Route::get('/tasks/next/{slug}', 'TaskController@nextTask')->name('tasks.next');
+    Route::post('/tasks/{slug}/check_answer', 'TaskController@check_answer')->name('tasks.check_answers');
+});

@@ -13,8 +13,13 @@ class CreateUsersTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_tasks', function (Blueprint $table) {
+        Schema::create('user_tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id');
+            $table->integer('task_id');
+            $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('hint_use')->default(0);
+            $table->json('data')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ class CreateUsersTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_tasks');
+        Schema::dropIfExists('user_tasks');
     }
 }
