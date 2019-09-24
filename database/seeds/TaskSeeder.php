@@ -14,7 +14,7 @@ class TaskSeeder extends Seeder
     {
         $tasks = [
             [
-                'task_text' => "Сколько целых чисел x, для которых выполняется неравнество <b>{number1}<sub>{scale_of_notation1}</sub> < x < {number2}<sub>{scale_of_notation2}</sub></b> ?",
+                'task_text' => "Сколько целых чисел x, для которых выполняется неравнество <b>{number1}<sub>{scale_of_notation1}</sub>&nbsp;<&nbsp;x&nbsp;<&nbsp;{number2}<sub>{scale_of_notation2}</sub></b>&nbsp;?",
                 'interface' => 'CE_Task'
             ]
         ];

@@ -6,7 +6,7 @@
             display: none;
         }
     </style>
-    <h1>{!! $data['title'] !!}</h1>
+
     <div class="row">
 
         <div class="col-md-4">
@@ -68,7 +68,7 @@
                         Ответ: {!!  ($data['format2']['answer'] - $data['format1']['answer']) !!} <br>
 
                         <div class="input-group">
-                            <a href="{{ route('tasks.next', $data['slug']) }}">
+                            <a href="{{ route('tasks.next', ['slug' => $data['slug'], 'success' => 0]) }}">
                                 <button class="btn btn-success">Попробовать снова</button>
                             </a>
                         </div>
@@ -77,7 +77,7 @@
                         <div class="alert alert-success">
                             Все верно
                         </div>
-                        <a href="{{ route('tasks.next', $data['slug']) }}">
+                        <a href="{{ route('tasks.next', ['slug' => $data['slug'], 'success' => 1]) }}">
                             <div class="btn btn-success">
                                 Следующий вариант
                             </div>

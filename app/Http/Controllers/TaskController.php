@@ -13,7 +13,7 @@ class TaskController extends Controller
 
     public function index($title = 'Задачи')
     {
-        $tasks = Task::all();
+        $tasks = Task::with('userTask')->get();
         return view('tasks.index', compact('tasks', 'title'));
     }
 
@@ -23,30 +23,26 @@ class TaskController extends Controller
         return $this->getTask($task);
     }
 
-    public function nextTask($slug)
+    public function nextTask(Request $request, $slug)
     {
+        $success = $request->get('success', 0);
         $task = Task::findBySlug($slug);
-        $user_task = UserTask::where(
-            [
-                'task_id' => $task->id,
-                'user_id' => Auth::id(),
-                'status' => UserTask::NOT_SOLVED
-            ]
-        )->first();
-        $user_task->status = UserTask::SOLVED;
+        $user_task = UserTask::NextTaskByUser($task->id, Auth::id())->first();
+
+        if($success){
+            $user_task->status =  UserTask::SOLVED;
+        } else {
+            $user_task->hint_use =  1;
+        }
+
         $user_task->save();
         return redirect()->route('tasks.show', $task->id);
     }
 
     public function getUserTask($class, $id)
     {
-        $user_task = UserTask::where(
-            [
-                'task_id' => $id,
-                'user_id' => Auth::id(),
-                'status' => UserTask::NOT_SOLVED
-            ]
-        )->first();
+        $user_task = UserTask::NextTaskByUser($id, Auth::id())->first();
+
         if (empty($user_task)) {
             $user_task = UserTask::create([
                 'task_id' => $id,

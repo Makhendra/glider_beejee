@@ -16,4 +16,8 @@ class Task extends Model
         }
         abort(self::NOT_FOUND);
     }
+
+    public function userTask(){
+        return $this->hasMany(UserTask::class);
+    }
 }
