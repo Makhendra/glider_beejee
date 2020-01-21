@@ -18,7 +18,7 @@ class CreateTasksTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('interface');
-	        $table->string('task_text')->nullable();
+	        $table->text('task_text')->nullable();
 	        $table->timestamps();
         });
     }

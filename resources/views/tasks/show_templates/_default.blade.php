@@ -23,20 +23,12 @@
                 <div class="card-body">
                     <div id="decision">
                         <p class="card-text">
-                            Для решения этой задачи необходимо:
-                        <ol>
-                            <li>Перевести в десятичную систему счисления числа из неравенства</li>
-                            <li>Переписать неравенство и посчитать количество чисел</li>
-                        </ol>
+                            @yield('decision')
+                        </p>
                         <form action="{{ route('tasks.check_answers', $data['slug']) }}" method="POST"
                               id="check_answer">
+                            @yield('form')
                             @csrf
-                            <input type="hidden" name="number1" value="{!!  $data['number1'] !!}">
-                            <input type="hidden" name="number2" value="{!!  $data['number2'] !!}">
-
-                            <input type="hidden" name="scale_of_notation1" value="{!!  $data['scale_of_notation1'] !!}">
-                            <input type="hidden" name="scale_of_notation2" value="{!!  $data['scale_of_notation2'] !!}">
-
                             <div class="input-group">
                                 <input type="number" name="answer" id="answer" class="form-control"
                                        placeholder="Отправить ответ" required/>
@@ -49,24 +41,7 @@
                         </form>
                     </div>
                     <div class="hidden" id="show_answer">
-                        {!!  $data['number1'] !!}<sub>{!!  $data['scale_of_notation1'] !!}</sub>
-                        = {!!  $data['format1']['text'] !!}
-                        = {!!  $data['format1']['answer'] !!}<br>
-                        {!!  $data['number2'] !!}<sub>{!!  $data['scale_of_notation2'] !!}</sub>
-                        = {!!  $data['format2']['text'] !!}
-                        = {!!  $data['format2']['answer'] !!}<br><br>
-
-                        Теперь наше неравенство будет выглядеть так:
-                        {!!  $data['format1']['answer'] !!} < x < {!!  $data['format2']['answer'] !!}
-
-                        Следовательно, существует {!!  ($data['format2']['answer'] - $data['format1']['answer']) !!}
-                        целых чисел, для
-                        которых
-                        это
-                        неравенство выполнится. <br><br>
-
-                        Ответ: {!!  ($data['format2']['answer'] - $data['format1']['answer']) !!} <br>
-
+                        @yield('answer')
                         <div class="input-group">
                             <a href="{{ route('tasks.next', ['slug' => $data['slug'], 'success' => 0]) }}">
                                 <button class="btn btn-success">Попробовать снова</button>
@@ -96,5 +71,4 @@
             </div>
         </div>
     </div>
-
 @endsection

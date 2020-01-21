@@ -42,7 +42,6 @@ class TaskController extends Controller
     public function getUserTask($class, $id)
     {
         $user_task = UserTask::NextTaskByUser($id, Auth::id())->first();
-
         if (empty($user_task)) {
             $user_task = UserTask::create([
                 'task_id' => $id,
@@ -60,7 +59,7 @@ class TaskController extends Controller
         $class = "App\Http\Controllers\Tasks\\$task->interface";
         $user_task = $this->getUserTask($class, $task->id);
         $data = (new $class($task, $user_task))->generate();
-        return view('tasks.show', compact('data'));
+        return view('tasks.show_templates.'.$task->slug, compact('data'));
     }
 
     public function check_answer(Request $request, $slug)

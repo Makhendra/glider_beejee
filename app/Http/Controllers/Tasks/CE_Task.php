@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Tasks;
 use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
 
+// Сколько существует целых чисел x, для которых выполняется неравенство 2A16<x<618?
 class CE_Task implements InterfaceTask
 {
     public $number1;

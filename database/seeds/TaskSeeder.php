@@ -16,6 +16,12 @@ class TaskSeeder extends Seeder
             [
                 'task_text' => "Сколько целых чисел x, для которых выполняется неравнество <b>{number1}<sub>{scale_of_notation1}</sub>&nbsp;<&nbsp;x&nbsp;<&nbsp;{number2}<sub>{scale_of_notation2}</sub></b>&nbsp;?",
                 'interface' => 'CE_Task'
+            ],
+            [
+                'task_text' => "Все {count_letters}-буквенные слова, составленные из букв {letters}, записаны в алфавитном порядке и пронумерованы, начиная с 1.
+Ниже приведено начало списка. <br> {list} <br>
+Под каким номером в списке идёт первое слово, которое начинается с буквы {letter}?",
+                'interface' => 'FW_Task'
             ]
         ];
 
