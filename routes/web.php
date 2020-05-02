@@ -17,17 +17,8 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 Route::get('/', function (){return redirect()->route('groups.index');});
-//Route::get('/exec-error/{data}', function ($data) {
-//    $output = new \Symfony\Component\Console\Output\BufferedOutput;
-//
-//    try {
-//        Artisan::call('migrate', array(), $output);
-//    } catch (Exception $e) {
-//        throw Exception($e->getMessage());
-//    }
-//
-//    return $output->fetch();
-//});
+Route::get('/social-auth/{provider}', ['as' => 'social_auth', 'uses' => 'Auth\LoginController@redirectToProvider']);
+Route::get('/social-auth/{provider}/callback', ['as' => 'social_callback', 'uses' => 'Auth\LoginController@handleProviderCallback']);
 Route::post('report-bug', 'Controller@makeReport')->name('report_bug');
 Route::get('lk', 'Controller@lk')->name('lk')->middleware('auth');
 Route::group(
@@ -42,6 +33,3 @@ Route::group(
         );
     }
 );
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

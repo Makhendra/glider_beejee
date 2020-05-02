@@ -88,6 +88,15 @@
                                 </div>
                             </div>
                         </form>
+
+                        <br>
+                        <div class="text-center">
+                            Или войдите с помощью социальных сетей: <br>
+
+                            <a class="btn btn-sm btn-primary" href="{{route('social_auth', 'facebook')}}">facebook</a> <br>
+                            <a class="btn btn-sm btn-dark" href="{{route('social_auth', 'vkontakte')}}">vk</a><br>
+                            <a class="btn btn-sm btn-danger" href="{{route('social_auth', 'google')}}">google</a>
+                        </div>
                     </div>
                 </div>
             </div>

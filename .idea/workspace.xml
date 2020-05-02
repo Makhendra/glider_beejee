@@ -5,11 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7f65b57-632b-4877-910e-0cf2597b1804" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_02_140704_add_social_fields.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/passport/AuthorizedClients.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/passport/Clients.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/passport/PersonalAccessTokens.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/tasks/show_templates/_default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tasks/show_templates/_default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +131,7 @@
       <workItem from="1588009320711" duration="4867000" />
       <workItem from="1588143806420" duration="10134000" />
       <workItem from="1588256601883" duration="9000" />
-      <workItem from="1588412054319" duration="3993000" />
+      <workItem from="1588412054319" duration="9070000" />
     </task>
     <task id="LOCAL-00001" summary="Новый тип задания: &quot;Под каким номером в списке идёт первое слово&quot;">
       <created>1579594180589</created>
@@ -153,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588415955407</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Добавила хлебные крошки как элемент навигации">
+      <created>1588416596772</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1588416596772</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,7 +187,8 @@
     <MESSAGE value="Comment old version laravel" />
     <MESSAGE value="New version laravel" />
     <MESSAGE value="Merge branch 'master' of https://github.com/Makhendra/trainings&#10;&#10;# Conflicts:&#10;#&#9;.editorconfig&#10;#&#9;.env.example&#10;#&#9;.gitignore&#10;#&#9;app/Console/Kernel.php&#10;#&#9;app/Exceptions/Handler.php&#10;#&#9;app/Http/Controllers/Auth/ForgotPasswordController.php&#10;#&#9;app/Http/Controllers/Auth/LoginController.php&#10;#&#9;app/Http/Controllers/Auth/RegisterController.php&#10;#&#9;app/Http/Controllers/Auth/ResetPasswordController.php&#10;#&#9;app/Http/Controllers/Auth/VerificationController.php&#10;#&#9;app/Http/Controllers/Controller.php&#10;#&#9;app/Http/Controllers/TaskController.php&#10;#&#9;app/Http/Controllers/Tasks/CE_Task.php&#10;#&#9;app/Http/Controllers/Tasks/FW_Task.php&#10;#&#9;app/Http/Controllers/Tasks/InterfaceTask.php&#10;#&#9;app/Http/Kernel.php&#10;#&#9;app/Http/Middleware/Authenticate.php&#10;#&#9;app/Http/Middleware/RedirectIfAuthenticated.php&#10;#&#9;app/Http/Middleware/TrustProxies.php&#10;#&#9;app/Http/Middleware/VerifyCsrfToken.php&#10;#&#9;app/Providers/AuthServiceProvider.php&#10;#&#9;app/Providers/BroadcastServiceProvider.php&#10;#&#9;app/Providers/EventServiceProvider.php&#10;#&#9;app/Providers/RouteServiceProvider.php&#10;#&#9;app/Task.php&#10;#&#9;app/User.php&#10;#&#9;app/UserTask.php&#10;#&#9;composer.json&#10;#&#9;composer.lock&#10;#&#9;config/app.php&#10;#&#9;config/auth.php&#10;#&#9;config/broadcasting.php&#10;#&#9;config/cache.php&#10;#&#9;config/database.php&#10;#&#9;config/filesystems.php&#10;#&#9;config/logging.php&#10;#&#9;config/mail.php&#10;#&#9;config/queue.php&#10;#&#9;config/services.php&#10;#&#9;config/session.php&#10;#&#9;database/migrations/2014_10_12_000000_create_users_table.php&#10;#&#9;database/migrations/2014_10_12_100000_create_password_resets_table.php&#10;#&#9;database/seeds/DatabaseSeeder.php&#10;#&#9;package-lock.json&#10;#&#9;package.json&#10;#&#9;phpunit.xml&#10;#&#9;public/.htaccess&#10;#&#9;public/css/app.css&#10;#&#9;public/js/app.js&#10;#&#9;resources/js/app.js&#10;#&#9;resources/js/bootstrap.js&#10;#&#9;resources/lang/en/passwords.php&#10;#&#9;resources/lang/en/validation.php&#10;#&#9;resources/lang/ru/messages.php&#10;#&#9;resources/sass/app.scss&#10;#&#9;resources/views/auth/login.blade.php&#10;#&#9;resources/views/auth/passwords/email.blade.php&#10;#&#9;resources/views/auth/register.blade.php&#10;#&#9;resources/views/layouts/app.blade.php&#10;#&#9;resources/views/tasks/index.blade.php&#10;#&#9;resources/views/tasks/show_templates/_default.blade.php&#10;#&#9;routes/api.php&#10;#&#9;routes/channels.php&#10;#&#9;routes/console.php&#10;#&#9;routes/web.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/Makhendra/trainings&#10;&#10;# Conflicts:&#10;#&#9;.editorconfig&#10;#&#9;.env.example&#10;#&#9;.gitignore&#10;#&#9;app/Console/Kernel.php&#10;#&#9;app/Exceptions/Handler.php&#10;#&#9;app/Http/Controllers/Auth/ForgotPasswordController.php&#10;#&#9;app/Http/Controllers/Auth/LoginController.php&#10;#&#9;app/Http/Controllers/Auth/RegisterController.php&#10;#&#9;app/Http/Controllers/Auth/ResetPasswordController.php&#10;#&#9;app/Http/Controllers/Auth/VerificationController.php&#10;#&#9;app/Http/Controllers/Controller.php&#10;#&#9;app/Http/Controllers/TaskController.php&#10;#&#9;app/Http/Controllers/Tasks/CE_Task.php&#10;#&#9;app/Http/Controllers/Tasks/FW_Task.php&#10;#&#9;app/Http/Controllers/Tasks/InterfaceTask.php&#10;#&#9;app/Http/Kernel.php&#10;#&#9;app/Http/Middleware/Authenticate.php&#10;#&#9;app/Http/Middleware/RedirectIfAuthenticated.php&#10;#&#9;app/Http/Middleware/TrustProxies.php&#10;#&#9;app/Http/Middleware/VerifyCsrfToken.php&#10;#&#9;app/Providers/AuthServiceProvider.php&#10;#&#9;app/Providers/BroadcastServiceProvider.php&#10;#&#9;app/Providers/EventServiceProvider.php&#10;#&#9;app/Providers/RouteServiceProvider.php&#10;#&#9;app/Task.php&#10;#&#9;app/User.php&#10;#&#9;app/UserTask.php&#10;#&#9;composer.json&#10;#&#9;composer.lock&#10;#&#9;config/app.php&#10;#&#9;config/auth.php&#10;#&#9;config/broadcasting.php&#10;#&#9;config/cache.php&#10;#&#9;config/database.php&#10;#&#9;config/filesystems.php&#10;#&#9;config/logging.php&#10;#&#9;config/mail.php&#10;#&#9;config/queue.php&#10;#&#9;config/services.php&#10;#&#9;config/session.php&#10;#&#9;database/migrations/2014_10_12_000000_create_users_table.php&#10;#&#9;database/migrations/2014_10_12_100000_create_password_resets_table.php&#10;#&#9;database/seeds/DatabaseSeeder.php&#10;#&#9;package-lock.json&#10;#&#9;package.json&#10;#&#9;phpunit.xml&#10;#&#9;public/.htaccess&#10;#&#9;public/css/app.css&#10;#&#9;public/js/app.js&#10;#&#9;resources/js/app.js&#10;#&#9;resources/js/bootstrap.js&#10;#&#9;resources/lang/en/passwords.php&#10;#&#9;resources/lang/en/validation.php&#10;#&#9;resources/lang/ru/messages.php&#10;#&#9;resources/sass/app.scss&#10;#&#9;resources/views/auth/login.blade.php&#10;#&#9;resources/views/auth/passwords/email.blade.php&#10;#&#9;resources/views/auth/register.blade.php&#10;#&#9;resources/views/layouts/app.blade.php&#10;#&#9;resources/views/tasks/index.blade.php&#10;#&#9;resources/views/tasks/show_templates/_default.blade.php&#10;#&#9;routes/api.php&#10;#&#9;routes/channels.php&#10;#&#9;routes/console.php&#10;#&#9;routes/web.php" />
+    <MESSAGE value="Добавила хлебные крошки как элемент навигации" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавила хлебные крошки как элемент навигации" />
   </component>
   <component name="WindowStateProjectService">
     <state x="584" y="75" key="#Deployment" timestamp="1588167895594">
@@ -176,18 +199,18 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="421" y="271" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1588155449088" />
-    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588414645381">
+    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588421437336">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900@0.0.1440.900" timestamp="1588414645381" />
+    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900@0.0.1440.900" timestamp="1588421437336" />
     <state x="465" y="315" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1588146338801">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="465" y="315" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.877@0.23.1440.877" timestamp="1588146338801" />
-    <state x="303" y="0" key="CommitChangelistDialog2" timestamp="1588415955251">
+    <state x="303" y="0" key="CommitChangelistDialog2" timestamp="1588416596617">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="303" y="0" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1588415955251" />
+    <state x="303" y="0" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1588416596616" />
     <state x="303" y="52" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588413046634" />
     <state x="100" y="79" width="1240" height="719" key="DiffContextDialog" timestamp="1588414492164">
       <screen x="0" y="23" width="1440" height="877" />
@@ -201,9 +224,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="424" y="173" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1588415945230" />
-    <state x="417" y="285" key="NewPhpClassDialog" timestamp="1588010563709">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="417" y="269" key="NewPhpClassDialog" timestamp="1588417937181">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="417" y="269" key="NewPhpClassDialog/0.0.1440.900@0.0.1440.900" timestamp="1588417937181" />
     <state x="417" y="285" key="NewPhpClassDialog/0.23.1440.877@0.23.1440.877" timestamp="1588010563709" />
     <state x="538" y="393" key="NewPhpFileDialog" timestamp="1588014418779">
       <screen x="0" y="23" width="1440" height="877" />
@@ -223,15 +247,15 @@
     </state>
     <state x="397" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1588412056981" />
     <state x="397" y="298" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1588143810980" />
-    <state x="378" y="230" width="683" height="486" key="find.popup" timestamp="1588152768727">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="378" y="212" width="683" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1587727971939" />
-    <state x="378" y="230" width="683" height="486" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1588152768727" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1588416328467">
+    <state x="378" y="212" width="683" height="486" key="find.popup" timestamp="1588421432948">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1588416328467" />
+    <state x="378" y="212" width="683" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1588421432948" />
+    <state x="378" y="230" width="683" height="486" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1588152768727" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1588418449816">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1588418449816" />
     <state x="385" y="214" width="670" height="659" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1588167602448" />
   </component>
   <component name="XDebuggerManager">
