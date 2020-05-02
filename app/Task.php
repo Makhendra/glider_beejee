@@ -52,4 +52,8 @@ class Task extends Model
     public function userTask(){
         return $this->hasMany(UserTask::class);
     }
+
+    public function group() {
+        return $this->belongsTo(GroupTask::class);
+    }
 }

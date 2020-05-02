@@ -2,7 +2,15 @@
 
 @section('content')
     <div class="row">
-
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{route('groups.index')}}">Все типы тренажеров</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('groups.tasks', $task->id)}}">{{$task->group->name}}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{$task->title}}</li>
+                </ol>
+            </nav>
+        </div>
         <div class="{{$data['classLayout'] ?? 'col-md-4'}}">
             <div class="card h-100">
                 <div class="card-body">

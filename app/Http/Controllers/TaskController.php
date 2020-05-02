@@ -22,7 +22,7 @@ class TaskController extends Controller
 
     public function show($id)
     {
-        $task = Task::find($id);
+        $task = Task::with('group')->find($id);
         return $this->getTask($task);
     }
 
@@ -64,7 +64,7 @@ class TaskController extends Controller
         $class = "App\Http\Controllers\Tasks\\$task->interface";
         $user_task = $this->getUserTask($class, $task->id);
         $data = (new $class($task, $user_task))->generate();
-        return view('tasks.show_templates.' . $task->slug, compact('data'));
+        return view('tasks.show_templates.' . $task->slug, compact('data', 'task'));
     }
 
     public function check_answer(Request $request, $slug)
