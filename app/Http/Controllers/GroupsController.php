@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 
-use App\GroupTask;
+use App\Models\GroupTask;
 
 class GroupsController extends Controller
 {

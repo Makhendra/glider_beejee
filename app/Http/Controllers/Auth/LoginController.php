@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\SocialAccount;
 use App\Providers\RouteServiceProvider;
-use App\User;
+use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
@@ -60,18 +61,16 @@ class LoginController extends Controller
             return $user;
         }
 
-        if ($user = $this->findUserByEmail($provider, $socialiteUser->getEmail())) {
+        if ($user = $this->findUserByEmail($socialiteUser->getEmail())) {
             $this->addSocialAccount($provider, $user, $socialiteUser);
             return $user;
         };
+
         $user = User::create(
             [
                 'name' => $socialiteUser->getName(),
                 'email' => $socialiteUser->getEmail(),
                 'password' => bcrypt(Str::random(25)),
-                'provider' => $provider,
-                'provider_id' => $socialiteUser->getId(),
-                'token' => $socialiteUser->token,
             ]
         );
 
@@ -82,22 +81,23 @@ class LoginController extends Controller
 
     public function findUserBySocialId($provider, $id)
     {
-        $socialAccount = User::where('provider', $provider)
+        $socialAccount = SocialAccount::where('provider', $provider)
             ->where('provider_id', $id)
             ->first();
 
         return $socialAccount ? $socialAccount->user : false;
     }
 
-    public function findUserByEmail($provider, $email)
+    public function findUserByEmail($email)
     {
         return !$email ? null : User::where('email', $email)->first();
     }
 
     public function addSocialAccount($provider, $user, $socialiteUser)
     {
-        $user->update(
+        SocialAccount::create(
             [
+                'user_id' => $user->id,
                 'provider' => $provider,
                 'provider_id' => $socialiteUser->getId(),
                 'token' => $socialiteUser->token,

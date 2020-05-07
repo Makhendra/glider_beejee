@@ -15,8 +15,9 @@ class CreateUsersTasksTable extends Migration
     {
         Schema::create('user_tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
-            $table->integer('task_id');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('group_id')->constrained();
+            $table->foreignId('task_id')->constrained();
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('hint_use')->default(0);
             $table->json('data')->nullable();

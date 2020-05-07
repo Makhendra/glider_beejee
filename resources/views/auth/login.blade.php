@@ -54,19 +54,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember"
-                                               id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                        <label class="form-check-label" for="remember">
-                                            {{ __('messages.remember_me') }}
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="form-group row mb-0">
                                 <div class="col-md-10 offset-md-2">
                                     <button type="submit" class="btn btn-sm btn-primary">
@@ -93,8 +80,8 @@
                         <div class="text-center">
                             Или войдите с помощью социальных сетей: <br>
 
-                            <a class="btn btn-sm btn-primary" href="{{route('social_auth', 'facebook')}}">facebook</a> <br>
-                            <a class="btn btn-sm btn-dark" href="{{route('social_auth', 'vkontakte')}}">vk</a><br>
+                            <a class="btn btn-sm btn-primary" href="{{route('social_auth', 'facebook')}}">facebook</a>
+                            <a class="btn btn-sm btn-dark" href="{{route('social_auth', 'vkontakte')}}">vk</a>
                             <a class="btn btn-sm btn-danger" href="{{route('social_auth', 'google')}}">google</a>
                         </div>
                     </div>

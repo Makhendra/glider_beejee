@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSocialFields extends Migration
+class AddSocialAccounts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddSocialFields extends Migration
      */
     public function up()
     {
-        Schema::table(
-            'users',
+        Schema::create(
+            'social_accounts',
             function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->integer('user_id');
                 $table->string('provider_id')->nullable();
                 $table->string('provider')->nullable();
                 $table->string('token')->nullable();
@@ -30,17 +32,6 @@ class AddSocialFields extends Migration
      */
     public function down()
     {
-        Schema::table(
-            'users',
-            function (Blueprint $table) {
-                $table->dropColumn(
-                    [
-                        'provider_id',
-                        'provider',
-                        'token',
-                    ]
-                );
-            }
-        );
+        Schema::dropIfExists('social_accounts');
     }
 }

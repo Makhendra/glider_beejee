@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 /**
- * App\UserTask
+ * App\Models\UserTask
  *
  * @property int $id
  * @property int $user_id
@@ -43,6 +43,10 @@ class UserTask extends Model
     const NOT_SOLVED = 0;
     const SOLVED = 1;
 
+    protected $casts = [
+        'data' => 'json'
+    ];
+
 
     /**
      * Scope a query to only include active users.
@@ -57,6 +61,6 @@ class UserTask extends Model
 
     public function scopeNextTaskByUser(Builder $query, $task_id, $user_id)
     {
-        return $query->where(['task_id' => $task_id, 'user_id' => $user_id])->NotSolved();
+        return $query->where(compact('task_id', 'user_id'))->NotSolved();
     }
 }

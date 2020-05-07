@@ -5,25 +5,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7f65b57-632b-4877-910e-0cf2597b1804" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_02_140704_add_social_fields.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/passport/AuthorizedClients.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/passport/Clients.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/passport/PersonalAccessTokens.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Helpers/functions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Helpers/responses.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/LkController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ReportsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/ReportRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/SocialAccount.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Tasks/DefaultTask.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Tasks/Graphs/GraphImageService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Tasks/Graphs/GraphService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Tasks/Graphs/GraphTableService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Tasks/NumberSystems/NumberSystemService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Tasks/TaskCreator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Tasks/TaskFabric.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Tasks/TaskTrait.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2016_06_01_000001_create_oauth_auth_codes_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2016_06_01_000002_create_oauth_access_tokens_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2016_06_01_000003_create_oauth_refresh_tokens_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2016_06_01_000004_create_oauth_clients_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2016_06_01_000005_create_oauth_personal_access_clients_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_08_04_124534_create_group_tasks_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_03_14_210612_create_errors_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/ErrorSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/GroupSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/font.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/table_graph.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Error.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Error.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/GroupTask.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/GroupTask.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GroupsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GroupsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Tasks/CE_Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tasks/NumberSystems/CE_Task.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Tasks/FW_Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tasks/NumberSystems/FW_Task.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Tasks/GD_Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tasks/Graphs/GD_Task.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Tasks/InterfaceTask.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tasks/TaskInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Task.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/UserTask.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserTask.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_04_135952_create_tasks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_04_135952_create_tasks_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_08_165145_create_users_tasks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_09_08_165145_create_users_tasks_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_02_140704_add_social_fields.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_02_140704_add_social_accounts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/TaskSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/TaskSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lk.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lk.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tasks/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tasks/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tasks/show_templates/CE_Task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tasks/show_templates/CE_Task.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tasks/show_templates/FW_Task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tasks/show_templates/FW_Task.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tasks/show_templates/GD_Task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tasks/show_templates/GD_Task.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tasks/show_templates/_default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tasks/show_templates/_default.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,13 +105,13 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Tasks/NumberSystems" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -82,15 +123,19 @@
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../old train/views/layouts/app.blade.php" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Tasks/Graphs" />
+      <recent name="$PROJECT_DIR$/app/Tasks/NumberSystems" />
+      <recent name="$PROJECT_DIR$/app/Tasks" />
+      <recent name="$PROJECT_DIR$/app/Models" />
+      <recent name="$PROJECT_DIR$/app" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Tasks/NumberSystems" />
+      <recent name="$PROJECT_DIR$/database/migrations" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/resources/views/auth/passwords" />
       <recent name="$PROJECT_DIR$/resources/views/auth" />
-      <recent name="$PROJECT_DIR$/app/Http/Controllers" />
-      <recent name="$PROJECT_DIR$/resources/lang/en" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/tasks/show_templates" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -131,7 +176,9 @@
       <workItem from="1588009320711" duration="4867000" />
       <workItem from="1588143806420" duration="10134000" />
       <workItem from="1588256601883" duration="9000" />
-      <workItem from="1588412054319" duration="9070000" />
+      <workItem from="1588412054319" duration="15393000" />
+      <workItem from="1588502571787" duration="35422000" />
+      <workItem from="1588882146548" duration="350000" />
     </task>
     <task id="LOCAL-00001" summary="Новый тип задания: &quot;Под каким номером в списке идёт первое слово&quot;">
       <created>1579594180589</created>
@@ -175,11 +222,64 @@
       <option name="project" value="LOCAL" />
       <updated>1588416596772</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Попытка сделать авторизацию">
+      <created>1588423188715</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1588423188715</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:/Users/macbook/workspace/trainings/database/migrations" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_TABS">
+      <set>
+        <option value="1" />
+      </set>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Новый тип задания: &quot;Под каким номером в списке идёт первое слово&quot;" />
@@ -188,29 +288,36 @@
     <MESSAGE value="New version laravel" />
     <MESSAGE value="Merge branch 'master' of https://github.com/Makhendra/trainings&#10;&#10;# Conflicts:&#10;#&#9;.editorconfig&#10;#&#9;.env.example&#10;#&#9;.gitignore&#10;#&#9;app/Console/Kernel.php&#10;#&#9;app/Exceptions/Handler.php&#10;#&#9;app/Http/Controllers/Auth/ForgotPasswordController.php&#10;#&#9;app/Http/Controllers/Auth/LoginController.php&#10;#&#9;app/Http/Controllers/Auth/RegisterController.php&#10;#&#9;app/Http/Controllers/Auth/ResetPasswordController.php&#10;#&#9;app/Http/Controllers/Auth/VerificationController.php&#10;#&#9;app/Http/Controllers/Controller.php&#10;#&#9;app/Http/Controllers/TaskController.php&#10;#&#9;app/Http/Controllers/Tasks/CE_Task.php&#10;#&#9;app/Http/Controllers/Tasks/FW_Task.php&#10;#&#9;app/Http/Controllers/Tasks/InterfaceTask.php&#10;#&#9;app/Http/Kernel.php&#10;#&#9;app/Http/Middleware/Authenticate.php&#10;#&#9;app/Http/Middleware/RedirectIfAuthenticated.php&#10;#&#9;app/Http/Middleware/TrustProxies.php&#10;#&#9;app/Http/Middleware/VerifyCsrfToken.php&#10;#&#9;app/Providers/AuthServiceProvider.php&#10;#&#9;app/Providers/BroadcastServiceProvider.php&#10;#&#9;app/Providers/EventServiceProvider.php&#10;#&#9;app/Providers/RouteServiceProvider.php&#10;#&#9;app/Task.php&#10;#&#9;app/User.php&#10;#&#9;app/UserTask.php&#10;#&#9;composer.json&#10;#&#9;composer.lock&#10;#&#9;config/app.php&#10;#&#9;config/auth.php&#10;#&#9;config/broadcasting.php&#10;#&#9;config/cache.php&#10;#&#9;config/database.php&#10;#&#9;config/filesystems.php&#10;#&#9;config/logging.php&#10;#&#9;config/mail.php&#10;#&#9;config/queue.php&#10;#&#9;config/services.php&#10;#&#9;config/session.php&#10;#&#9;database/migrations/2014_10_12_000000_create_users_table.php&#10;#&#9;database/migrations/2014_10_12_100000_create_password_resets_table.php&#10;#&#9;database/seeds/DatabaseSeeder.php&#10;#&#9;package-lock.json&#10;#&#9;package.json&#10;#&#9;phpunit.xml&#10;#&#9;public/.htaccess&#10;#&#9;public/css/app.css&#10;#&#9;public/js/app.js&#10;#&#9;resources/js/app.js&#10;#&#9;resources/js/bootstrap.js&#10;#&#9;resources/lang/en/passwords.php&#10;#&#9;resources/lang/en/validation.php&#10;#&#9;resources/lang/ru/messages.php&#10;#&#9;resources/sass/app.scss&#10;#&#9;resources/views/auth/login.blade.php&#10;#&#9;resources/views/auth/passwords/email.blade.php&#10;#&#9;resources/views/auth/register.blade.php&#10;#&#9;resources/views/layouts/app.blade.php&#10;#&#9;resources/views/tasks/index.blade.php&#10;#&#9;resources/views/tasks/show_templates/_default.blade.php&#10;#&#9;routes/api.php&#10;#&#9;routes/channels.php&#10;#&#9;routes/console.php&#10;#&#9;routes/web.php" />
     <MESSAGE value="Добавила хлебные крошки как элемент навигации" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавила хлебные крошки как элемент навигации" />
+    <MESSAGE value="Попытка сделать авторизацию" />
+    <option name="LAST_COMMIT_MESSAGE" value="Попытка сделать авторизацию" />
   </component>
   <component name="WindowStateProjectService">
     <state x="584" y="75" key="#Deployment" timestamp="1588167895594">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="584" y="75" key="#Deployment/0.23.1440.877@0.23.1440.877" timestamp="1588167895594" />
-    <state x="421" y="271" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588155449088">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="421" y="271" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1588155449088" />
-    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588421437336">
+    <state x="421" y="255" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588679778482">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900@0.0.1440.900" timestamp="1588421437336" />
+    <state x="421" y="255" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1588679778481" />
+    <state x="421" y="271" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1588155449088" />
+    <state x="266" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588684896080">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="266" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.900@0.0.1440.900" timestamp="1588516917602" />
+    <state x="266" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877@0.23.1440.877" timestamp="1588684896080" />
+    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588679925969">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900@0.0.1440.900" timestamp="1588679925969" />
     <state x="465" y="315" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1588146338801">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="465" y="315" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.877@0.23.1440.877" timestamp="1588146338801" />
-    <state x="303" y="0" key="CommitChangelistDialog2" timestamp="1588416596617">
+    <state x="303" y="23" key="CommitChangelistDialog2" timestamp="1588423188249">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="303" y="0" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1588416596616" />
+    <state x="303" y="23" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1588423188249" />
     <state x="303" y="52" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588413046634" />
     <state x="100" y="79" width="1240" height="719" key="DiffContextDialog" timestamp="1588414492164">
       <screen x="0" y="23" width="1440" height="877" />
@@ -224,45 +331,47 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="424" y="173" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1588415945230" />
-    <state x="417" y="269" key="NewPhpClassDialog" timestamp="1588417937181">
+    <state x="417" y="285" key="NewPhpClassDialog" timestamp="1588688632935">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="417" y="269" key="NewPhpClassDialog/0.0.1440.900@0.0.1440.900" timestamp="1588679788246" />
+    <state x="417" y="285" key="NewPhpClassDialog/0.23.1440.877@0.23.1440.877" timestamp="1588688632935" />
+    <state x="538" y="393" key="NewPhpFileDialog" timestamp="1588688643322">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="538" y="380" key="NewPhpFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1588525689131" />
+    <state x="538" y="393" key="NewPhpFileDialog/0.23.1440.877@0.23.1440.877" timestamp="1588688643322" />
+    <state x="200" y="64" width="1240" height="719" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1588516783950">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="417" y="269" key="NewPhpClassDialog/0.0.1440.900@0.0.1440.900" timestamp="1588417937181" />
-    <state x="417" y="285" key="NewPhpClassDialog/0.23.1440.877@0.23.1440.877" timestamp="1588010563709" />
-    <state x="538" y="393" key="NewPhpFileDialog" timestamp="1588014418779">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="538" y="380" key="NewPhpFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1587733300144" />
-    <state x="538" y="393" key="NewPhpFileDialog/0.23.1440.877@0.23.1440.877" timestamp="1588014418779" />
-    <state x="380" y="85" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1588414492165">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
+    <state x="200" y="64" width="1240" height="719" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1588516783950" />
     <state x="380" y="85" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.23.1440.877@0.23.1440.877" timestamp="1588414492165" />
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588414272964">
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588517117395">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1588414272964" />
-    <state x="397" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1588412056981">
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1588517117395" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.877@0.23.1440.877" timestamp="1588508597881" />
+    <state x="397" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1588502572277">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="397" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1588412056981" />
+    <state x="397" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1588502572277" />
     <state x="397" y="298" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1588143810980" />
-    <state x="378" y="212" width="683" height="486" key="find.popup" timestamp="1588421432948">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="378" y="230" width="683" height="486" key="find.popup" timestamp="1588690610303">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="378" y="212" width="683" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1588421432948" />
-    <state x="378" y="230" width="683" height="486" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1588152768727" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1588418449816">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="378" y="212" width="683" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1588517956874" />
+    <state x="378" y="230" width="683" height="486" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1588690610303" />
+    <state x="385" y="214" width="670" height="659" key="search.everywhere.popup" timestamp="1588882177909">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1588418449816" />
-    <state x="385" y="214" width="670" height="659" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1588167602448" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1588667680709" />
+    <state x="385" y="214" width="670" height="659" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1588882177909" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/Tasks/FW_Task.php</url>
+          <url>file://$PROJECT_DIR$/app/Tasks/NumberSystems/FW_Task.php</url>
           <line>37</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\Tasks\FW_Task" />
@@ -271,8 +380,8 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/Tasks/GD_Task.php</url>
-          <line>147</line>
+          <url>file://$PROJECT_DIR$/app/Tasks/Graphs/GD_Task.php</url>
+          <line>187</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\Tasks\GD_Task" />
             <option name="methodName" value="generateRowTable" />

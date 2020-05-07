@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -9,12 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 /**
- * App\Task
+ * App\Models\Task
  *
  * @property int $id
  * @property string $title
- * @property string $slug
- * @property string $interface
+ * @property string $type
  * @property string|null $task_text
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
@@ -27,8 +26,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Task whereCreatedAt($value)
  * @method static Builder|Task whereGroupId($value)
  * @method static Builder|Task whereId($value)
- * @method static Builder|Task whereInterface($value)
- * @method static Builder|Task whereSlug($value)
+ * @method static Builder|Task whereType($value)
  * @method static Builder|Task whereTaskText($value)
  * @method static Builder|Task whereTitle($value)
  * @method static Builder|Task whereUpdatedAt($value)
