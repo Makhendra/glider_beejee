@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7f65b57-632b-4877-910e-0cf2597b1804" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,9 +262,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900@0.0.1440.900" timestamp="1588679925969" />
-    <state x="465" y="315" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1588146338801">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="465" y="300" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1589117197289">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="465" y="300" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1440.900@0.0.1440.900" timestamp="1589117197289" />
     <state x="465" y="315" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.877@0.23.1440.877" timestamp="1588146338801" />
     <state x="255" y="52" key="CommitChangelistDialog2" timestamp="1588885979437">
       <screen x="0" y="23" width="1440" height="877" />
@@ -313,10 +314,10 @@
     </state>
     <state x="378" y="212" width="683" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1588517956874" />
     <state x="378" y="230" width="683" height="486" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1588690610303" />
-    <state x="385" y="214" width="670" height="659" key="search.everywhere.popup" timestamp="1588882177909">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1589116401053">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1588667680709" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1589116401053" />
     <state x="385" y="214" width="670" height="659" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1588882177909" />
   </component>
   <component name="XDebuggerManager">

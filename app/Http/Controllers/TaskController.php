@@ -8,12 +8,23 @@ use App\Models\Task;
 use App\Models\UserTask;
 use App\Tasks\TaskCreator;
 use App\Tasks\TaskInterface;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class TaskController extends Controller
 {
 
+    /**
+     * Показывает все задачи определенной группы
+     * @param $group_id
+     * @param string $title
+     * @return array|Factory|View|mixed
+     */
     public function index($group_id, $title = 'Задачи')
     {
         $groups = GroupTask::all();
@@ -22,6 +33,11 @@ class TaskController extends Controller
         return view('tasks.index', compact('group_id', 'groups', 'tasks', 'title'));
     }
 
+    /**
+     * Показывает сгенерированную задачу для пользователя
+     * @param $id
+     * @return array|Factory|View|mixed
+     */
     public function show($id)
     {
         $task = Task::with('group')->find($id);
@@ -31,6 +47,12 @@ class TaskController extends Controller
         return view($taskCreator->getView(), $taskCreator->getData());
     }
 
+    /**
+     * Отдает следующую задачу
+     * @param Request $request
+     * @param $id
+     * @return RedirectResponse
+     */
     public function nextTask(Request $request, $id)
     {
         $success = $request->get('success', 0);
@@ -47,6 +69,13 @@ class TaskController extends Controller
         return redirect()->route('tasks.show', $task->id);
     }
 
+    /**
+     * Отдает или генерирует задачу
+     * @param TaskInterface $creator
+     * @param $task_id
+     * @param $group_id
+     * @return UserTask|Builder|Model|object|null
+     */
     public function getUserTask(TaskInterface $creator, $task_id, $group_id)
     {
         $user_id = Auth::id();
@@ -60,6 +89,12 @@ class TaskController extends Controller
         return $user_task;
     }
 
+    /**
+     * Проверка верный ли ответ
+     * @param Request $request
+     * @param $id
+     * @return mixed
+     */
     public function checkAnswer(Request $request, $id)
     {
         $task = Task::find($id);
