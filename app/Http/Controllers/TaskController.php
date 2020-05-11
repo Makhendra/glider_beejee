@@ -27,9 +27,9 @@ class TaskController extends Controller
      */
     public function index($group_id, $title = 'Задачи')
     {
-        $groups = GroupTask::all();
+        $groups = GroupTask::active()->get();
         $tasks = Task::with('userTask')
-            ->whereGroupId($group_id)->get();
+            ->whereGroupId($group_id)->active()->get();
         return view('tasks.index', compact('group_id', 'groups', 'tasks', 'title'));
     }
 

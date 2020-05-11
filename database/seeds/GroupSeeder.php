@@ -13,7 +13,9 @@ class GroupSeeder extends Seeder
     {
         $groups = [
             'Системы исчисления',
-            'Протяженность дороги'
+            'Протяженность дороги',
+            'Таблицы истинности и логические схемы',
+            'Представление и считывание данных',
         ];
         foreach ($groups as $name){
             \App\Models\GroupTask::create(compact('name'));

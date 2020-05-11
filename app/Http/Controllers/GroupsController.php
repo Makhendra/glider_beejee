@@ -10,7 +10,7 @@ class GroupsController extends Controller
 {
     public function index($title = 'Группы')
     {
-        $groups = GroupTask::all();
+        $groups = GroupTask::active()->get();
         return view('groups.index', compact('groups', 'title'));
     }
 }

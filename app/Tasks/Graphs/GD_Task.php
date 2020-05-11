@@ -22,10 +22,9 @@ class GD_Task implements TaskInterface
     public function initData()
     {
         $alpha = getAlpha();
-        shuffle($alpha);
         $graph = (new GraphService())->generateGraph();
         $alpha = array_slice($alpha, 0, count($graph));
-        $image = (new GraphImageService())->getImage($graph, $alpha);
+        $image = (new GraphImageService())->getImage($graph);
 
         $cnt = count($graph) - 1;
         $start = random_int(0, $cnt);
@@ -44,13 +43,22 @@ class GD_Task implements TaskInterface
 
     public function validateRules()
     {
-        return [];
+        return [
+            'answer' => 'required',
+            'answer_check' => 'required',
+        ];
     }
 
 
     public function checkAnswer(Request $request)
     {
-        // TODO: Implement checkAnswer() method.
+        $request->validate($this->validateRules());
+        $data = $request->all();
+        if ($data['answer'] == $data['answer_check']) {
+            return success();
+        } else {
+            return fail();
+        }
     }
 
     public function replaceText()

@@ -10,7 +10,7 @@
 @endsection
 
 @section('form')
-
+    <input type="hidden" name="answer_check" value="{{$data['answer'] ?? 0}}">
 @endsection
 
 

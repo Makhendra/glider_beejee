@@ -4,10 +4,33 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7f65b57-632b-4877-910e-0cf2597b1804" name="Default Changelist" comment="">
+    <list default="true" id="f7f65b57-632b-4877-910e-0cf2597b1804" name="Default Changelist" comment="Документация">
+      <change afterPath="$PROJECT_DIR$/app/Admin/Controllers/AuthController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Admin/Controllers/GroupsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Admin/Controllers/HomeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Admin/bootstrap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Admin/routes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/admin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2016_01_04_173148_create_admin_tables.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_11_201450_add_active_column.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_11_201513_add_is_admin_column_users.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/MenuSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/groups/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/layout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GroupsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GroupsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/GroupTask.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/GroupTask.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Task.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tasks/Graphs/GD_Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tasks/Graphs/GD_Task.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tasks/Graphs/GraphImageService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tasks/Graphs/GraphImageService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/GroupSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/GroupSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tasks/show_templates/GD_Task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tasks/show_templates/GD_Task.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +76,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Tasks/NumberSystems" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -65,19 +88,19 @@
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../old train/views/layouts/app.blade.php" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/admin" />
+      <recent name="$PROJECT_DIR$/resources/views/admin/groups" />
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Admin" />
+      <recent name="$PROJECT_DIR$/app/Tasks/NumberSystems" />
+      <recent name="$PROJECT_DIR$/database/migrations" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/Tasks/Graphs" />
       <recent name="$PROJECT_DIR$/app/Tasks/NumberSystems" />
       <recent name="$PROJECT_DIR$/app/Tasks" />
       <recent name="$PROJECT_DIR$/app/Models" />
       <recent name="$PROJECT_DIR$/app" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/Tasks/NumberSystems" />
-      <recent name="$PROJECT_DIR$/database/migrations" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/resources/views/auth/passwords" />
-      <recent name="$PROJECT_DIR$/resources/views/auth" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -123,6 +146,7 @@
       <workItem from="1588882146548" duration="508000" />
       <workItem from="1588932361217" duration="207000" />
       <workItem from="1589093119989" duration="290000" />
+      <workItem from="1589224717964" duration="1118000" />
     </task>
     <task id="LOCAL-00001" summary="Новый тип задания: &quot;Под каким номером в списке идёт первое слово&quot;">
       <created>1579594180589</created>
@@ -180,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588885979858</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Документация">
+      <created>1589118275578</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1589118275578</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +272,8 @@
     <MESSAGE value="Добавила хлебные крошки как элемент навигации" />
     <MESSAGE value="Попытка сделать авторизацию" />
     <MESSAGE value="Рефакторинг" />
-    <option name="LAST_COMMIT_MESSAGE" value="Рефакторинг" />
+    <MESSAGE value="Документация" />
+    <option name="LAST_COMMIT_MESSAGE" value="Документация" />
   </component>
   <component name="WindowStateProjectService">
     <state x="584" y="75" key="#Deployment" timestamp="1588167895594">
@@ -258,19 +290,19 @@
     </state>
     <state x="266" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.900@0.0.1440.900" timestamp="1588516917602" />
     <state x="266" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877@0.23.1440.877" timestamp="1588684896080" />
-    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588679925969">
+    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589221313412">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900@0.0.1440.900" timestamp="1588679925969" />
-    <state x="465" y="300" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1589117197289">
+    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900@0.0.1440.900" timestamp="1589221313412" />
+    <state x="465" y="300" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1589220726800">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="465" y="300" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1440.900@0.0.1440.900" timestamp="1589117197289" />
+    <state x="465" y="300" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1440.900@0.0.1440.900" timestamp="1589220726800" />
     <state x="465" y="315" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.877@0.23.1440.877" timestamp="1588146338801" />
-    <state x="255" y="52" key="CommitChangelistDialog2" timestamp="1588885979437">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="303" y="23" key="CommitChangelistDialog2" timestamp="1589226165211">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="303" y="23" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1588423188249" />
+    <state x="303" y="23" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1589226165211" />
     <state x="255" y="52" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588885979437" />
     <state x="100" y="79" width="1240" height="719" key="DiffContextDialog" timestamp="1588414492164">
       <screen x="0" y="23" width="1440" height="877" />
@@ -284,40 +316,40 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="424" y="173" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1588415945230" />
-    <state x="417" y="285" key="NewPhpClassDialog" timestamp="1588688632935">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="417" y="269" key="NewPhpClassDialog" timestamp="1589223568889">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="417" y="269" key="NewPhpClassDialog/0.0.1440.900@0.0.1440.900" timestamp="1588679788246" />
+    <state x="417" y="269" key="NewPhpClassDialog/0.0.1440.900@0.0.1440.900" timestamp="1589223568889" />
     <state x="417" y="285" key="NewPhpClassDialog/0.23.1440.877@0.23.1440.877" timestamp="1588688632935" />
-    <state x="538" y="393" key="NewPhpFileDialog" timestamp="1588688643322">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="538" y="380" key="NewPhpFileDialog" timestamp="1589222825262">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="538" y="380" key="NewPhpFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1588525689131" />
+    <state x="538" y="380" key="NewPhpFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1589222825262" />
     <state x="538" y="393" key="NewPhpFileDialog/0.23.1440.877@0.23.1440.877" timestamp="1588688643322" />
-    <state x="200" y="64" width="1240" height="719" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1588516783950">
+    <state x="200" y="64" width="1240" height="719" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1589223904183">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="200" y="64" width="1240" height="719" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1588516783950" />
+    <state x="200" y="64" width="1240" height="719" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1589223904183" />
     <state x="380" y="85" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.23.1440.877@0.23.1440.877" timestamp="1588414492165" />
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588517117395">
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1589223904184">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1588517117395" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1589223904184" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.877@0.23.1440.877" timestamp="1588508597881" />
-    <state x="397" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1589093120400">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="397" y="298" key="com.intellij.ide.util.TipDialog" timestamp="1589224717765">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="397" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1589093120400" />
-    <state x="397" y="298" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1588143810980" />
-    <state x="378" y="230" width="683" height="486" key="find.popup" timestamp="1588690610303">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="378" y="212" width="683" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1588517956874" />
-    <state x="378" y="230" width="683" height="486" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1588690610303" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1589116401053">
+    <state x="397" y="298" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1589224717765" />
+    <state x="378" y="212" width="690" height="486" key="find.popup" timestamp="1589226852736">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1589116401053" />
+    <state x="378" y="212" width="690" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1589226852736" />
+    <state x="378" y="230" width="683" height="486" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1588690610303" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1589226435034">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1589226435034" />
     <state x="385" y="214" width="670" height="659" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1588882177909" />
   </component>
   <component name="XDebuggerManager">
@@ -331,15 +363,6 @@
             <option name="methodName" value="generate" />
           </properties>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/app/Tasks/Graphs/GD_Task.php</url>
-          <line>187</line>
-          <properties>
-            <option name="className" value="\App\Http\Controllers\Tasks\GD_Task" />
-            <option name="methodName" value="generateRowTable" />
-          </properties>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

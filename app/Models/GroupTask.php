@@ -29,4 +29,8 @@ class GroupTask extends Model
 {
     protected $table = 'groups';
     protected $guarded = [];
+
+    public function scopeActive(Builder $query)  {
+        return $query->where('active', 1);
+    }
 }
