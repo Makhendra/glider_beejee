@@ -33,7 +33,7 @@ Route::get(
 Route::post('report-bug', 'ReportsController@create')->name('report_bug');
 Route::get('lk', 'LkController@index')->name('lk')->middleware('auth');
 Route::group(
-    ['prefix' => 'groups', 'middleware' => 'auth'],
+    ['prefix' => 'groups', 'middleware' => ['auth', 'active']],
     function () {
         Route::get('/', 'GroupsController@index')->name('groups.main');
         Route::get('/{group_id}/tasks', 'TaskController@index')->name('groups.tasks');
