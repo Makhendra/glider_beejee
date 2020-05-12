@@ -7,9 +7,9 @@
             <div class="col-md-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('groups.index')}}">Все типы тренажеров</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('groups.main')}}">Все типы тренажеров</a></li>
                         <li class="breadcrumb-item">
-                            <a href="{{route('groups.tasks', $id)}}">{{$task->group->name}}</a>
+                            <a href="{{route('groups.tasks', $task->group_id)}}">{{$task->group->name}}</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">{{$task->title}}</li>
                     </ol>
@@ -82,7 +82,7 @@
             @else
                 <div class="col-md-12 text-center mb-5">
                     <h2>Упс, что-то пошло не так</h2>
-                    <a href="{{route('groups.index')}}">Вернуться на главную</a>
+                    <a href="{{route('groups.main')}}">Вернуться на главную</a>
                 </div>
             @endif
         </div>

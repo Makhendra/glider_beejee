@@ -8,7 +8,7 @@
                     <tbody>
                     <tr>
                         <td class="table-active">
-                            <a href="{{route('groups.index')}}">Все группы</a>
+                            <a href="{{route('groups.main')}}">Все группы</a>
                         </td>
                     </tr>
                     @foreach($groups as $group)
@@ -25,6 +25,9 @@
 
         <div class="col-md-9">
             @isset($tasks)
+                @if($tasks->count() == 0)
+                    <img src="{{asset('development.png')}}" alt="">
+                @else
                 <table class="table">
                     <thead>
                     <tr>
@@ -45,6 +48,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                    @endif
             @endisset
         </div>
     </div>
