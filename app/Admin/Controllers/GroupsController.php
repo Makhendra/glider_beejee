@@ -15,7 +15,12 @@ class GroupsController extends AdminController
      *
      * @var string
      */
-    protected $title = 'App\Models\GroupTask';
+    protected $title;
+
+    public function __construct()
+    {
+        $this->title = __('messages.groups');
+    }
 
     /**
      * Make a grid builder.
@@ -25,13 +30,8 @@ class GroupsController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new GroupTask());
-
-        $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
-        $grid->column('active', __('Active'));
-
+        $grid->column('name', __('messages.name'));
+        $grid->column('active', __('messages.active'))->switch();
         return $grid;
     }
 
@@ -45,11 +45,11 @@ class GroupsController extends AdminController
     {
         $show = new Show(GroupTask::findOrFail($id));
 
-        $show->field('id', __('Id'));
-        $show->field('name', __('Name'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
-        $show->field('active', __('Active'));
+        $show->field('id', __('messages.id'));
+        $show->field('name', __('messages.name'));
+        $show->field('created_at', __('messages.created_at'));
+        $show->field('updated_at', __('messages.updated_at'));
+        $show->field('active', __('messages.active'));
 
         return $show;
     }
@@ -63,8 +63,25 @@ class GroupsController extends AdminController
     {
         $form = new Form(new GroupTask());
 
-        $form->text('name', __('Name'));
-        $form->switch('active', __('Active'))->default(1);
+        $form->tab(
+            __('messages.group'),
+            function ($form) {
+                $form->text('name', __('messages.name'));
+                $form->switch('active', __('messages.active'))->default(1);
+            });
+        $form->tab(
+            __('messages.tasks'),
+            function ($form) {
+                $form->hasMany(
+                    'tasks',
+                    function (Form\NestedForm $form) {
+                        $form->text('title', __('messages.task_title'));
+                        $form->textarea('task_text', __('messages.task_text'));
+                        $form->switch('active', __('messages.active'));
+                    }
+                );
+            }
+        );
 
         return $form;
     }

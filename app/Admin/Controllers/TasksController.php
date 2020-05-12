@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\GroupTask;
 use App\Models\Task;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -15,7 +16,12 @@ class TasksController extends AdminController
      *
      * @var string
      */
-    protected $title = 'App\Models\Task';
+    protected $title;
+
+    public function __construct()
+    {
+        $this->title = __('messages.tasks');
+    }
 
     /**
      * Make a grid builder.
@@ -26,14 +32,13 @@ class TasksController extends AdminController
     {
         $grid = new Grid(new Task());
 
-        $grid->column('id', __('Id'));
-        $grid->column('group_id', __('Group id'));
-        $grid->column('title', __('Title'));
-        $grid->column('type', __('Type'));
-        $grid->column('task_text', __('Task text'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
-        $grid->column('active', __('Active'));
+        $grid->column('title', __('messages.task_title'));
+        $grid->column('group_id', __('messages.group'))->display(function ($id) {
+            $group = GroupTask::find($id);
+            return $group->name ?? '';
+        });
+        $grid->column('task_text', __('messages.task_text'));
+        $grid->column('active', __('messages.active'))->switch();
 
         return $grid;
     }
@@ -48,14 +53,14 @@ class TasksController extends AdminController
     {
         $show = new Show(Task::findOrFail($id));
 
-        $show->field('id', __('Id'));
-        $show->field('group_id', __('Group id'));
-        $show->field('title', __('Title'));
-        $show->field('type', __('Type'));
-        $show->field('task_text', __('Task text'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
-        $show->field('active', __('Active'));
+        $show->field('id', __('messages.id'));
+        $show->field('group_id', __('messages.group'));
+        $show->field('title', __('messages.title'));
+        $show->field('type', __('messages.type'));
+        $show->field('task_text', __('messages.task_text'));
+        $show->field('created_at', __('messages.created_at'));
+        $show->field('updated_at', __('messages.updated_at'));
+        $show->field('active', __('messages.active'));
 
         return $show;
     }
@@ -69,11 +74,11 @@ class TasksController extends AdminController
     {
         $form = new Form(new Task());
 
-        $form->number('group_id', __('Group id'));
-        $form->text('title', __('Title'));
-        $form->number('type', __('Type'));
-        $form->textarea('task_text', __('Task text'));
-        $form->switch('active', __('Active'))->default(1);
+        $form->select('group_id', __('messages.group'))->options(GroupTask::pluck('name','id'));
+        $form->text('title', __('messages.task_title'));
+        $form->number('type', __('messages.type'))->help('Не рекомендуется изменять это параметр');
+        $form->textarea('task_text', __('messages.task_text'));
+        $form->switch('active', __('messages.active'))->default(1);
 
         return $form;
     }

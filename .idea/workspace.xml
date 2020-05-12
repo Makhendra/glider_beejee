@@ -5,8 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7f65b57-632b-4877-910e-0cf2597b1804" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/ActiveUser.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/AdminTablesSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/GroupsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/GroupsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/TasksController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/TasksController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/UsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GroupsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GroupsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/GroupTask.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/GroupTask.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Task.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_11_201450_add_active_column.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_11_201450_add_active_column.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_11_201513_add_is_admin_column_users.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/GroupSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/GroupSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo3.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/logo3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ru/messages.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/messages.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/groups/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/groups/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lk.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lk.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tasks/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tasks/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tasks/show_templates/_default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tasks/show_templates/_default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +75,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/seeds" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -64,19 +87,19 @@
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../old train/views/layouts/app.blade.php" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/admin" />
-      <recent name="$PROJECT_DIR$/resources/views/admin/groups" />
-      <recent name="$PROJECT_DIR$/app/Http/Controllers/Admin" />
-      <recent name="$PROJECT_DIR$/app/Tasks/NumberSystems" />
-      <recent name="$PROJECT_DIR$/database/migrations" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/Tasks/Graphs" />
       <recent name="$PROJECT_DIR$/app/Tasks/NumberSystems" />
       <recent name="$PROJECT_DIR$/app/Tasks" />
       <recent name="$PROJECT_DIR$/app/Models" />
       <recent name="$PROJECT_DIR$/app" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/database/seeds" />
+      <recent name="$PROJECT_DIR$/resources/views/admin" />
+      <recent name="$PROJECT_DIR$/resources/views/admin/groups" />
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Admin" />
+      <recent name="$PROJECT_DIR$/app/Tasks/NumberSystems" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -122,7 +145,8 @@
       <workItem from="1588882146548" duration="508000" />
       <workItem from="1588932361217" duration="207000" />
       <workItem from="1589093119989" duration="290000" />
-      <workItem from="1589224717964" duration="1313000" />
+      <workItem from="1589224717964" duration="3020000" />
+      <workItem from="1589292293594" duration="6110000" />
     </task>
     <task id="LOCAL-00001" summary="Новый тип задания: &quot;Под каким номером в списке идёт первое слово&quot;">
       <created>1579594180589</created>
@@ -194,7 +218,21 @@
       <option name="project" value="LOCAL" />
       <updated>1589227051035</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="гитигнор&#10;readme">
+      <created>1589227245049</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1589227245049</updated>
+    </task>
+    <task id="LOCAL-00012" summary="readme">
+      <created>1589227259531</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1589227259531</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,7 +295,9 @@
     <MESSAGE value="Рефакторинг" />
     <MESSAGE value="Документация" />
     <MESSAGE value="Инициализация админки&#10;Сделала активность у групп&#10;Сделала" />
-    <option name="LAST_COMMIT_MESSAGE" value="Инициализация админки&#10;Сделала активность у групп&#10;Сделала" />
+    <MESSAGE value="гитигнор&#10;readme" />
+    <MESSAGE value="readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme" />
   </component>
   <component name="WindowStateProjectService">
     <state x="584" y="75" key="#Deployment" timestamp="1588167895594">
@@ -274,24 +314,25 @@
     </state>
     <state x="266" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.900@0.0.1440.900" timestamp="1588516917602" />
     <state x="266" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877@0.23.1440.877" timestamp="1588684896080" />
-    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589221313412">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="458" y="230" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589294963241">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900@0.0.1440.900" timestamp="1589221313412" />
+    <state x="458" y="230" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1440.877@0.23.1440.877" timestamp="1589294963241" />
     <state x="465" y="300" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1589220726800">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="465" y="300" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1440.900@0.0.1440.900" timestamp="1589220726800" />
     <state x="465" y="315" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.877@0.23.1440.877" timestamp="1588146338801" />
-    <state x="439" y="21" key="CommitChangelistDialog2" timestamp="1589227244883">
+    <state x="439" y="21" key="CommitChangelistDialog2" timestamp="1589227259350">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="439" y="21" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1589227244883" />
+    <state x="439" y="21" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1589227259350" />
     <state x="255" y="52" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588885979437" />
-    <state x="100" y="79" width="1240" height="719" key="DiffContextDialog" timestamp="1588414492164">
+    <state x="100" y="79" width="1240" height="719" key="DiffContextDialog" timestamp="1589294984112">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="100" y="79" width="1240" height="719" key="DiffContextDialog/0.23.1440.877@0.23.1440.877" timestamp="1588414492164" />
+    <state x="100" y="79" width="1240" height="719" key="DiffContextDialog/0.23.1440.877@0.23.1440.877" timestamp="1589294984112" />
     <state x="144" y="79" key="MergeDialog" timestamp="1588415932094">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -310,11 +351,11 @@
     </state>
     <state x="538" y="380" key="NewPhpFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1589222825262" />
     <state x="538" y="393" key="NewPhpFileDialog/0.23.1440.877@0.23.1440.877" timestamp="1588688643322" />
-    <state x="200" y="64" width="1240" height="719" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1589223904183">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="200" y="85" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1589294984113">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="200" y="64" width="1240" height="719" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1589223904183" />
-    <state x="380" y="85" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.23.1440.877@0.23.1440.877" timestamp="1588414492165" />
+    <state x="200" y="85" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.23.1440.877@0.23.1440.877" timestamp="1589294984113" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1589223904184">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -325,16 +366,20 @@
     </state>
     <state x="397" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1589093120400" />
     <state x="397" y="298" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1589224717765" />
-    <state x="378" y="212" width="690" height="486" key="find.popup" timestamp="1589226852736">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="378" y="230" width="683" height="486" key="find.popup" timestamp="1589304113668">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="378" y="212" width="690" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1589226852736" />
-    <state x="378" y="230" width="683" height="486" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1588690610303" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1589226435034">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="378" y="230" width="683" height="486" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1589304113668" />
+    <state x="369" y="184" width="765" height="530" key="recent.locations.popup" timestamp="1589293472478">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="369" y="184" width="765" height="530" key="recent.locations.popup/0.23.1440.877@0.23.1440.877" timestamp="1589293472478" />
+    <state x="385" y="214" width="670" height="659" key="search.everywhere.popup" timestamp="1589305135272">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1589226435034" />
-    <state x="385" y="214" width="670" height="659" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1588882177909" />
+    <state x="385" y="214" width="670" height="659" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1589305135272" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

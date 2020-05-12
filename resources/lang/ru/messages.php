@@ -10,5 +10,17 @@ return [
     'name' => 'Имя',
     'confirm_password' => 'Потверждение пароля',
     'reset_password' => 'Сброс пароля',
-    'send_password_reset_link'=> 'Прислать ссылку на сброс пароля'
+    'send_password_reset_link'=> 'Прислать ссылку на сброс пароля',
+    'groups' => 'Группы',
+    'id' => 'ID',
+    'created_at' => 'Дата создания',
+    'updated_at' => 'Дата обновления',
+    'active' => 'Активность',
+    'tasks' => 'Задания',
+    'group' => 'Группа',
+    'task_text' => 'Текст задания',
+    'task_title' => 'Название',
+    'type' => 'Тип',
+    'users' => 'Пользователи',
+    'new_password' => 'Новый пароль',
 ];

@@ -19,6 +19,9 @@ class AddActiveColumn extends Migration
         Schema::table('tasks', function (Blueprint $table) {
             $table->boolean('active')->default(1);
         });
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('active')->default(1);
+        });
     }
 
     /**
@@ -32,6 +35,9 @@ class AddActiveColumn extends Migration
             $table->dropColumn('active');
         });
         Schema::table('tasks', function (Blueprint $table) {
+            $table->dropColumn('active');
+        });
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('active');
         });
     }

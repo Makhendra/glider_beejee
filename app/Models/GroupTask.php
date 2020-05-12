@@ -33,4 +33,8 @@ class GroupTask extends Model
     public function scopeActive(Builder $query)  {
         return $query->where('active', 1);
     }
+
+    public function tasks() {
+        return $this->hasMany(Task::class, 'group_id', 'id');
+    }
 }

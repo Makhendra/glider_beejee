@@ -15,7 +15,12 @@ class UsersController extends AdminController
      *
      * @var string
      */
-    protected $title = 'App\Models\User';
+    protected $title;
+
+    public function __construct()
+    {
+        $this->title = __('messages.users');
+    }
 
     /**
      * Make a grid builder.
@@ -26,15 +31,11 @@ class UsersController extends AdminController
     {
         $grid = new Grid(new User());
 
-        $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
-        $grid->column('email', __('Email'));
-        $grid->column('email_verified_at', __('Email verified at'));
-        $grid->column('password', __('Password'));
-        $grid->column('remember_token', __('Remember token'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
-        $grid->column('is_admin', __('Is admin'));
+        $grid->column('id', __('messages.id'));
+        $grid->column('name', __('messages.name'));
+        $grid->column('email', __('messages.email'));
+        $grid->column('active', __('messages.active'))->switch();
+        $grid->column('created_at', __('messages.created_at'))->date('d.m.Y H:i');
 
         return $grid;
     }
@@ -49,15 +50,14 @@ class UsersController extends AdminController
     {
         $show = new Show(User::findOrFail($id));
 
-        $show->field('id', __('Id'));
-        $show->field('name', __('Name'));
-        $show->field('email', __('Email'));
-        $show->field('email_verified_at', __('Email verified at'));
-        $show->field('password', __('Password'));
-        $show->field('remember_token', __('Remember token'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
-        $show->field('is_admin', __('Is admin'));
+        $show->field('id', __('messages.id'));
+        $show->field('name', __('messages.name'));
+        $show->field('email', __('messages.email'));
+        $show->field('email_verified_at', __('messages.email verified_at'));
+        $show->field('password', __('messages.password'));
+        $show->field('remember_token', __('messages.remember token'));
+        $show->field('created_at', __('messages.created_at'));
+        $show->field('updated_at', __('messages.updated_at'));
 
         return $show;
     }
@@ -71,12 +71,17 @@ class UsersController extends AdminController
     {
         $form = new Form(new User());
 
-        $form->text('name', __('Name'));
-        $form->email('email', __('Email'));
-        $form->datetime('email_verified_at', __('Email verified at'))->default(date('Y-m-d H:i:s'));
-        $form->password('password', __('Password'));
-        $form->text('remember_token', __('Remember token'));
-        $form->switch('is_admin', __('Is admin'));
+        $form->text('name', __('messages.name'));
+        $form->email('email', __('messages.email'));
+        $form->switch('active',  __('messages.active'));
+        $form->ignore(['password_confirmation']);
+        $form->password('password', __('messages.new_password'))->rules('confirmed');
+        $form->password('password_confirmation',  __('messages.confirm_password'));
+        $form->saving(function (Form $form) {
+            if ($form->password && $form->model()->password != $form->password) {
+                $form->password = bcrypt($form->password);
+            }
+        });
 
         return $form;
     }

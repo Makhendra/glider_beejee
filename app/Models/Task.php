@@ -35,6 +35,7 @@ use Illuminate\Support\Carbon;
  */
 class Task extends Model
 {
+    protected $guarded = [];
     const NOT_FOUND = 404;
 
     public static function findBySlug($slug)
