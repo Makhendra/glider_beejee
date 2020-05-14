@@ -62,13 +62,13 @@ class GroupsController extends AdminController
     protected function form()
     {
         $form = new Form(new GroupTask());
-
         $form->tab(
             __('messages.group'),
             function ($form) {
                 $form->text('name', __('messages.name'));
                 $form->switch('active', __('messages.active'))->default(1);
-            });
+            }
+        );
         $form->tab(
             __('messages.tasks'),
             function ($form) {
@@ -76,10 +76,34 @@ class GroupsController extends AdminController
                     'tasks',
                     function (Form\NestedForm $form) {
                         $form->text('title', __('messages.task_title'));
+                        $form->number('type', __('messages.type'))->default(1)->rules(function ($form) {
+                            if (!$id = $form->model()->id) {
+                                return 'unique:tasks,type';
+                            }
+                        });
                         $form->textarea('task_text', __('messages.task_text'));
                         $form->switch('active', __('messages.active'));
                     }
                 );
+            }
+        );
+        $form->tab(
+            __('messages.seo'),
+            function ($form) {
+                $form->text('seo.meta_title', __('messages.meta_title'));
+                $form->textarea('seo.meta_description', __('messages.meta_description'));
+                $form->tags('seo.meta_keywords', __('messages.meta_keywords'));
+                $form->saving(function (Form $form) {
+                    if (empty($form->{'seo.meta_title'})) {
+                        $form->ignore('seo.meta_title');
+                    }
+                    if (empty($form->{'seo.meta_description'})) {
+                        $form->ignore('seo.meta_description');
+                    }
+                    if (empty($form->{'seo.meta_keywords'})) {
+                        $form->ignore('seo.meta_keywords');
+                    }
+                });
             }
         );
 

@@ -1,6 +1,12 @@
 @php $id = $task->id ?? 1; @endphp
 @extends('layouts.app', ['title' => 'Задание '.$id])
 
+@section('seoVar')
+    @php
+        $seo = $task->seo ?? [];
+    @endphp
+@endsection
+
 @section('content')
     @isset($task)
         <div class="row">

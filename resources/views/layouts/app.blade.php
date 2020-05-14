@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    @php $title = isset($title) ? $title : ($data['title'] ?? 'Авторизация'); @endphp
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}" id="meta">
-    <title>{{ isset($title) ? $title : ($data['title'] ?? 'Авторизация')}}</title>
+    <title>{{$title}}</title>
     <link rel="stylesheet" href="{{asset('css/app.css').'?ver='.date('dmy-h')}}">
+    <link href="{{request()->url()}}" rel="canonical">
+    @yield('seoVar')
+    @include('components.seo')
 </head>
 <body>
 <div class="container">
@@ -30,56 +34,56 @@
     <div class="row mt-4 mb-2">
         @if (Auth::id())
             <div class="col-12 text-center">
-                <h1>{{  isset($title) ? $title :($data['title'] ?? 'Авторизация') }}</h1>
+                <h1>{{ $title }}</h1>
             </div>
         @else
             <div class="col-4"><img src="{{asset('logo3.png')}}" alt=""></div>
             <div class="col-8 text-center">
-                <h1>{{  isset($title) ? $title :($data['title'] ?? 'Авторизация') }}</h1>
+                <h1>{{ $title }}</h1>
             </div>
         @endif
     </div>
-        @yield('content')
+    @yield('content')
+</div>
+<footer class="container">
+    <div class="text-center">
+        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#reportAbug">
+            Сообщить об ошибке
+        </button>
     </div>
-    <footer class="container">
-        <div class="text-center">
-            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#reportAbug">
-                Сообщить об ошибке
-            </button>
-        </div>
 
-        <div class="modal fade" id="reportAbug" tabindex="-1" role="dialog" aria-labelledby="reportAbug"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form action="{{ route('report_bug') }}" method="POST">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Сообщить об ошибке</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+    <div class="modal fade" id="reportAbug" tabindex="-1" role="dialog" aria-labelledby="reportAbug"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="{{ route('report_bug') }}" method="POST">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Сообщить об ошибке</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @csrf
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp">
                         </div>
-                        <div class="modal-body">
-                            @csrf
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                       aria-describedby="emailHelp">
-                            </div>
-                            <div class="form-group">
-                                <label for="report">Сообщение об ошибке</label>
-                                <textarea name="message" class="form-control" id="report" rows="3" required></textarea>
-                            </div>
+                        <div class="form-group">
+                            <label for="report">Сообщение об ошибке</label>
+                            <textarea name="message" class="form-control" id="report" rows="3" required></textarea>
                         </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Отправить</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <script src="{{asset('js/app.js')}}"></script>
-    </footer>
+    </div>
+    <script src="{{asset('js/app.js')}}"></script>
+</footer>
 </body>
 </html>

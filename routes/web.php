@@ -16,12 +16,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
-Route::get(
-    '/',
-    function () {
-        return redirect()->route('groups.main');
-    }
-);
+Route::get('/', function () {return redirect()->route('groups.main');});
 Route::get(
     '/social-auth/{provider}',
     ['as' => 'social_auth', 'uses' => 'Auth\LoginController@redirectToProvider']
@@ -44,3 +39,6 @@ Route::group(
         );
     }
 );
+Route::get('/test', function (){
+   return (new \App\Tasks\Databases\FamilyDatabaseService())->getFamilies();
+});

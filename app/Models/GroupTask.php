@@ -37,4 +37,8 @@ class GroupTask extends Model
     public function tasks() {
         return $this->hasMany(Task::class, 'group_id', 'id');
     }
+
+    public function seo() {
+        return $this->morphOne(Seo::class, 'source', 'source');
+    }
 }

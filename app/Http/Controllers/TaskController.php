@@ -25,12 +25,17 @@ class TaskController extends Controller
      * @param string $title
      * @return array|Factory|View|mixed
      */
-    public function index($group_id, $title = 'Задачи')
+    public function index($group_id)
     {
-        $groups = GroupTask::active()->get();
-        $tasks = Task::with('userTask')
-            ->whereGroupId($group_id)->active()->get();
-        return view('tasks.index', compact('group_id', 'groups', 'tasks', 'title'));
+        $activeGroup = GroupTask::with('seo')->find($group_id);
+        if ($activeGroup) {
+            $title = $activeGroup->name;
+            $groups = GroupTask::active()->get();
+            $tasks = Task::with(['userTask', 'seo'])
+                ->whereGroupId($group_id)->active()->get();
+            return view('tasks.index', compact('group_id', 'groups', 'tasks', 'title', 'activeGroup'));
+        }
+        abort(404);
     }
 
     /**
@@ -40,7 +45,7 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        $task = Task::with('group')->find($id);
+        $task = Task::with(['group', 'seo'])->find($id);
         $taskCreator = (new TaskCreator($task))->getTask();
         $this->getUserTask($taskCreator, $task->id, $task->group_id);
         $taskCreator->setUserTask($task->task_text);

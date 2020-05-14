@@ -5,6 +5,7 @@ namespace App\Tasks;
 
 
 use App\Models\Task;
+use App\Tasks\Databases\NumberOfInhabitants;
 use App\Tasks\Graphs\GD_Task;
 use App\Tasks\NumberSystems\CE_Task;
 use App\Tasks\NumberSystems\FW_Task;
@@ -32,6 +33,8 @@ class TaskCreator extends TaskFabric
                 return new FW_Task($this->task);
             case 3:
                 return new GD_Task($this->task);
+            case 4:
+                return new NumberOfInhabitants($this->task);
             default:
                 return new DefaultTask($this->task);
         }

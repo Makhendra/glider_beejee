@@ -33,10 +33,12 @@ class TasksController extends AdminController
         $grid = new Grid(new Task());
 
         $grid->column('title', __('messages.task_title'));
-        $grid->column('group_id', __('messages.group'))->display(function ($id) {
-            $group = GroupTask::find($id);
-            return $group->name ?? '';
-        });
+        $grid->column('group_id', __('messages.group'))->display(
+            function ($id) {
+                $group = GroupTask::find($id);
+                return $group->name ?? '';
+            }
+        );
         $grid->column('task_text', __('messages.task_text'));
         $grid->column('active', __('messages.active'))->switch();
 
@@ -74,11 +76,24 @@ class TasksController extends AdminController
     {
         $form = new Form(new Task());
 
-        $form->select('group_id', __('messages.group'))->options(GroupTask::pluck('name','id'));
-        $form->text('title', __('messages.task_title'));
-        $form->number('type', __('messages.type'))->help('Не рекомендуется изменять это параметр');
-        $form->textarea('task_text', __('messages.task_text'));
-        $form->switch('active', __('messages.active'))->default(1);
+        $form->tab(
+            __('messages.task'),
+            function ($form) {
+                $form->select('group_id', __('messages.group'))->options(GroupTask::pluck('name', 'id'));
+                $form->text('title', __('messages.task_title'));
+                $form->number('type', __('messages.type'))->help('Не рекомендуется изменять это параметр');
+                $form->textarea('task_text', __('messages.task_text'));
+                $form->switch('active', __('messages.active'))->default(1);
+            }
+        );
+        $form->tab(
+            __('messages.seo'),
+            function ($form) {
+                $form->text('seo.meta_title', __('messages.meta_title'));
+                $form->textarea('seo.meta_description', __('messages.meta_description'));
+                $form->tags('seo.meta_keywords', __('messages.meta_keywords'));
+            }
+        );
 
         return $form;
     }

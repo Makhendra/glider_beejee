@@ -4,8 +4,12 @@
 namespace App\Tasks;
 
 
+use Illuminate\Http\Request;
+
 class DefaultTask implements TaskInterface
 {
+    use TaskTrait;
+
     public $task;
     public $userTask;
     public $error;
@@ -14,22 +18,6 @@ class DefaultTask implements TaskInterface
     {
         $this->task = $task;
         $this->error = true;
-    }
-
-    public function answer()
-    {
-        // TODO: Implement answer() method.
-    }
-
-    public function setUserTask($userTask)
-    {
-        $this->userTask = $userTask->data;
-        $this->replaceText();
-    }
-
-    public function getData()
-    {
-        return get_object_vars($this);
     }
 
     public function initData()
@@ -45,5 +33,15 @@ class DefaultTask implements TaskInterface
     public function replaceText()
     {
         // TODO: Implement replaceText() method.
+    }
+
+    public function validateRules()
+    {
+        // TODO: Implement validateRules() method.
+    }
+
+    public function checkAnswer(Request $request)
+    {
+        // TODO: Implement checkAnswer() method.
     }
 }

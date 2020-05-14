@@ -10,8 +10,6 @@ class GraphImageService
     {
         $c = count($graph);
         $image = imagecreatefrompng(public_path("graphs/$c.png"));
-//        $line_color = imagecolorallocate($image, 0, 0, 0); //black
-//        $line_color = imagecolorallocate($image, 228, 210, 99); //yellow
         $line_color = imagecolorallocate($image, 119, 172, 184); //blue
         imagesetthickness($image, 3);
         $coordinates = self::coordinateMatrix($c);

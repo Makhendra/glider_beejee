@@ -59,4 +59,8 @@ class Task extends Model
     public function scopeActive(Builder $query)  {
         return $query->where('active', 1);
     }
+
+    public function seo() {
+        return $this->morphOne(Seo::class, 'source', 'source');
+    }
 }
