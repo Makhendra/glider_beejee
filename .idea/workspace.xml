@@ -4,9 +4,10 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7f65b57-632b-4877-910e-0cf2597b1804" name="Default Changelist" comment="">
+    <list default="true" id="f7f65b57-632b-4877-910e-0cf2597b1804" name="Default Changelist" comment=" README.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +79,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../old train/views/layouts/app.blade.php" />
   </component>
   <component name="RecentsManager">
@@ -146,7 +148,7 @@
       <workItem from="1589319144208" duration="744000" />
       <workItem from="1589381474597" duration="186000" />
       <workItem from="1589471591250" duration="4948000" />
-      <workItem from="1589726381736" duration="12342000" />
+      <workItem from="1589726381736" duration="12594000" />
     </task>
     <task id="LOCAL-00001" summary="Новый тип задания: &quot;Под каким номером в списке идёт первое слово&quot;">
       <created>1579594180589</created>
@@ -281,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589740664153</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary=" README.md">
+      <created>1589740756669</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1589740756669</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,7 +364,8 @@
     <MESSAGE value="Новый тип задачи" />
     <MESSAGE value="Добавила CKEDITOR и два поля в задачи, чтобы как решать и ответ хранился в базе" />
     <MESSAGE value="Удалила фио" />
-    <option name="LAST_COMMIT_MESSAGE" value="Удалила фио" />
+    <MESSAGE value=" README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value=" README.md" />
   </component>
   <component name="WindowStateProjectService">
     <state x="584" y="75" key="#Deployment" timestamp="1589478288685">
@@ -390,11 +400,11 @@
     </state>
     <state x="465" y="300" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1440.900@0.0.1440.900" timestamp="1589220726800" />
     <state x="465" y="315" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.877@0.23.1440.877" timestamp="1588146338801" />
-    <state x="255" y="52" key="CommitChangelistDialog2" timestamp="1589740663668">
+    <state x="255" y="52" key="CommitChangelistDialog2" timestamp="1589740880457">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="439" y="21" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1589227259350" />
-    <state x="255" y="52" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1589740663668" />
+    <state x="255" y="52" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1589740880457" />
     <state x="100" y="79" width="1240" height="719" key="DiffContextDialog" timestamp="1589294984112">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -421,6 +431,10 @@
     </state>
     <state x="538" y="380" key="NewPhpFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1589222825262" />
     <state x="538" y="393" key="NewPhpFileDialog/0.23.1440.877@0.23.1440.877" timestamp="1589476282877" />
+    <state x="221" y="100" key="SettingsEditor" timestamp="1589740930766">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="221" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1589740930766" />
     <state x="200" y="85" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1589294984113">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -449,11 +463,11 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="369" y="184" width="765" height="530" key="recent.locations.popup/0.23.1440.877@0.23.1440.877" timestamp="1589293472478" />
-    <state x="385" y="214" width="670" height="659" key="search.everywhere.popup" timestamp="1589738001442">
+    <state x="385" y="214" width="670" height="659" key="search.everywhere.popup" timestamp="1589740914633">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1589226435034" />
-    <state x="385" y="214" width="670" height="659" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1589738001442" />
+    <state x="385" y="214" width="670" height="659" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1589740914633" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
