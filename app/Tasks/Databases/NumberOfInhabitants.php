@@ -9,8 +9,8 @@ class NumberOfInhabitants implements TaskInterface
 {
     use TaskTrait;
 
-    public $classLayout = 'col-md-7';
-    public $classLayout2 = 'col-md-5';
+    public $classLayout = 'col-md-8';
+    public $classLayout2 = 'col-md-4';
 
     public function getView()
     {
@@ -27,16 +27,25 @@ class NumberOfInhabitants implements TaskInterface
 
     public function validateRules()
     {
-        // TODO: Implement validateRules() method.
+        return [
+            'answer' => 'required'
+        ];
     }
 
-    public function replaceText()
-    {
-        // TODO: Implement replaceText() method.
-    }
+    public function replaceText(){}
 
     public function checkAnswer(Request $request)
     {
-        // TODO: Implement checkAnswer() method.
+        $request->validate($this->validateRules());
+        $data = $request->all();
+        $answer = 0;
+        foreach ($this->data['families'] as $family) {
+            $answer += count($family['childrens']) ? 1 : 0;
+        }
+        if ($data['answer'] == $answer) {
+            return success();
+        } else {
+            return fail();
+        }
     }
 }

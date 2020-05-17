@@ -81,6 +81,9 @@
                                      onclick="document.getElementById('show_answer').classList.remove('hidden');document.getElementById('decision_error').classList.add('hidden')">
                                     Показать решение
                                 </div>
+                                <a href="{{ route('tasks.next', ['id' => $id, 'false' => 0]) }}">
+                                    <button class="btn btn-danger">Следующее задание</button>
+                                </a>
                             </div>
                         </div>
                     </div>

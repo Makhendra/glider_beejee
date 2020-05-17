@@ -39,6 +39,3 @@ Route::group(
         );
     }
 );
-Route::get('/test', function (){
-   return (new \App\Tasks\Databases\FamilyDatabaseService())->getFamilies();
-});

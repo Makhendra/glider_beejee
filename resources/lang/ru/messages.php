@@ -28,4 +28,6 @@ return [
     'meta_description' => 'Мета описание',
     'meta_keywords' => 'Ключевые слова',
     'seo' => 'SEO',
+    'how_decision' => 'Как решать',
+    'format_answer' => 'Формат ответа',
 ];

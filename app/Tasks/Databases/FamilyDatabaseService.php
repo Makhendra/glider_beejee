@@ -51,7 +51,8 @@ class FamilyDatabaseService
         $year = random_int($yearMin, $yearMax);
         list($lastNum, $lastName) = $this->getLastName($gender, $lastNameNum);
         return [
-            'family_id' => 0,
+            'is_parent' => empty($parent),
+            'family_id' => $this->counter,
             'last_name_num' => $lastNum,
             'last_name' => $lastName,
             'name' => $this->getName($gender),
@@ -68,6 +69,7 @@ class FamilyDatabaseService
         $result = [];
         for ($i = 0; $i < $cntFamilies; $i++) {
             $result[] = $this->getFamily();
+            $this->counter += 1;
         }
         return $result;
     }
