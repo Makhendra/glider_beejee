@@ -1,4 +1,4 @@
-@php $id = $task->id ?? 1; @endphp
+@php $id = $task->id ?? 1; $statuses = (new \App\Models\UserTask()); @endphp
 @extends('layouts.app', ['title' => 'Задание '.$id])
 
 @section('seoVar')
@@ -26,7 +26,7 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <p class="card-text">
-                                {!! $userTask !!}
+                                {!! $textUserTask !!}
                             </p>
                             @yield('user_task')
                         </div>
@@ -36,64 +36,76 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <div id="decision">
-                                <p class="card-text">
-                                    @yield('decision')
-                                </p>
-                                <form action="{{ route('tasks.check_answers', $id) }}" method="POST"
-                                      id="check_answer">
-                                    @yield('form')
-                                    @csrf
-                                    <div class="input-group">
-                                        <input type="number" name="answer" id="answer" class="form-control"
-                                               placeholder="Отправить ответ" required/>
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-success">
-                                                На проверку
-                                            </button>
+                                @if($userTask->status == $statuses::INIT)
+                                    <p class="card-text">
+                                        {!! $task->decision !!}
+                                    </p>
+                                    <form action="{{ route('tasks.check_answers', $id) }}" method="POST"
+                                          id="check_answer">
+                                        @yield('form')
+                                        @csrf
+                                        <div class="input-group">
+                                            <input type="number" name="answer" id="answer" class="form-control"
+                                                   placeholder="Отправить ответ" required/>
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-success">
+                                                    На проверку
+                                                </button>
+                                            </div>
                                         </div>
+                                    </form>
+                                @elseif($userTask->status == $statuses::SUCCESS)
+                                    <div id="decision_success">
+                                        <div class="alert alert-success">
+                                            Все верно
+                                        </div>
+                                        <a href="{{ route('tasks.next', ['id' => $id, 'success' => 1]) }}">
+                                            <div class="btn btn-success">
+                                                Следующий вариант
+                                            </div>
+                                        </a>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="hidden" id="show_answer">
-                                @yield('answer')
-                                <div class="input-group">
-                                    <a href="{{ route('tasks.next', ['id' => $id, 'success' => 0]) }}">
-                                        <button class="btn btn-success">Попробовать снова</button>
-                                    </a>
-                                </div>
-                            </div>
-                            <div id="decision_success" class="hidden">
-                                <div class="alert alert-success">
-                                    Все верно
-                                </div>
-                                <a href="{{ route('tasks.next', ['id' => $id, 'success' => 1]) }}">
-                                    <div class="btn btn-success">
-                                        Следующий вариант
+                                @elseif($userTask->status == $statuses::WRONG and ! $userTask->hint_use)
+                                    <div id="decision_error">
+                                        <div class="alert alert-danger">
+                                            Вы ошиблись. Вид ошибки:
+                                            <div class="type-error">
+                                                {{--                                        самая простая и распространенная - неизвестная--}}
+                                            </div>
+                                        </div>
+                                        <a class="btn btn-warning"
+                                           href="{{ route('tasks.get_solution', ['id' => $id]) }}">
+                                            Показать решение
+                                        </a>
+                                        <a href="{{ route('tasks.next', ['id' => $id]) }}">
+                                            <button class="btn btn-danger">Следующее задание</button>
+                                        </a>
                                     </div>
-                                </a>
+                                @endif
+
+                                @if($userTask->hint_use)
+                                    @isset($formatAnswer)
+                                        <div id="show_answer">
+                                            {!! $formatAnswer !!}
+                                            <div class="input-group">
+                                                <a href="{{ route('tasks.next', ['id' => $id]) }}">
+                                                    <button class="btn btn-success">Попробовать снова</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endisset
+                                @endif
+
                             </div>
-                            <div id="decision_error" class="hidden">
-                                <div class="alert alert-danger">
-                                    Вы ошиблись. Вид ошибки:
-                                    <div class="type-error">самая простая и распространенная - неизвестная</div>
-                                </div>
-                                <div class="btn btn-warning"
-                                     onclick="document.getElementById('show_answer').classList.remove('hidden');document.getElementById('decision_error').classList.add('hidden')">
-                                    Показать решение
-                                </div>
-                                <a href="{{ route('tasks.next', ['id' => $id, 'false' => 0]) }}">
-                                    <button class="btn btn-danger">Следующее задание</button>
-                                </a>
-                            </div>
+
                         </div>
                     </div>
+                    @else
+                        <div class="col-md-12 text-center mb-5">
+                            <h2>Упс, что-то пошло не так</h2>
+                            <a href="{{route('groups.main')}}">Вернуться на главную</a>
+                        </div>
+                    @endif
                 </div>
-            @else
-                <div class="col-md-12 text-center mb-5">
-                    <h2>Упс, что-то пошло не так</h2>
-                    <a href="{{route('groups.main')}}">Вернуться на главную</a>
-                </div>
-            @endif
-        </div>
     @endisset
 @endsection

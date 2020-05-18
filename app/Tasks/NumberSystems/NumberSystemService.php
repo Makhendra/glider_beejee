@@ -5,6 +5,8 @@ namespace App\Tasks\NumberSystems;
 trait NumberSystemService
 {
     public $to_ci = 10;
+    public $signs = ['+', '-', '*', '/'];
+    public $oneZero = ['нулей', 'единиц'];
 
     public function generateList($count_letters) {
         $alpha = getAlpha();
@@ -36,5 +38,27 @@ trait NumberSystemService
             $list[] = $word;
         }
         return $list;
+    }
+
+    public function formatNumber($number, $from_ci, $to_ci, $answer)
+    {
+        $text = '';
+        $number_array = str_split($number);
+
+        if (in_array($from_ci, $number_array) or $number == $from_ci) {
+            return ['text' => 'Перевод невозможен', 'answer_format' => 'Ошибка', 'answer' => 0];
+        }
+        $high_power = count($number_array);
+        foreach ($number_array as $key => $number_string) {
+            if (in_array($number_string, ['A', 'B', 'C', 'D', 'E', 'F'])) {
+                $number_string = base_convert($number_string, $from_ci, $to_ci);
+            }
+            $power = $high_power - $key - 1;
+            $text .= "$number_string × $from_ci<sup>^$power</sup>";
+            if ($key + 1 != $high_power) {
+                $text .= '+';
+            }
+        }
+        return ['text' => $text, 'answer_format' => $answer . "<sub>$to_ci</sub>", 'answer' => $answer];
     }
 }

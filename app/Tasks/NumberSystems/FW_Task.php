@@ -16,27 +16,20 @@ class FW_Task implements TaskInterface
 {
     use TaskTrait, NumberSystemService;
 
-    public function getView()
-    {
-        return 'tasks.show_templates.FW_Task';
-    }
-
     public function initData()
     {
         $count_chars = (int)rand(3, 5);
         $count_letters = (int)rand(3, $count_chars);
         $letters = $this->generateList($count_letters);
         $list = $this->generateListWordLetters($letters, $count_letters, $count_chars);
-        $number_letter = rand(1, $count_chars - 1);
+        $number_letter = rand(1, $count_letters - 1);
         $letter = $letters[$number_letter];
         $this->data = compact('count_letters', 'count_chars', 'letters', 'letter', 'list', 'number_letter');
         return $this->data;
     }
 
-    public function replaceText()
+    public function replaceArray(): array
     {
-        $this->userTask = str_replace('{count_letters}', $this->data['count_letters'], $this->userTask);
-        $this->userTask = str_replace('{count_chars}', $this->data['count_chars'], $this->userTask);
         $letters = implode(', ', $this->data['letters']);
         $list = array_map(
             function ($item, $key) {
@@ -46,31 +39,22 @@ class FW_Task implements TaskInterface
             range(1, count($this->data['list']))
         );
         $list = implode(',<br> ', $list);
-        $this->userTask = str_replace('{letters}', $letters, $this->userTask);
-        $this->userTask = str_replace('{letter}', $this->data['letter'], $this->userTask);
-        $this->userTask = str_replace('{list}', $list, $this->userTask);
-    }
-
-    public function validateRules()
-    {
+        $allCountWord = pow($this->data['count_chars'], $this->data['count_letters']);
         return [
-            'answer' => 'required|integer',
-            'count_chars' => 'required|integer',
-            'count_letters' => 'required|integer',
-            'all_count_word' => 'required|integer',
+            '{count_letters}' => $this->data['count_letters'],
+            '{count_chars}' => $this->data['count_chars'],
+            '{letters}' => $letters,
+            '{letter}' => $this->data['letter'],
+            '{list}' => $list,
+            '{all_count_word}' => $allCountWord ,
+            '{answer}' => $this->getAnswer()
         ];
     }
 
-    public function checkAnswer(Request $request)
+    public function getAnswer()
     {
-        $request->validate($this->validateRules());
-        $data = $request->all();
-        $answer = ($data['all_count_word'] / $data['count_chars']) * ($data['count_letters'] - 1) + 1;
-        if ($request->get('answer') == $answer) {
-            return success();
-        } else {
-            return fail();
-        }
+        $allCountWord = pow($this->data['count_chars'], $this->data['count_letters']);
+        return ($allCountWord / $this->data['count_chars']) * ($this->data['count_letters'] - 1) + 1;
     }
 
 }

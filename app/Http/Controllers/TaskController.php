@@ -22,7 +22,6 @@ class TaskController extends Controller
     /**
      * Показывает все задачи определенной группы
      * @param $group_id
-     * @param string $title
      * @return array|Factory|View|mixed
      */
     public function index($group_id)
@@ -31,7 +30,7 @@ class TaskController extends Controller
         if ($activeGroup) {
             $title = $activeGroup->name;
             $groups = GroupTask::active()->get();
-            $tasks = Task::with(['userTask', 'seo'])
+            $tasks = Task::with(['userTask', 'seo', 'successUserTask'])
                 ->whereGroupId($group_id)->active()->get();
             return view('tasks.index', compact('group_id', 'groups', 'tasks', 'title', 'activeGroup'));
         }
@@ -47,51 +46,49 @@ class TaskController extends Controller
     {
         $task = Task::with(['group', 'seo'])->find($id);
         $taskCreator = (new TaskCreator($task))->getTask();
-        $this->getUserTask($taskCreator, $task->id, $task->group_id);
-        $taskCreator->setUserTask($task->task_text);
+        $this->getUserTask($taskCreator);
         return view($taskCreator->getView(), $taskCreator->getData());
     }
 
     /**
      * Отдает следующую задачу
-     * @param Request $request
      * @param $id
      * @return RedirectResponse
      */
-    public function nextTask(Request $request, $id)
+    public function nextTask($id)
     {
-        $success = $request->get('success', 0);
         $task = Task::find($id);
         $user_task = UserTask::NextTaskByUser($task->id, Auth::id())->first();
-
-        if ($success) {
-            $user_task->status = UserTask::SOLVED;
-        } else {
-            $user_task->hint_use = 1;
-        }
-
-        $user_task->save();
+        $user_task->update(['status' => UserTask::NEXT]);
         return redirect()->route('tasks.show', $task->id);
     }
 
     /**
      * Отдает или генерирует задачу
      * @param TaskInterface $creator
-     * @param $task_id
-     * @param $group_id
      * @return UserTask|Builder|Model|object|null
      */
-    public function getUserTask(TaskInterface $creator, $task_id, $group_id)
+    public function getUserTask(TaskInterface $creator)
     {
-        $user_id = Auth::id();
-        $user_task = UserTask::NextTaskByUser($task_id, $user_id)->first();
-        if (empty($user_task)) {
+        $userId = Auth::id();
+        $userTask = UserTask::NextTaskByUser($creator->task->id, $userId)->first();
+        if (empty($userTask)) {
             $data = $creator->initData();
-            $user_task = UserTask::create(compact('task_id', 'user_id', 'group_id', 'data'));
+            $userTask = UserTask::create(
+                [
+                    'task_id' => $creator->task->id,
+                    'user_id' => $userId,
+                    'group_id' => $creator->task->group_id,
+                    'data' => $data
+                ]
+            );
         } else {
-            $creator->setData($user_task->data);
+            $creator->setData($userTask->data);
         }
-        return $user_task;
+        $creator->setTextUserTask($creator->task->task_text);
+        $creator->setUserTask($userTask);
+        $creator->setFormatAnswer();
+        return $userTask;
     }
 
     /**
@@ -104,7 +101,15 @@ class TaskController extends Controller
     {
         $task = Task::find($id);
         $taskCreator = (new TaskCreator($task))->getTask();
-        $this->getUserTask($taskCreator, $task->id, $task->group_id);
-        return $taskCreator->checkAnswer($request);
+        $this->getUserTask($taskCreator);
+        $taskCreator->setSuccess($taskCreator->checkAnswer($request));
+        return redirect()->route('tasks.show', $task->id);
+    }
+
+    public function getSolution($id)
+    {
+        $user_task = UserTask::NextTaskByUser($id, Auth::id())->first();
+        $user_task->update(['hint_use' => 1]);
+        return redirect()->route('tasks.show', $id);
     }
 }

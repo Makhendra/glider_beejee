@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * App\Models\Task
@@ -50,6 +51,14 @@ class Task extends Model
 
     public function userTask(){
         return $this->hasMany(UserTask::class);
+    }
+
+    public function successUserTask(){
+        return $this->hasMany(UserTask::class)
+            ->whereIN('status', [UserTask::SUCCESS, UserTask::NEXT])
+            ->where('hint_use', '=', 0)
+            ->where('user_id', Auth::id())
+            ->select('id');
     }
 
     public function group() {

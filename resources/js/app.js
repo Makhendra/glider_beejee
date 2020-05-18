@@ -1,68 +1,40 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
-window.Vue = require('vue');
-
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-// const app = new Vue({
-//     el: '#app',
-// });
-
 document.addEventListener('DOMContentLoaded', function () {
-    let form = document.getElementById('check_answer');
+    // let form = document.getElementById('check_answer');
+    // form.addEventListener('submit', function (event_submit) {
+    //     event_submit.preventDefault();
+    //
+    //     var xhr = new XMLHttpRequest();
+    //     var body = new FormData(form);
+    //     var meta = document.getElementById('meta').getAttribute('content');
+    //     xhr.open(form.getAttribute('method'), form.getAttribute('action'), true);
+    //
+    //     xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+    //     xhr.setRequestHeader('X-CSRF-TOKEN', meta);
+    //
+    //     xhr.onreadystatechange = function () {
+    //         var done = this.readyState === XMLHttpRequest.DONE;
+    //         if (done && this.status === 200) {
+    //             var respone = JSON.parse(this.response);
+    //             document.getElementById('decision').classList.add('hidden');
+    //             if (respone.success) {
+    //                 document.getElementById('decision_success').classList.remove('hidden');
+    //             } else {
+    //                 document.getElementById('decision_error').classList.remove('hidden');
+    //             }
+    //         }
+    //         if (done && this.status === 422) {
+    //             document.getElementById('decision_error').classList.remove('hidden');
+    //         }
+    //     };
+    //
+    //     xhr.send(body);
+    // });
 
-    form.addEventListener('submit', function (event_submit) {
-        event_submit.preventDefault();
-
-        var xhr = new XMLHttpRequest();
-        var body = new FormData(form);
-        var meta = document.getElementById('meta').getAttribute('content');
-        xhr.open(form.getAttribute('method'), form.getAttribute('action'), true);
-
-        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-        xhr.setRequestHeader('X-CSRF-TOKEN', meta);
-
-        xhr.onreadystatechange = function () {
-            var done = this.readyState === XMLHttpRequest.DONE;
-            if (done && this.status === 200) {
-                var respone = JSON.parse(this.response);
-                document.getElementById('decision').classList.add('hidden');
-                if (respone.success) {
-                    document.getElementById('decision_success').classList.remove('hidden');
-                } else {
-                    document.getElementById('decision_error').classList.remove('hidden');
-                }
-            }
-            if (done && this.status === 422) {
-                document.getElementById('decision_error').classList.remove('hidden');
-            }
-        };
-
-        xhr.send(body);
-    });
+    // $('#check_answer').submit(function (event) {
+    //     event.preventDefault();
+    // });
 
     $('.fancybox-selector').fancybox({
         keyboard: true,

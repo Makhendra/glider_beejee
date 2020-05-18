@@ -40,8 +40,17 @@ class DefaultTask implements TaskInterface
         // TODO: Implement validateRules() method.
     }
 
-    public function checkAnswer(Request $request)
+    public function checkAnswer(Request $request) : array
     {
         // TODO: Implement checkAnswer() method.
+    }
+
+    public function replaceArray(): array
+    {
+       return [];
+    }
+
+    public function getAnswer() {
+        return 0;
     }
 }

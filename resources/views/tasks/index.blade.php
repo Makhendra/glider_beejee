@@ -47,7 +47,7 @@
                                 <td>
                                     <a href="{{route('tasks.show', ['id' => $task->id])}}">{{$task->title}}</a>
                                 </td>
-                                <td><b>Успешно решено:</b> {{$task->userTask->sum('status')}} <br>
+                                <td><b>Успешно решено:</b> {{$task->successUserTask()->count()}} <br>
                                     <b>Взято подсказок:</b> {{$task->userTask->sum('hint_use')}}</td>
                             </tr>
 

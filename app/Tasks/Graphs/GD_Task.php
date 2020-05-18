@@ -41,30 +41,17 @@ class GD_Task implements TaskInterface
         return $this->data;
     }
 
-    public function validateRules()
+    public function replaceArray(): array
     {
         return [
-            'answer' => 'required',
-            'answer_check' => 'required',
+            '{graph}' => $this->data['image'],
+            '{start}' => $this->data['start']['alpha'],
+            '{end}' => $this->data['end']['alpha'],
         ];
     }
 
-
-    public function checkAnswer(Request $request)
-    {
-        $request->validate($this->validateRules());
-        $data = $request->all();
-        if ($data['answer'] == $data['answer_check']) {
-            return success();
-        } else {
-            return fail();
-        }
+    public function getAnswer() {
+        return $this->data['answer'];
     }
 
-    public function replaceText()
-    {
-        $this->userTask = str_replace('{graph}', $this->data['image'], $this->userTask);
-        $this->userTask = str_replace('{start}', $this->data['start']['alpha'], $this->userTask);
-        $this->userTask = str_replace('{end}',   $this->data['end']['alpha'], $this->userTask);
-    }
 }

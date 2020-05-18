@@ -82,7 +82,7 @@ class TasksController extends AdminController
                 $form->select('group_id', __('messages.group'))->options(GroupTask::pluck('name', 'id'));
                 $form->text('title', __('messages.task_title'));
                 $form->number('type', __('messages.type'))->help('Не рекомендуется изменять это параметр');
-                $form->textarea('task_text', __('messages.task_text'));
+                $form->ckeditor('task_text', __('messages.task_text'));
                 $form->ckeditor('decision', __('messages.how_decision'));
                 $form->ckeditor('answer', __('messages.format_answer'));
                 $form->switch('active', __('messages.active'))->default(1);

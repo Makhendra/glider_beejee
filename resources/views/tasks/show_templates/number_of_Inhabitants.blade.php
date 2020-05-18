@@ -63,18 +63,3 @@
         @include('components.table_database', ['table' => $data['table2'] ?? []])
     </div>
 @endsection
-
-@section('decision')
-    Для решения этой задачи необходимо:
-    - выделить строчки где ID_Родителя во второй таблице повторяется - это нам подскажет у какой семьи 2 и больше ребенка
-    - посчитать семьи у которых есть старший брат
-@endsection
-
-@section('form')
-
-@endsection
-
-
-@section('answer')
-
-@endsection

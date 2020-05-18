@@ -16,9 +16,10 @@ use Illuminate\Support\Carbon;
  * @property int $status
  * @property int $hint_use
  * @property mixed|null $data
+ * @property int $type_error
+ * @property string $user_answer
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property int $type_error
  * @method static Builder|UserTask newModelQuery()
  * @method static Builder|UserTask newQuery()
  * @method static Builder|UserTask nextTaskByUser($task_id, $user_id)
@@ -33,20 +34,23 @@ use Illuminate\Support\Carbon;
  * @method static Builder|UserTask whereTypeError($value)
  * @method static Builder|UserTask whereUpdatedAt($value)
  * @method static Builder|UserTask whereUserId($value)
+ * @method static Builder|UserTask whereUserAnswer($value)
  * @method static create(array $array)
  * @mixin Eloquent
  */
 class UserTask extends Model
 {
     protected $guarded = [];
+    protected $appends = ['success'];
 
-    const NOT_SOLVED = 0;
-    const SOLVED = 1;
+    const INIT = 0;
+    const SUCCESS = 1;
+    const WRONG = 2;
+    const NEXT = 3;
 
     protected $casts = [
         'data' => 'json'
     ];
-
 
     /**
      * Scope a query to only include active users.
@@ -56,11 +60,12 @@ class UserTask extends Model
      */
     public function scopeNotSolved($query)
     {
-        return $query->where(['status' => self::NOT_SOLVED, 'hint_use' => 0]);
+        return $query->where('status', '!=', self::NEXT);
     }
 
     public function scopeNextTaskByUser(Builder $query, $task_id, $user_id)
     {
         return $query->where(compact('task_id', 'user_id'))->NotSolved();
     }
+
 }

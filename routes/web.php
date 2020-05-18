@@ -34,6 +34,7 @@ Route::group(
         Route::get('/{group_id}/tasks', 'TaskController@index')->name('groups.tasks');
         Route::get('/tasks/{id}', 'TaskController@show')->name('tasks.show');
         Route::get('/tasks/next/{id}', 'TaskController@nextTask')->name('tasks.next');
+        Route::get('/tasks/solution/{id}', 'TaskController@getSolution')->name('tasks.get_solution');
         Route::post('/tasks/{id}/check_answer', 'TaskController@checkAnswer')->name(
             'tasks.check_answers'
         );
