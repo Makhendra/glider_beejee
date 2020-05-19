@@ -7,8 +7,30 @@ trait NumberSystemService
     public $to_ci = 10;
     public $signs = ['+', '-', '*', '/'];
     public $oneZero = ['нулей', 'единиц'];
+    public $maxOrMin = ['наибольшее', 'наименьшее'];
+    public $maxOrMinText = ['больше', 'меньше'];
+    public $formats = [
+        '0',
+        '1',
+        'двоичного',
+        'троичного',
+        'четверичного',
+        'пятеричного',
+        'шестеричного',
+        'семеричного',
+        'восьмеричного',
+        'девятеричного',
+        'десятичного',
+        'одинацатиричного',
+        'двенадцатиричного',
+        'тринадцатеричного',
+        'четырнадцатеричного',
+        'пятнадцятиричного',
+        'шестнадцатиричного',
+    ];
 
-    public function generateList($count_letters) {
+    public function generateList($count_letters)
+    {
         $alpha = getAlpha();
         $letters = [];
         $unique = [];
@@ -60,5 +82,59 @@ trait NumberSystemService
             }
         }
         return ['text' => $text, 'answer_format' => $answer . "<sub>$to_ci</sub>", 'answer' => $answer];
+    }
+
+    public function getRandomScale($offset = false) {
+        $scales = [2, 4, 8, 10, 16];
+        if($offset){
+            $index = array_search($offset, $scales);
+            if($index !== false) {
+                unset($scales[$index]);
+            }
+        }
+
+        return $scales[random_int(0, count($scales) - 1)];
+    }
+
+    public function formatToBinary($number, $from_ci) {
+        $answer = base_convert($number, $from_ci, $this->to_ci);
+        $format = $this->formatNumber($number, $from_ci, $this->to_ci, $answer);
+        if(in_array($from_ci, [4, 8, 16])) {
+            $text = $number. ' = '. $format['text']. ' = '. $format['answer_format'].'<br><br>';
+        } else {
+            $text = 'Число уже в десятичной системе исчисления.<br><br>';
+        }
+        $text .= $this->deleting($answer, 2);
+        return $text;
+    }
+
+    public function deleting($number, $ci) {
+        $deleting = '';
+        while( $number > 0) {
+            $div = intdiv($number, $ci);
+            $mod = $number % $ci;
+            $deleting .= "$number/$ci=$div, остаток $mod <br>";
+            $number = $div;
+        }
+        return $deleting;
+    }
+
+    public function getLists($list, $scale_of_notation = false) {
+        $list_n = [];
+        $list_n_decimal = [];
+        $scale_of_notation = $scale_of_notation ?: $list[0]['scale_of_notation'];
+        foreach ($list as $key => $element) {
+            $list_n[] = $element['number_scale'] . '<sub>' . $scale_of_notation . '</sub>';
+            $format = $this->formatNumber(
+                $element['number_scale'],
+                $scale_of_notation,
+                $this->to_ci,
+                $element['number_origin']
+            );
+            $list_n_decimal[] = $list_n[$key] . ' = ' . $format['text'] . ' = ' . $format['answer_format'];
+        }
+        $list_n = implode('<br>', $list_n);
+        $list_n_decimal = implode('<br>', $list_n_decimal);
+        return [$list_n, $list_n_decimal];
     }
 }

@@ -39,7 +39,7 @@ class TasksController extends AdminController
                 return $group->name ?? '';
             }
         );
-        $grid->column('task_text', __('messages.task_text'));
+        $grid->column('task_text', __('messages.task_text'))->view('admin.components.html');
         $grid->column('active', __('messages.active'))->switch();
 
         return $grid;

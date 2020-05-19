@@ -7,6 +7,8 @@ namespace App\Tasks\NumberSystems;
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
 
+// Укажите количество целых десятичных чисел из диапазона от 39 до 49 включительно,
+// имеющих в своей двоичной записи более 3 единиц.
 class NumbersFormTheRange implements TaskInterface
 {
     use TaskTrait, NumberSystemService;

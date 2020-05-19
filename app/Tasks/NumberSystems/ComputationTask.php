@@ -7,6 +7,9 @@ namespace App\Tasks\NumberSystems;
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
 
+//Вычислите значение выражения
+//11559 * 11859
+//В ответе запишите вычисленное значение в десятичной системе счисления.
 class ComputationTask implements TaskInterface
 {
     use TaskTrait, NumberSystemService;
@@ -14,8 +17,8 @@ class ComputationTask implements TaskInterface
     public function initData()
     {
         $sign = $this->signs[random_int(0, count($this->signs) -1 )];
-        $scale_of_notation1 = (int)rand(2, 16);
-        $scale_of_notation2 = (int)rand(2, 16);
+        $scale_of_notation1 = $this->getRandomScale();
+        $scale_of_notation2 = $this->getRandomScale();
 
         $number1 = rand(1, 1000);
         $number2 = rand($number1, 1000);
@@ -64,10 +67,10 @@ class ComputationTask implements TaskInterface
     public function replaceArray(): array
     {
         return [
-            '{number1}' => $this->data['number1'],
+            '{number1}' => mb_strtoupper($this->data['number1']),
             '{scale_of_notation1}' => $this->data['scale_of_notation1'],
             '{sign}' => $this->data['sign'],
-            '{number2}' => $this->data['number2'],
+            '{number2}' => mb_strtoupper($this->data['number2']),
             '{scale_of_notation2}' => $this->data['scale_of_notation2'],
             '{format1_text}' => $this->data['format1']['text'],
             '{format1_answer}' => $this->data['answer1'],

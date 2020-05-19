@@ -8,9 +8,12 @@ use App\Models\Task;
 use App\Tasks\Databases\NumberOfInhabitants;
 use App\Tasks\Graphs\GD_Task;
 use App\Tasks\NumberSystems\CE_Task;
+use App\Tasks\NumberSystems\CountMaxOrMin;
 use App\Tasks\NumberSystems\FW_Task;
 use App\Tasks\NumberSystems\ComputationTask;
+use App\Tasks\NumberSystems\MinOrMaxTask;
 use App\Tasks\NumberSystems\NumbersFormTheRange;
+use App\Tasks\NumberSystems\OneOfZeroTask;
 
 class TaskCreator extends TaskFabric
 {
@@ -50,6 +53,12 @@ class TaskCreator extends TaskFabric
                 return new ComputationTask($this->task);
             case 6:
                 return new NumbersFormTheRange($this->task);
+            case 7:
+                return new MinOrMaxTask($this->task);
+            case 8:
+                return new OneOfZeroTask($this->task);
+            case 9:
+                return new CountMaxOrMin($this->task);
             default:
                 return new DefaultTask($this->task);
         }

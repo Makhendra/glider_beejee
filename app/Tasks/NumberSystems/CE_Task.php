@@ -16,8 +16,8 @@ class CE_Task implements TaskInterface
 
     public function initData()
     {
-        $scale_of_notation1 = (int)rand(2, 16);
-        $scale_of_notation2 = (int)rand(2, 16);
+        $scale_of_notation1 = $this->getRandomScale();
+        $scale_of_notation2 = $this->getRandomScale();
 
         $number1 = rand(0, 1000);
         $number2 = rand($number1, 1000);
