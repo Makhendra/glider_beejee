@@ -147,4 +147,60 @@ trait NumberSystemTrait
             return $format['text'].'='.$format['answer_format'];
         }
     }
+
+    public function getRandomExpression() {
+        $expression = [];
+        $cntElements =  random_int(2, 6);
+        $cntBrackets = 0;
+        $open = true;
+        $next = true;
+        if($cntElements > 2) {
+            $cntBrackets = random_int(0, $cntElements - 2) * 2;
+        }
+        $expression['expression'] = '';
+        $expression['decimal_expression'] = '';
+        for ($i = 0; $i < $cntElements; $i++) {
+            $scale_of_notation = $this->getRandomScale();
+            $number_origin = rand(1, 1000);
+            $number_scale = base_convert($number_origin, $this->to_ci, $scale_of_notation);
+            $expression['elements'][$i] = compact('number_origin', 'number_scale', 'scale_of_notation');
+            $expression['decimal_expression'] .= $number_origin;
+            $expression['expression'] .= $number_scale.'<sub>'.$scale_of_notation.'</sub>';
+            if($cntBrackets && $next) {
+                $cntBrackets -= 1;
+                if($open) {
+                    if($i < $cntElements - 1) {
+                        $expression['signs'][$i] = $this->signs[random_int(0, count($this->signs) - 1 )];
+                        $expression['expression'] .= $expression['signs'][$i];
+                        $expression['decimal_expression'] .= $expression['signs'][$i];
+                    }
+                    $expression['expression'] .= '(';
+                    $expression['decimal_expression'] .= '(';
+                } else {
+                    $expression['expression'] .= ')';
+                    $expression['decimal_expression'] .= ')';
+                    if($i < $cntElements - 1) {
+                        $sign= $this->signs[random_int(0, count($this->signs) - 1 )];
+                        $expression['expression'] .= $sign;
+                        $expression['decimal_expression'] .= $sign;
+                    }
+                }
+                $open = !$open;
+                $next = false;
+            } else {
+                $next = true;
+                if($i < $cntElements - 1) {
+                    $sign = $this->signs[random_int(0, count($this->signs) - 1 )];
+                    $expression['expression'] .= $sign;
+                    $expression['decimal_expression'] .= $sign;
+                }
+            }
+
+        }
+        if($open == false) {
+            $expression['expression'] .= ')';
+            $expression['decimal_expression'] .= ')';
+        }
+        return $expression;
+    }
 }

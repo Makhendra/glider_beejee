@@ -31,6 +31,8 @@ class SwitcherNumberTask
                 return new CountMaxOrMin($this->task);
             case 10:
                 return new ConvertNumber($this->task);
+            case 11:
+                return new ZerosInBinary($this->task);
             default:
                 return new DefaultTask($this->task);
         }
