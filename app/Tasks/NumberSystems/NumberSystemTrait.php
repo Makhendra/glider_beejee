@@ -2,7 +2,7 @@
 
 namespace App\Tasks\NumberSystems;
 
-trait NumberSystemService
+trait NumberSystemTrait
 {
     public $to_ci = 10;
     public $signs = ['+', '-', '*', '/'];
@@ -136,5 +136,15 @@ trait NumberSystemService
         $list_n = implode('<br>', $list_n);
         $list_n_decimal = implode('<br>', $list_n_decimal);
         return [$list_n, $list_n_decimal];
+    }
+
+    public function formatAnswer($number, $from_ci, $to_ci) {
+        $answer = base_convert($number, $from_ci, $to_ci);
+        if($from_ci > $to_ci) {
+            return $this->deleting($number, $to_ci);
+        } else {
+            $format= $this->formatNumber($number, $from_ci, $to_ci, $answer);
+            return $format['text'].'='.$format['answer_format'];
+        }
     }
 }

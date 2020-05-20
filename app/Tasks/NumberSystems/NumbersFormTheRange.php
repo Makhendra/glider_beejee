@@ -11,7 +11,7 @@ use App\Tasks\TaskTrait;
 // имеющих в своей двоичной записи более 3 единиц.
 class NumbersFormTheRange implements TaskInterface
 {
-    use TaskTrait, NumberSystemService;
+    use TaskTrait, NumberSystemTrait;
 
     public function initData()
     {

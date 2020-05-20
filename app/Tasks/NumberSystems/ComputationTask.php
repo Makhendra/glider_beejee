@@ -12,7 +12,7 @@ use App\Tasks\TaskTrait;
 //В ответе запишите вычисленное значение в десятичной системе счисления.
 class ComputationTask implements TaskInterface
 {
-    use TaskTrait, NumberSystemService;
+    use TaskTrait, NumberSystemTrait;
 
     public function initData()
     {

@@ -10,7 +10,7 @@ use App\Tasks\TaskTrait;
 // Сколько чисел, больших чем ..?
 class CountMaxOrMin implements TaskInterface
 {
-    use TaskTrait, NumberSystemService;
+    use TaskTrait, NumberSystemTrait;
     public $classLayout = 'col-md-3';
     public $classLayout2 = 'col-md-9';
 

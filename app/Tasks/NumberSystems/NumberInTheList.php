@@ -12,9 +12,9 @@ use Illuminate\Http\Request;
 // Все 4-буквенные слова, составленные из букв Д, Е, К, О, Р, записаны в алфавитном порядке и пронумерованы, начиная с 1.
 // Ниже приведено начало списка. 1. ДДДД 2. ДДДЕ 3. ДДДК 4. ДДДО 5. ДДДР 6. ДДЕД ...
 // Под каким номером в списке идёт первое слово, которое начинается с буквы K?
-class FW_Task implements TaskInterface
+class NumberInTheList implements TaskInterface
 {
-    use TaskTrait, NumberSystemService;
+    use TaskTrait, NumberSystemTrait;
 
     public function initData()
     {

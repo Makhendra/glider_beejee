@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 // Сколько существует целых чисел x, для которых выполняется неравенство 2A16<x<618?
-class CE_Task implements TaskInterface
+class InequalityHolds implements TaskInterface
 {
-    use TaskTrait, NumberSystemService;
+    use TaskTrait, NumberSystemTrait;
 
     public function initData()
     {

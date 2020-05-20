@@ -11,7 +11,7 @@ use App\Tasks\TaskTrait;
 //Какое из них имеет наибольшее значение?
 class MinOrMaxTask implements TaskInterface
 {
-    use TaskTrait, NumberSystemService;
+    use TaskTrait, NumberSystemTrait;
 
     public function initData()
     {

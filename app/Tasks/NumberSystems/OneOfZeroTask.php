@@ -10,7 +10,7 @@ use App\Tasks\TaskTrait;
 // Сколько единиц в двоичной записи шестнадцатиричного числа 155?
 class OneOfZeroTask implements TaskInterface
 {
-    use TaskTrait, NumberSystemService;
+    use TaskTrait, NumberSystemTrait;
 
     public function initData()
     {
