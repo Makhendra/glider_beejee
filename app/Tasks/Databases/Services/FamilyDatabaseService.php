@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Tasks\Databases;
+namespace App\Tasks\Databases\Services;
 
-use Faker\Factory;
 
 class FamilyDatabaseService
 {

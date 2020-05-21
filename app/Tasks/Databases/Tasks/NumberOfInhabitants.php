@@ -1,9 +1,9 @@
 <?php
-namespace App\Tasks\Databases;
+namespace App\Tasks\Databases\Tasks;
 
+use App\Tasks\Databases\Services\FamilyDatabaseService;
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
-use Illuminate\Http\Request;
 
 class NumberOfInhabitants implements TaskInterface
 {

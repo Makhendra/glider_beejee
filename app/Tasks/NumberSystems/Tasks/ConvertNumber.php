@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Tasks\NumberSystems;
+namespace App\Tasks\NumberSystems\Tasks;
 
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
+use App\Tasks\NumberSystems\NumberSystemTrait;
 
 //Переведите число 10100102 в систему счисления с основанием 10.
 class ConvertNumber implements TaskInterface

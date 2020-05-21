@@ -1,14 +1,15 @@
 <?php
 
 
-namespace App\Tasks\NumberSystems;
+namespace App\Tasks\NumberSystems\Tasks;
 
 
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
+use App\Tasks\NumberSystems\NumberSystemTrait;
 
 // Сколько единиц в двоичной записи шестнадцатиричного числа 155?
-class OneOfZeroTask implements TaskInterface
+class OneOfZero implements TaskInterface
 {
     use TaskTrait, NumberSystemTrait;
 

@@ -1,15 +1,16 @@
 <?php
 
 
-namespace App\Tasks\NumberSystems;
+namespace App\Tasks\NumberSystems\Tasks;
 
 
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
+use App\Tasks\NumberSystems\NumberSystemTrait;
 
 //Дано n выражения(ий):
 //Какое из них имеет наибольшее значение?
-class MinOrMaxTask implements TaskInterface
+class MinOrMax implements TaskInterface
 {
     use TaskTrait, NumberSystemTrait;
 
@@ -34,14 +35,14 @@ class MinOrMaxTask implements TaskInterface
         list($list_n, $list_n_decimal) = $this->getLists($this->data['list_n']);
         $max_or_min = $this->data['max_or_min'] == $this->maxOrMin[0] ? 1 : 0;
         foreach ($this->data['list_n'] as $key => $element) {
-            if($max_or_min) {
+            if ($max_or_min) {
                 //Наибольшее
-                if($element['number_origin'] > $answer) {
+                if ($element['number_origin'] > $answer) {
                     $answer = $element['number_origin'];
                 }
             } else {
                 //Наименьшее
-                if($element['number_origin'] < $answer) {
+                if ($element['number_origin'] < $answer) {
                     $answer = $element['number_origin'];
                 }
             }

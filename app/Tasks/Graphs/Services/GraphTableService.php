@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Tasks\Graphs;
+namespace App\Tasks\Graphs\Services;
 
 
 class GraphTableService
@@ -29,7 +29,7 @@ class GraphTableService
         return $result;
     }
 
-    public  function generateRowTable($rowElements, $td = true)
+    public function generateRowTable($rowElements, $td = true)
     {
         $td = $td ? 'td' : 'th';
         $row = '<tr>';

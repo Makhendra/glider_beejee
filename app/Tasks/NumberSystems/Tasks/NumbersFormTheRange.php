@@ -1,11 +1,12 @@
 <?php
 
 
-namespace App\Tasks\NumberSystems;
+namespace App\Tasks\NumberSystems\Tasks;
 
 
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
+use App\Tasks\NumberSystems\NumberSystemTrait;
 
 // Укажите количество целых десятичных чисел из диапазона от 39 до 49 включительно,
 // имеющих в своей двоичной записи более 3 единиц.

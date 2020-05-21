@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Tasks\Graphs;
+namespace App\Tasks\Graphs\Services;
 
 
 class GraphImageService

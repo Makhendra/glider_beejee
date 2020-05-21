@@ -1,11 +1,12 @@
 <?php
 
 
-namespace App\Tasks\NumberSystems;
+namespace App\Tasks\NumberSystems\Tasks;
 
 
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
+use App\Tasks\NumberSystems\NumberSystemTrait;
 
 // Сколько чисел, больших чем ..?
 class CountMaxOrMin implements TaskInterface

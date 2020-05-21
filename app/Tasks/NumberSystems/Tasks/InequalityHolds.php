@@ -1,13 +1,12 @@
 <?php
 
 
-namespace App\Tasks\NumberSystems;
+namespace App\Tasks\NumberSystems\Tasks;
 
 
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use App\Tasks\NumberSystems\NumberSystemTrait;
 
 // Сколько существует целых чисел x, для которых выполняется неравенство 2A16<x<618?
 class InequalityHolds implements TaskInterface
@@ -41,7 +40,7 @@ class InequalityHolds implements TaskInterface
     }
 
 
-    public function replaceArray() : array
+    public function replaceArray(): array
     {
         return [
             '{number1}' => $this->data['number1'],

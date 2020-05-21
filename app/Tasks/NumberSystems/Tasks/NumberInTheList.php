@@ -1,13 +1,12 @@
 <?php
 
 
-namespace App\Tasks\NumberSystems;
+namespace App\Tasks\NumberSystems\Tasks;
 
 
-use App\Http\Controllers\TaskController;
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
-use Illuminate\Http\Request;
+use App\Tasks\NumberSystems\NumberSystemTrait;
 
 // Все 4-буквенные слова, составленные из букв Д, Е, К, О, Р, записаны в алфавитном порядке и пронумерованы, начиная с 1.
 // Ниже приведено начало списка. 1. ДДДД 2. ДДДЕ 3. ДДДК 4. ДДДО 5. ДДДР 6. ДДЕД ...
@@ -46,7 +45,7 @@ class NumberInTheList implements TaskInterface
             '{letters}' => $letters,
             '{letter}' => $this->data['letter'],
             '{list}' => $list,
-            '{all_count_word}' => $allCountWord ,
+            '{all_count_word}' => $allCountWord,
             '{answer}' => $this->getAnswer()
         ];
     }

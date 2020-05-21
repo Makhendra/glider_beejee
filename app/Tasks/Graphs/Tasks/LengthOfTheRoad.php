@@ -1,14 +1,16 @@
 <?php
 
 
-namespace App\Tasks\Graphs;
+namespace App\Tasks\Graphs\Tasks;
 
 
+use App\Tasks\Graphs\Services\GraphImageService;
+use App\Tasks\Graphs\Services\GraphService;
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
-use Illuminate\Http\Request;
 
-class GD_Task implements TaskInterface
+// Какова протяженность дороги от пункта А до пункта Б?
+class LengthOfTheRoad implements TaskInterface
 {
     use TaskTrait;
     public $classLayout = 'col-md-6';

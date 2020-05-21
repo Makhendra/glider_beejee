@@ -1,22 +1,23 @@
 <?php
 
 
-namespace App\Tasks\NumberSystems;
+namespace App\Tasks\NumberSystems\Tasks;
 
 
+use App\Tasks\NumberSystems\NumberSystemTrait;
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
 
 //Вычислите значение выражения
 //11559 * 11859
 //В ответе запишите вычисленное значение в десятичной системе счисления.
-class ComputationTask implements TaskInterface
+class Computation implements TaskInterface
 {
     use TaskTrait, NumberSystemTrait;
 
     public function initData()
     {
-        $sign = $this->signs[random_int(0, count($this->signs) -1 )];
+        $sign = $this->signs[random_int(0, count($this->signs) - 1)];
         $scale_of_notation1 = $this->getRandomScale();
         $scale_of_notation2 = $this->getRandomScale();
 
