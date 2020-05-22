@@ -13,17 +13,17 @@ class GraphImageService
         $line_color = imagecolorallocate($image, 119, 172, 184); //blue
         imagesetthickness($image, 3);
         $coordinates = self::coordinateMatrix($c);
-        foreach ($graph as $key => $vertexRow) {
-            $lines[$key] = [];
-            foreach ($vertexRow as $n => $d) {
-                if ($d != 0 and !in_array($n, $lines[$key])) {
-                    $lines[$key][] = $n;
+        foreach ($graph as $rowKey => $vertexRow) {
+            $lines[$rowKey] = [];
+            foreach ($vertexRow as $edjKey => $distance) {
+                if ($distance != 0 and !in_array($edjKey, $lines[$rowKey])) {
+                    $lines[$rowKey][] = $edjKey;
                     imageline(
                         $image,
-                        $coordinates[$key]['x'],
-                        $coordinates[$key]['y'],
-                        $coordinates[$n]['x'],
-                        $coordinates[$n]['y'],
+                        $coordinates[$rowKey]['x'],
+                        $coordinates[$rowKey]['y'],
+                        $coordinates[$edjKey]['x'],
+                        $coordinates[$edjKey]['y'],
                         $line_color
                     );
                 }
@@ -40,39 +40,39 @@ class GraphImageService
         switch ($c) {
             case 5:
                 $coordinates = [
-                    ['x' => 120, 'y' => 120],
-                    ['x' => 595, 'y' => 65],
-                    ['x' => 80, 'y' => 640],
-                    ['x' => 525, 'y' => 750],
-                    ['x' => 875, 'y' => 455],
+                    'А' => ['x' => 110, 'y' => 120],
+                    'Б' => ['x' => 595, 'y' => 60],
+                    'В' => ['x' => 70, 'y' => 640],
+                    'Г' => ['x' => 525, 'y' => 760],
+                    'Д' => ['x' => 875, 'y' => 440],
                 ];
                 break;
             case 6:
                 $coordinates = [
-                    ['x' => 95, 'y' => 145],
-                    ['x' => 555, 'y' => 70],
-                    ['x' => 885, 'y' => 280],
-                    ['x' => 800, 'y' => 698],
-                    ['x' => 380, 'y' => 880],
-                    ['x' => 120, 'y' => 595],
+                    'А' => ['x' => 95, 'y' => 145],
+                    'Б' => ['x' => 555, 'y' => 70],
+                    'В' => ['x' => 890, 'y' => 280],
+                    'Г' => ['x' => 800, 'y' => 698],
+                    'Д' => ['x' => 380, 'y' => 880],
+                    'Е' => ['x' => 120, 'y' => 595],
                 ];
                 break;
             case 7:
                 $coordinates = [
-                    ['x' => 107, 'y' => 133],
-                    ['x' => 543, 'y' => 68],
-                    ['x' => 920, 'y' => 232],
-                    ['x' => 865, 'y' => 633],
-                    ['x' => 645, 'y' => 905],
-                    ['x' => 230, 'y' => 870],
-                    ['x' => 93, 'y' => 540],
+                    'А' => ['x' => 100, 'y' => 133],
+                    'Б' => ['x' => 543, 'y' => 68],
+                    'В' => ['x' => 930, 'y' => 232],
+                    'Г' => ['x' => 875, 'y' => 633],
+                    'Д' => ['x' => 645, 'y' => 910],
+                    'Е' => ['x' => 230, 'y' => 870],
+                    'Ж' => ['x' => 87, 'y' => 540],
                 ];
                 break;
             default:
                 $coordinates = [];
                 break;
         }
-        shuffle($coordinates);
+//        shuffle($coordinates);
         return $coordinates;
     }
 }
