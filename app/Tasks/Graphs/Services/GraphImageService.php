@@ -6,13 +6,21 @@ namespace App\Tasks\Graphs\Services;
 
 class GraphImageService
 {
-    public function getImage($graph)
+    public function getImage($graph, $new = false)
     {
         $c = count($graph);
-        $image = imagecreatefrompng(public_path("graphs/$c.png"));
+        if($new) {
+            $image = imagecreatefrompng(public_path("graphs/new/$c.png"));
+        } else {
+            $image = imagecreatefrompng(public_path("graphs/$c.png"));
+        }
         $line_color = imagecolorallocate($image, 119, 172, 184); //blue
         imagesetthickness($image, 3);
-        $coordinates = self::coordinateMatrix($c);
+        if($new) {
+            $coordinates = self::coordinateNewMatrix($c);
+        } else {
+            $coordinates = self::coordinateMatrix($c);
+        }
         foreach ($graph as $rowKey => $vertexRow) {
             $lines[$rowKey] = [];
             foreach ($vertexRow as $edjKey => $distance) {
@@ -72,8 +80,45 @@ class GraphImageService
                 $coordinates = [];
                 break;
         }
-//        shuffle($coordinates);
+        return $coordinates;
+    }
+
+    public function coordinateNewMatrix($c) {
+        switch ($c) {
+            case 5:
+                $coordinates = [
+                    'А' => ['x' => 55, 'y' => 95],
+                    'Б' => ['x' => 365, 'y' => 65],
+                    'В' => ['x' => 680, 'y' => 135],
+                    'Д' => ['x' => 375, 'y' => 280],
+                    'Г' => ['x' => 690, 'y' => 350],
+                ];
+                break;
+            case 6:
+                $coordinates = [
+                    'А' => ['x' => 55, 'y' => 95],
+                    'Б' => ['x' => 365, 'y' => 65],
+                    'В' => ['x' => 680, 'y' => 135],
+                    'Д' => ['x' => 375, 'y' => 280],
+                    'Г' => ['x' => 720, 'y' => 335],
+                    'Е' => ['x' => 80, 'y' => 340],
+                ];
+                break;
+            case 7:
+                $coordinates = [
+                    'А' => ['x' => 55, 'y' => 95],
+                    'Б' => ['x' => 373, 'y' => 65],
+                    'В' => ['x' => 680, 'y' => 135],
+                    'Г' => ['x' => 690, 'y' => 330],
+                    'Д' => ['x' => 375, 'y' => 280],
+                    'Ж' => ['x' => 80, 'y' => 330],
+                    'Е' => ['x' => 87, 'y' => 330],
+                ];
+                break;
+            default:
+                $coordinates = [];
+                break;
+        }
         return $coordinates;
     }
 }
-

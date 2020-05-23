@@ -18,7 +18,11 @@
         <tr>
             <td>П{{$j}}</td>
             @foreach($random_keys as $k => $item)
-                <td>{{$graph[$char][$item] ?? 0}}</td>
+                @if(isset($aster))
+                    <td>{{ isset($graph[$char][$item]) ? $aster:  0}}</td>
+                @else
+                    <td>{{$graph[$char][$item] ?? 0}}</td>
+                @endif
             @endforeach
         </tr>
         @php $j += 1; @endphp
