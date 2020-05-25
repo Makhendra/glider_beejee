@@ -1,9 +1,10 @@
 @isset($table[0])
-    @php if(isset($table[0]['not_use'])) {
+    @php
+    if(isset($table[0]['not_use'])) {
         $table = array_map(function (&$item) {unset($item['not_use']);return $item;}, $table);
-    };
+    }
     @endphp
-    <div class="col-6">
+    <div class="col">
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -16,7 +17,7 @@
             @foreach($table as $key => $row)
                 <tr>
                     @foreach($row as $k => $item)
-                        <td>{{$item}}</td>
+                        <td>{!! $item !!}</td>
                     @endforeach
                 </tr>
             @endforeach

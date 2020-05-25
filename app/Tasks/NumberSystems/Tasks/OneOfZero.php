@@ -15,10 +15,10 @@ class OneOfZero implements TaskInterface
 
     public function initData()
     {
-        $scale_of_notation = $this->getRandomScale();
+        $scale_of_notation = $this->getRandomScale(2);
         $number = rand(1, 1000);
         $number = (string)base_convert($number, $this->to_ci, $scale_of_notation);
-        $one_or_zero = $this->oneZero[random_int(0, 1)];
+        $one_or_zero = $this->oneZero[rand(0, 1)];
         $this->data = compact('scale_of_notation', 'number', 'one_or_zero');
         return $this->data;
     }

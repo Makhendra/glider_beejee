@@ -64,7 +64,7 @@ class LoginController extends Controller
         if ($user = $this->findUserByEmail($socialiteUser->getEmail())) {
             $this->addSocialAccount($provider, $user, $socialiteUser);
             return $user;
-        };
+        }
 
         $user = User::create(
             [

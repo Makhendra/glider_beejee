@@ -4,6 +4,8 @@
 namespace App\Tasks\Graphs\Tasks;
 
 
+use App\Models\CustomSession;
+use App\Tasks\Graphs\Services\GraphImageService;
 use App\Tasks\Graphs\Services\GraphService;
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
@@ -14,6 +16,8 @@ class LetterSequence implements TaskInterface
     use TaskTrait;
 
     private $graphService;
+    private $graphImageService;
+
     public $classLayout = 'col-md-6';
     public $classLayout2 = 'col-md-6';
 
@@ -21,6 +25,7 @@ class LetterSequence implements TaskInterface
     {
         $this->task = $task;
         $this->graphService = new GraphService();
+        $this->graphImageService = new GraphImageService();
     }
 
     public function getView()
@@ -30,7 +35,7 @@ class LetterSequence implements TaskInterface
 
     public function initData()
     {
-        $graph = $this->graphService->generateGraph();
+        $graph = $this->graphService->generateGraph(5);
 
         $random_keys = [];
         array_walk(
@@ -53,5 +58,14 @@ class LetterSequence implements TaskInterface
     public function getAnswer()
     {
         return implode('', $this->data['random_keys']);
+    }
+
+    public function setSession()
+    {
+        $image = CustomSession::getValue("image_{$this->userTask->id}");
+        if(empty($image)) {
+            $image = $this->graphImageService->getImage($this->data['graph'], true);
+            CustomSession::setValue("image_{$this->userTask->id}", $image);
+        }
     }
 }

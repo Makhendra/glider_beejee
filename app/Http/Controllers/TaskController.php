@@ -85,9 +85,10 @@ class TaskController extends Controller
         } else {
             $creator->setData($userTask->data);
         }
-        $creator->setTextUserTask($creator->task->task_text);
         $creator->setUserTask($userTask);
+        $creator->setTextUserTask($creator->task->task_text);
         $creator->setFormatAnswer();
+        $creator->setSession();
         return $userTask;
     }
 

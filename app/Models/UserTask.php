@@ -68,4 +68,8 @@ class UserTask extends Model
         return $query->where(compact('task_id', 'user_id'))->NotSolved();
     }
 
+    public function group() {
+        return $this->belongsTo(GroupTask::class, 'group_id', 'id');
+    }
+
 }

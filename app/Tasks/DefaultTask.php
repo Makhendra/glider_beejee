@@ -22,7 +22,7 @@ class DefaultTask implements TaskInterface
 
     public function initData()
     {
-        // TODO: Implement initData() method.
+        return $this->data;
     }
 
     public function getView()
@@ -32,17 +32,17 @@ class DefaultTask implements TaskInterface
 
     public function replaceText()
     {
-        // TODO: Implement replaceText() method.
+        return [];
     }
 
     public function validateRules()
     {
-        // TODO: Implement validateRules() method.
+        return [];
     }
 
     public function checkAnswer(Request $request) : array
     {
-        // TODO: Implement checkAnswer() method.
+        return [];
     }
 
     public function replaceArray(): array

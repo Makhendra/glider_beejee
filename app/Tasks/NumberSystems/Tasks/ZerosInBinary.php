@@ -48,14 +48,14 @@ class ZerosInBinary implements TaskInterface
     public function getDecimal()
     {
         $decimal = $this->data['decimal_expression'];
-        $value = eval("return $decimal;");
+        $value = eval('return ' . $decimal . ';');
         return round($value);
     }
 
     public function toBinary()
     {
         $decimal = str_replace('-', '', $this->getDecimal());
-        return base_convert($decimal, $this->to_ci, 2);;
+        return base_convert($decimal, $this->to_ci, 2);
     }
 
     public function getAnswer()

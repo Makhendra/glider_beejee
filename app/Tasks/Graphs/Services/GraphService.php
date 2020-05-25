@@ -16,31 +16,42 @@ class GraphService
         $this->matrix = [];
     }
 
-    public function generateGraph()
+    public function generateGraph($min = 1)
     {
-        $vertexCnt = random_int(5, 7);
-        $neighborsCnt = random_int(1, $vertexCnt - 1);
+        $vertexCnt = rand(5, 7);
+        $neighborsCnt = rand($min, $vertexCnt - 1);
 
         for ($i = 0; $i < $vertexCnt; $i++) {
-            $j = random_int(0, $vertexCnt - 1);
+            $j = rand(0, $vertexCnt - 1);
             $charI = $this->alpha[$i];
             $this->matrix[$charI] = isset($this->matrix[$charI]) ? $this->matrix[$charI] : [];
-            // Проверяем что это не одна и та же вершина
-            if ($j != $i) {
-                $charJ = $this->alpha[$j];
-                $isNeedCreate = random_int(0, 1);
-                if ($isNeedCreate && $neighborsCnt) {
-                    $this->addEdge($charI, $charJ);
-                }
-                $neighborsCnt -= 1;
-            }
+            $this->addNeighsBorgs($i, $j, $neighborsCnt);
+        }
+        while($neighborsCnt > 0) {
+            $i = rand(0, $vertexCnt - 1);
+            $j = rand(0, $vertexCnt - 1);
+            $charI = $this->alpha[$i];
+            $this->matrix[$charI] = isset($this->matrix[$charI]) ? $this->matrix[$charI] : [];
+            $this->addNeighsBorgs($i, $j, $neighborsCnt);
         }
         return $this->matrix;
     }
 
+    public function addNeighsBorgs($i, $j, &$neighborsCnt) {
+        $charI = $this->alpha[$i];
+        if ($j != $i) {
+            $charJ = $this->alpha[$j];
+            $isNeedCreate = rand(0, 1);
+            if ($isNeedCreate && $neighborsCnt) {
+                $this->addEdge($charI, $charJ);
+                $neighborsCnt -= 1;
+            }
+        }
+    }
+
     public function addEdge($a, $b)
     {
-        $distance = random_int(1, 20);
+        $distance = rand(1, 20);
         $this->matrix[$a][$b] = $distance;
         $this->matrix[$b][$a] = $distance;
     }

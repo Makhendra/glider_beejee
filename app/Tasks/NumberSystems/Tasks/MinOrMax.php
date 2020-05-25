@@ -8,7 +8,7 @@ use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
 use App\Tasks\NumberSystems\NumberSystemTrait;
 
-//Дано n выражения(ий):
+//Дано n выражений:
 //Какое из них имеет наибольшее значение?
 class MinOrMax implements TaskInterface
 {
@@ -16,9 +16,9 @@ class MinOrMax implements TaskInterface
 
     public function initData()
     {
-        $n = random_int(3, 10);
+        $n = rand(3, 10);
         $list_n = [];
-        $max_or_min = $this->maxOrMin[random_int(0, 1)];
+        $max_or_min = $this->maxOrMin[rand(0, 1)];
         for ($i = 0; $i < $n; $i++) {
             $scale_of_notation = $this->getRandomScale(2);
             $number_origin = rand(1, 1000);

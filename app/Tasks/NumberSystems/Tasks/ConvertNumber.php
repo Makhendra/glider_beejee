@@ -13,7 +13,7 @@ class ConvertNumber implements TaskInterface
 
     public function initData()
     {
-        $number = random_int(1, 200);
+        $number = rand(1, 200);
         $scale_notation1 = $this->getRandomScale();
         $number = base_convert($number, $this->to_ci, $scale_notation1);
         $scale_notation2 = $this->getRandomScale($scale_notation1);

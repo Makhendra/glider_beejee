@@ -17,7 +17,7 @@ class GroupsController extends AdminController
      */
     protected $title;
 
-    public function __construct()
+    protected function __construct()
     {
         $this->title = __('messages.groups');
     }
@@ -82,6 +82,8 @@ class GroupsController extends AdminController
                             }
                         });
                         $form->textarea('task_text', __('messages.task_text'));
+                        $form->ckeditor('decision', __('messages.how_decision'));
+                        $form->ckeditor('answer', __('messages.format_answer'));
                         $form->switch('active', __('messages.active'));
                     }
                 );

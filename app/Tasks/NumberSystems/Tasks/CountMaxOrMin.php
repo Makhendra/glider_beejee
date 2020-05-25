@@ -8,7 +8,7 @@ use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
 use App\Tasks\NumberSystems\NumberSystemTrait;
 
-// Сколько чисел, больших чем ..?
+// Сколько чисел, больших чем n?
 class CountMaxOrMin implements TaskInterface
 {
     use TaskTrait, NumberSystemTrait;
@@ -17,7 +17,7 @@ class CountMaxOrMin implements TaskInterface
 
     public function initData()
     {
-        $n = random_int(3, 10);
+        $n = rand(3, 10);
 
         $number_origin = rand(1, 1000);
         $scale_of_notation = $this->getRandomScale();
@@ -28,7 +28,7 @@ class CountMaxOrMin implements TaskInterface
             'list' => [],
             'scale_of_notation' => $this->getRandomScale($scale_of_notation)
         ];
-        $max_or_min = $this->maxOrMinText[random_int(0, 1)];
+        $max_or_min = $this->maxOrMinText[rand(0, 1)];
         for ($i = 0; $i < $n; $i++) {
             $number_origin = rand(1, 1000);
             $number_scale = base_convert($number_origin, $this->to_ci, $scale_of_notation);
@@ -81,7 +81,7 @@ class CountMaxOrMin implements TaskInterface
                 ''
             )['text'],
             '{list_n_to_demical}' => $list_n_decimal,
-            '{chek_list_n}' => $checkListN,
+            '{check_list_n}' => $checkListN,
             '{answer}' => $answer,
         ];
     }

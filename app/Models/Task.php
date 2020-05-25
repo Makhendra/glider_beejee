@@ -37,17 +37,6 @@ use Illuminate\Support\Facades\Auth;
 class Task extends Model
 {
     protected $guarded = [];
-    const NOT_FOUND = 404;
-
-    public static function findBySlug($slug)
-    {
-        $model = self::whereSlug($slug)->first();
-        if($model){
-            return $model;
-        }
-        abort(self::NOT_FOUND);
-        return $model;
-    }
 
     public function userTask(){
         return $this->hasMany(UserTask::class);

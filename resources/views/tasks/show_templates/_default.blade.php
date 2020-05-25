@@ -1,4 +1,7 @@
-@php $id = $task->id ?? 1; $statuses = (new \App\Models\UserTask()); @endphp
+@php
+    use App\Models\UserTask;
+    $id = $task->id ?? 1; $statuses = (new UserTask());
+@endphp
 @extends('layouts.app', ['title' => 'Задание '.$id])
 
 @section('seoVar')
@@ -45,7 +48,7 @@
                                         @yield('form')
                                         @csrf
                                         <div class="input-group">
-                                            <input type="number" name="answer" id="answer" class="form-control"
+                                            <input type="text" name="answer" id="answer" class="form-control"
                                                    placeholder="Отправить ответ" required/>
                                             <div class="input-group-append">
                                                 <button type="submit" class="btn btn-success">

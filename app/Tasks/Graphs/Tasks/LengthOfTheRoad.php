@@ -4,6 +4,8 @@
 namespace App\Tasks\Graphs\Tasks;
 
 
+use App\Models\CustomSession;
+use App\Tasks\Graphs\Services\GraphImageService;
 use App\Tasks\Graphs\Services\GraphService;
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
@@ -12,11 +14,13 @@ use App\Tasks\TaskTrait;
 class LengthOfTheRoad implements TaskInterface
 {
     private $graphService;
+    private $graphImageService;
 
     public function __construct($task)
     {
         $this->task = $task;
         $this->graphService = new GraphService();
+        $this->graphImageService = new GraphImageService();
     }
 
     use TaskTrait;
@@ -35,11 +39,11 @@ class LengthOfTheRoad implements TaskInterface
         $alpha = array_slice($alpha, 0, count($this->graphService->matrix));
 
         $cnt = count($this->graphService->matrix) - 1;
-        $start = random_int(0, $cnt);
-        $end = random_int(0, $cnt);
+        $start = rand(0, $cnt);
+        $end = rand(0, $cnt);
         while ($start == $end) {
-            $start = random_int(0, $cnt);
-            $end = random_int(0, $cnt);
+            $start = rand(0, $cnt);
+            $end = rand(0, $cnt);
         }
         $start = ['num' => $start, 'alpha' => $alpha[$start]];
         $end = ['num' => $end, 'alpha' => $alpha[$end]];
@@ -76,6 +80,15 @@ class LengthOfTheRoad implements TaskInterface
         $distance = $this->graphService->getDistance($this->data['start']['alpha'], $this->data['end']['alpha']);
         $distance = $distance == INF ? 0 : $distance;
         return $distance;
+    }
+
+    public function setSession()
+    {
+        $image = CustomSession::getValue("image_{$this->userTask->id}");
+        if(empty($image)) {
+            $image = $this->graphImageService->getImage($this->data['graph']);
+            CustomSession::setValue("image_{$this->userTask->id}", $image);
+        }
     }
 
 }

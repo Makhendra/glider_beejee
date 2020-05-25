@@ -17,7 +17,7 @@ class Computation implements TaskInterface
 
     public function initData()
     {
-        $sign = $this->signs[random_int(0, count($this->signs) - 1)];
+        $sign = $this->signs[rand(0, count($this->signs) - 1)];
         $scale_of_notation1 = $this->getRandomScale();
         $scale_of_notation2 = $this->getRandomScale();
 
@@ -54,7 +54,7 @@ class Computation implements TaskInterface
             case '*':
                 $answer = $answer1 * $answer2;
                 break;
-            case '*':
+            case '/':
                 $answer = $answer1 / $answer2;
                 break;
             case '+':

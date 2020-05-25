@@ -13,6 +13,10 @@ class TaskCreator extends TaskFabric
 {
     private $task;
 
+    /**
+     * TaskCreator constructor.
+     * @param Task $task
+     */
     public function __construct(Task $task)
     {
         $this->task = $task;

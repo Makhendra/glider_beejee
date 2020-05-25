@@ -58,6 +58,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 "</button>",
         },
     });
+
+    $('.table tr').filter(function() {
+        return $.trim($(this).text()) === '';
+    }).hide();
 });
 
 // FB.getLoginStatus(function(response) {

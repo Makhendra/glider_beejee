@@ -4,6 +4,7 @@ namespace App\Tasks;
 
 
 use App\Models\UserTask;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -66,8 +67,8 @@ trait TaskTrait
         foreach ($replace as $key => $value) {
             try {
                 $this->formatAnswer = str_replace($key, $value, $this->formatAnswer);
-            } catch (\Exception $exception) {
-                Log::debug('TASKID '.$this->task->id.' - replaceTextAnswer');
+            } catch (Exception $exception) {
+                Log::debug('TASK_ID '.$this->task->id.' - replaceTextAnswer');
                 Log::debug($exception->getMessage());
             }
         }
@@ -91,8 +92,22 @@ trait TaskTrait
         foreach ($replace as $key => $value) {
             try {
                 $this->textUserTask = str_replace($key, $value, $this->textUserTask);
-            } catch (\Exception $exception) {
-                Log::debug('TASKID '.$this->task->id.' - replaceText');
+            } catch (Exception $exception) {
+                Log::debug('TASK_ID '.$this->task->id.' - replaceText');
+                Log::debug($exception->getMessage());
+            }
+        }
+    }
+
+    public function replaceHowTo()
+    {
+        $replace = $this->replaceArray();
+        $this->addReplaceCommon($replace);
+        foreach ($replace as $key => $value) {
+            try {
+                $this->textUserTask = str_replace($key, $value, $this->textUserTask);
+            } catch (Exception $exception) {
+                Log::debug('TASK_ID '.$this->task->id.' - replaceText');
                 Log::debug($exception->getMessage());
             }
         }
@@ -112,5 +127,9 @@ trait TaskTrait
         $answer = $this->getAnswer();
         $this->success = $userAnswer == $answer;
         return [$this->success, $userAnswer];
+    }
+
+    public function setSession() {
+
     }
 }

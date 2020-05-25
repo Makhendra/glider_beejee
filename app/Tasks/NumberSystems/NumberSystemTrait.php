@@ -92,8 +92,9 @@ trait NumberSystemTrait
                 unset($scales[$index]);
             }
         }
+        sort($scales);
 
-        return $scales[random_int(0, count($scales) - 1)];
+        return $scales[rand(0, count($scales) - 1)];
     }
 
     public function formatToBinary($number, $from_ci) {
@@ -150,12 +151,12 @@ trait NumberSystemTrait
 
     public function getRandomExpression() {
         $expression = [];
-        $cntElements =  random_int(2, 6);
+        $cntElements = rand(2, 6);
         $cntBrackets = 0;
         $open = true;
         $next = true;
         if($cntElements > 2) {
-            $cntBrackets = random_int(0, $cntElements - 2) * 2;
+            $cntBrackets = rand(0, $cntElements - 2) * 2;
         }
         $expression['expression'] = '';
         $expression['decimal_expression'] = '';
@@ -170,7 +171,7 @@ trait NumberSystemTrait
                 $cntBrackets -= 1;
                 if($open) {
                     if($i < $cntElements - 1) {
-                        $expression['signs'][$i] = $this->signs[random_int(0, count($this->signs) - 1 )];
+                        $expression['signs'][$i] = $this->signs[rand(0, count($this->signs) - 1 )];
                         $expression['expression'] .= $expression['signs'][$i];
                         $expression['decimal_expression'] .= $expression['signs'][$i];
                     }
@@ -180,7 +181,7 @@ trait NumberSystemTrait
                     $expression['expression'] .= ')';
                     $expression['decimal_expression'] .= ')';
                     if($i < $cntElements - 1) {
-                        $sign= $this->signs[random_int(0, count($this->signs) - 1 )];
+                        $sign= $this->signs[rand(0, count($this->signs) - 1 )];
                         $expression['expression'] .= $sign;
                         $expression['decimal_expression'] .= $sign;
                     }
@@ -190,7 +191,7 @@ trait NumberSystemTrait
             } else {
                 $next = true;
                 if($i < $cntElements - 1) {
-                    $sign = $this->signs[random_int(0, count($this->signs) - 1 )];
+                    $sign = $this->signs[rand(0, count($this->signs) - 1 )];
                     $expression['expression'] .= $sign;
                     $expression['decimal_expression'] .= $sign;
                 }

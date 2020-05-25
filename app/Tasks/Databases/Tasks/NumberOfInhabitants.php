@@ -4,13 +4,21 @@ namespace App\Tasks\Databases\Tasks;
 use App\Tasks\Databases\Services\FamilyDatabaseService;
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
+use App\Tasks\Databases\TableDatabaseTrait;
 
 class NumberOfInhabitants implements TaskInterface
 {
-    use TaskTrait;
+    use TaskTrait, TableDatabaseTrait;
 
     public $classLayout = 'col-md-8';
     public $classLayout2 = 'col-md-4';
+    public $familyService;
+
+    public function __construct($task)
+    {
+        $this->task = $task;
+        $this->familyService = new FamilyDatabaseService();
+    }
 
     public function getView()
     {
@@ -19,7 +27,7 @@ class NumberOfInhabitants implements TaskInterface
 
     public function initData()
     {
-        $families = (new FamilyDatabaseService())->getFamilies();
+        $families = $this->familyService->getFamilies();
         $this->data = compact('families');
         return $this->data;
     }
@@ -54,5 +62,11 @@ class NumberOfInhabitants implements TaskInterface
             '{family_children_list}' => $family_children_list,
             '{answer}' => $answer,
         ];
+    }
+
+    public function setSession() {
+        $userTaskId = $this->userTask->id;
+        $start = $this->getStartSession($userTaskId);
+        $this->setTables($userTaskId, $start);
     }
 }

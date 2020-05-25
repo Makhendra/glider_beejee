@@ -18,8 +18,8 @@ class NumbersFormTheRange implements TaskInterface
     {
         $number1 = rand(1, 50);
         $number = (string)base_convert($number1, $this->to_ci, 2);
-        $one_or_zero = random_int(0, 1);
-        $n = random_int(1, mb_strlen($number) - 1);
+        $one_or_zero = rand(0, 1);
+        $n = rand(1, mb_strlen($number) - 1);
         $this->data = [
             'number1' => $number1,
             'number2' => ($number1 + 10),
@@ -55,7 +55,7 @@ class NumbersFormTheRange implements TaskInterface
             $cnt = mb_substr_count($number, $one_or_zero);
             if ($cnt >= $this->data['n']) {
                 $answer += 1;
-            };
+            }
             $start += 1;
         }
         return $answer;

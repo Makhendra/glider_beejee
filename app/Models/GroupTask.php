@@ -21,6 +21,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|GroupTask whereId($value)
  * @method static Builder|GroupTask whereName($value)
  * @method static Builder|GroupTask whereUpdatedAt($value)
+ * @method static Builder|GroupTask active()
  * @method static truncate()
  * @method static create(array $array)
  * @mixin Eloquent
@@ -30,6 +31,10 @@ class GroupTask extends Model
     protected $table = 'groups';
     protected $guarded = [];
 
+    /**
+     * @param Builder $query
+     * @return Builder
+     */
     public function scopeActive(Builder $query)  {
         return $query->where('active', 1);
     }
