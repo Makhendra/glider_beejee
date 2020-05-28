@@ -2,116 +2,44 @@
 
 namespace App\Tasks\Databases\Services;
 
-use App\Models\Family;
-
 class FamilyDatabaseService
 {
-    public $counter = 0;
 
-    public function getFamily()
+    public function getFamilies($max = 7, $maxChildren = 3, $nested = false)
     {
-        $family = [];
-        $isFullFamily = rand(0, 1);
-        if ($isFullFamily > 0.2) {
-            $family['mother'] = $this->getPerson(Family::WOMEN_GENDER);
-            $family['father'] = $this->getPerson(
-                Family::MEN_GENDER,
-                $family['mother']['year'] - 5,
-                $family['mother']['year'] + 5,
-                null,
-                $family['mother']
-            );
-        } else {
-            $isWoman = rand(0, 1);
-            if ($isWoman) {
-                $family['mother'] = $this->getPerson(Family::WOMEN_GENDER);
-            } else {
-                $family['father'] = $this->getPerson(Family::MEN_GENDER);
+        $families = [];
+        $counter = 1;
+        $cntFamilies = rand(3, $max);
+        $nestedCnt = $nested ? rand(1, $maxChildren) : 0;
+        while ($counter < $cntFamilies) {
+            $class = new FamilyClass($counter, null, $maxChildren);
+            $class->generateFamily();
+            $family = $class->getFamily();
+            $families[] = $family;
+            $counter += 1;
+            $cntChildren = count($family['childrens']);
+            if ($nestedCnt && $cntChildren) {
+                $parentId = rand(0, ($cntChildren - 1 >= 0) ? $cntChildren - 1 : 0);
+                $parent = $family['childrens'][$parentId];
+                if (date('Y') - $parent['year'] >= 18) {
+                    $family['childrens'][$parentId]['is_parent'] = true;
+                    $parent = $family['childrens'][$parentId];
+                    $class = new FamilyClass($counter, $parent, $maxChildren, 1);
+                    $class->generateFamily();
+                    $families[] = $class->getFamily();
+                    $counter += 1;
+                    $nestedCnt -= 1;
+                }
             }
         }
-        $cntChildren = rand(0, 3);
-        $parent = $family['mother'] ?? $family['father'];
-        for ($i = 0; $i < $cntChildren; $i++) {
-            $gender = rand(0, 1) == 0 ? Family::MEN_GENDER : Family::WOMEN_GENDER;
-            $family['childrens'][] = $this->getPerson(
-                $gender,
-                $parent['year'] + 18,
-                2020,
-                $parent,
-                $family['mother'] ?? null,
-                $family['father'] ?? null
-            );
-        }
-        return $family;
-    }
-
-    public function getPerson($gender = null, $yearMin = 1950, $yearMax = 1999, $parent = null, $mother = null, $father = null)
-    {
-        $gender = $gender ? $gender : Family::MEN_GENDER;
-        $year = rand($yearMin, $yearMax);
-        $middleName = $father ? $father['name'] : null;
-        $lastNameId = $father ? $father['last_name_num'] : ($mother['last_name_num'] ?? null);
-        list($lastNum, $lastName) = $this->getLastName($gender, $lastNameId);
-        return [
-            'is_parent' => empty($parent) ,
-            'family_id' => $this->counter,
-            'last_name_num' => $lastNum,
-            'last_name' => $lastName,
-            'name' => $this->getName($gender),
-            'middlename' => $this->getMiddleName($gender, $middleName),
-            'year' => $year,
-            'gender' => $gender
-        ];
-    }
-
-
-    public function getFamilies()
-    {
-        $cntFamilies = rand(3, 7);
-        $result = [];
-        for ($i = 0; $i < $cntFamilies; $i++) {
-            $result[] = $this->getFamily();
-            $this->counter += 1;
-        }
-        return $result;
-    }
-
-    public function getLastName($gender, $parentLastNameNum = null)
-    {
-        if (empty($parentLastNameNum)) {
-            $lastName = Family::where('key', '=', 'last_name')->get()->random(1)->first();
-        } else {
-            $lastName = Family::find($parentLastNameNum);
-        }
-        $value = $gender == Family::MEN_GENDER ? $lastName->for_men : $lastName->for_women;
-        return [$lastName->id, $value];
-    }
-
-    public function getMiddleName($gender, $parent = null)
-    {
-        if ($parent) {
-            $middleName = Family::where('key', '=', 'name')
-                ->whereGender(Family::MEN_GENDER)
-                ->where('value', '=', $parent)
-                ->get()->random(1)->first();
-        } else {
-            $middleName = Family::where('key', '=', 'name')->whereGender(Family::MEN_GENDER)
-                ->get()
-                ->random(1)
-                ->first();
-        }
-        return $gender == Family::MEN_GENDER ? $middleName->for_men : $middleName->for_women;
-    }
-
-    public function getName($gender)
-    {
-        $name = Family::where('key', '=', 'name')->whereGender($gender)->get()->random(1)->first();
-        return $name->value;
+        return $families;
     }
 
     public function fullName($people)
     {
-        return "{$people['last_name']} {$people['name']} {$people['middlename']}";
+        if ($people) {
+            return "{$people['last_name']} {$people['name']} {$people['middle_name']}";
+        }
     }
 
 

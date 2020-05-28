@@ -8,7 +8,7 @@ use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
 use App\Tasks\NumberSystems\NumberSystemTrait;
 
-// Сколько единиц в двоичной записи шестнадцатиричного числа 155?
+// Сколько {one_or_zero} в двоичной записи {ci} числа {number}?
 class OneOfZero implements TaskInterface
 {
     use TaskTrait, NumberSystemTrait;
@@ -23,6 +23,9 @@ class OneOfZero implements TaskInterface
         return $this->data;
     }
 
+    //Переведем из {scale_of_notation} в 10, а потом в 2:
+    //{format_binary}
+    //Ответ: {answer}
     public function replaceArray(): array
     {
         return [
@@ -35,6 +38,7 @@ class OneOfZero implements TaskInterface
         ];
     }
 
+    // Перевести в десятичную, потом в двоичную и посчитать нули или единицы.
     public function getAnswer()
     {
         $one_or_zero = $this->oneZero[0] == $this->data['one_or_zero'] ? 0 : 1;

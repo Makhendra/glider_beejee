@@ -83,6 +83,10 @@ class TaskController extends Controller
                 ]
             );
         } else {
+            if(empty($userTask->data)) {
+                $data = $creator->initData();
+                $userTask->update(compact('data'));
+            }
             $creator->setData($userTask->data);
         }
         $creator->setUserTask($userTask);

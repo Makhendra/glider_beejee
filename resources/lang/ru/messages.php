@@ -30,4 +30,5 @@ return [
     'seo' => 'SEO',
     'how_decision' => 'Как решать',
     'format_answer' => 'Формат ответа',
+    'sort' => 'Сортировка',
 ];

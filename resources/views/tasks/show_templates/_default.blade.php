@@ -71,7 +71,8 @@
                                 @elseif($userTask->status == $statuses::WRONG and ! $userTask->hint_use)
                                     <div id="decision_error">
                                         <div class="alert alert-danger">
-                                            Вы ошиблись. Вид ошибки:
+                                            Вы ошиблись.
+{{--                                            Вид ошибки:--}}
                                             <div class="type-error">
                                                 {{--                                        самая простая и распространенная - неизвестная--}}
                                             </div>

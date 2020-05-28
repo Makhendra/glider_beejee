@@ -8,9 +8,11 @@ use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
 use App\Tasks\NumberSystems\NumberSystemTrait;
 
-// Все 4-буквенные слова, составленные из букв Д, Е, К, О, Р, записаны в алфавитном порядке и пронумерованы, начиная с 1.
-// Ниже приведено начало списка. 1. ДДДД 2. ДДДЕ 3. ДДДК 4. ДДДО 5. ДДДР 6. ДДЕД ...
-// Под каким номером в списке идёт первое слово, которое начинается с буквы K?
+//Все {count_letters}-буквенные слова, составленные из букв {letters},
+//записаны в алфавитном порядке и пронумерованы, начиная с 1.
+//Ниже приведено начало списка.
+//{list}
+//Под каким номером в списке идёт первое слово, которое начинается с буквы {letter}?
 class NumberInTheList implements TaskInterface
 {
     use TaskTrait, NumberSystemTrait;
@@ -27,6 +29,13 @@ class NumberInTheList implements TaskInterface
         return $this->data;
     }
 
+    //Из {count_chars} букв можно составить {count_chars}{sup}{count_letters}{sup_end} = {all_count_word} слов.
+    //
+    //Т. к. слова идут в алфавитном порядке, то на каждую букву приходиться {count_row} строк.
+    //
+    //Буква {letter} - {n} в алфавите. 
+    //
+    //Ответ: {count_row} * {n} + 1 = {answer}.
     public function replaceArray(): array
     {
         $letters = implode(', ', $this->data['letters']);
@@ -38,7 +47,7 @@ class NumberInTheList implements TaskInterface
             range(1, count($this->data['list']))
         );
         $list = implode(',<br> ', $list);
-        $allCountWord = pow($this->data['count_chars'], $this->data['count_letters']);
+        $allCountWord = pow($this->data['count_letters'], $this->data['count_chars']);
         return [
             '{count_letters}' => $this->data['count_letters'],
             '{count_chars}' => $this->data['count_chars'],
@@ -46,14 +55,22 @@ class NumberInTheList implements TaskInterface
             '{letter}' => $this->data['letter'],
             '{list}' => $list,
             '{all_count_word}' => $allCountWord,
+            '{count_row}' => $allCountWord / $this->data['count_letters'],
+            '{n}' => $this->data['number_letter'] + 1,
             '{answer}' => $this->getAnswer()
         ];
     }
 
+    //Для решения задания, необходимо:
+    //
+    //Посчитать сколько всего слов
+    //Посчитать сколько строк приходится на одну букву
+    //Посчитать ответ
+    //Не забыть прибавить 1
     public function getAnswer()
     {
-        $allCountWord = pow($this->data['count_chars'], $this->data['count_letters']);
-        return ($allCountWord / $this->data['count_chars']) * ($this->data['count_letters'] - 1) + 1;
+        $allCountWord = pow($this->data['count_letters'], $this->data['count_chars']);
+        return ($allCountWord / $this->data['count_letters']) * ($this->data['number_letter'] + 1) + 1;
     }
 
 }

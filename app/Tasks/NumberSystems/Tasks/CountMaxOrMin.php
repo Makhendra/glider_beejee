@@ -8,7 +8,9 @@ use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
 use App\Tasks\NumberSystems\NumberSystemTrait;
 
-// Сколько чисел, больших чем n?
+//Дано {n целых числа}, записанных в {ci} системе: 
+//{list_n}
+//Сколько среди них чисел, {max_or_min} чем {number}{sub}{scale_of_notation}{sub_end}?
 class CountMaxOrMin implements TaskInterface
 {
     use TaskTrait, NumberSystemTrait;
@@ -26,18 +28,24 @@ class CountMaxOrMin implements TaskInterface
 
         $list_n = [
             'list' => [],
-            'scale_of_notation' => $this->getRandomScale($scale_of_notation)
+            'scale_of_notation' => $this->getRandomScale(10)
         ];
         $max_or_min = $this->maxOrMinText[rand(0, 1)];
         for ($i = 0; $i < $n; $i++) {
             $number_origin = rand(1, 1000);
-            $number_scale = base_convert($number_origin, $this->to_ci, $scale_of_notation);
+            $number_scale = base_convert($number_origin, $this->to_ci, $list_n['scale_of_notation']);
             $list_n['list'][] = compact('number_origin', 'number_scale');
         }
         $this->data = compact('n', 'list_n', 'max_or_min', 'number');
         return $this->data;
     }
 
+    //Переведем изначальное число в десятичную СИ:
+    //{number}{sub}{scale_of_notation}{sub_end} = {number_format} = {number_to_demical}
+    //Переведем все остальные в десятичную:
+    // {list_n_to_demical}
+    //Подходят под условие {check_list_n}
+    //Ответ: {answer}
     public function replaceArray(): array
     {
         list($list_n, $list_n_decimal) = $this->getLists(
@@ -65,8 +73,8 @@ class CountMaxOrMin implements TaskInterface
         $checkListN = implode(', ', $checkListN);
 
         return [
-            '{n}' => $this->data['n'],
-            '{ci}' => $this->formats[$this->data['list_n']['scale_of_notation']],
+            '{n целых числа}' =>  $this->data['n'].' целых '.trans_choice('число|числа|чисел', $this->data['n']),
+            '{ci}' => $this->formats2[$this->data['list_n']['scale_of_notation']],
             '{list_n}' => $list_n,
             '{max_or_min}' => $this->data['max_or_min'],
 
@@ -86,6 +94,9 @@ class CountMaxOrMin implements TaskInterface
         ];
     }
 
+    //Перевести все числа в одну систему исчисления
+    //Сравнить с исходным
+    //Посчитать сколько подходят под условие
     public function getAnswer()
     {
         $answer = 0;

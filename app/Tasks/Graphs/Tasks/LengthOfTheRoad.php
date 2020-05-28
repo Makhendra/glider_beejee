@@ -10,7 +10,9 @@ use App\Tasks\Graphs\Services\GraphService;
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
 
-// Какова протяженность дороги от пункта А до пункта Б?
+// На рисунке снизу схема дорог в виде графа, в таблице содержатся сведения о протяженности каждой из этих дорог(в киллиметрах).
+// Так как таблицу и схему рисовали независимо друг от друга, то нумерация населенных пунктов в таблице никак не связана с обозначениями.
+// Какова протяженность дороги от {start} до {end}?
 class LengthOfTheRoad implements TaskInterface
 {
     private $graphService;
@@ -62,6 +64,12 @@ class LengthOfTheRoad implements TaskInterface
         return $this->data;
     }
 
+    //Соотнесем таблицу и схему:
+    //{points}
+    //Выпишем все пути от {start} до {end}:
+    //{path}
+    //И находим самый короткий путь.
+    //Ответ: {answer}
     public function replaceArray(): array
     {
         $this->graphService->setMatrix($this->data['graph']);
@@ -75,6 +83,11 @@ class LengthOfTheRoad implements TaskInterface
         ];
     }
 
+    //Нужно соотнести таблицу и рисунок. Проще всего это делать от точек, которые сильно отличаются от других.
+    //
+    //К примеру к населенному пункту не ведет ни одна дорога и такой пункт в единственном числе. 
+    //
+    //Или точка имеет соединение со всеми остальными, а других меньше.
     public function getAnswer()
     {
         $distance = $this->graphService->getDistance($this->data['start']['alpha'], $this->data['end']['alpha']);

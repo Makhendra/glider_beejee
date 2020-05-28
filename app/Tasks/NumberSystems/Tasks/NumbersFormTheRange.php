@@ -8,8 +8,8 @@ use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
 use App\Tasks\NumberSystems\NumberSystemTrait;
 
-// Укажите количество целых десятичных чисел из диапазона от 39 до 49 включительно,
-// имеющих в своей двоичной записи более 3 единиц.
+//Укажите количество целых десятичных чисел из диапазона от {number1} до {number2} включительно,
+//имеющих в своей двоичной записи больше либо равно {one_or_zero}.
 class NumbersFormTheRange implements TaskInterface
 {
     use TaskTrait, NumberSystemTrait;
@@ -29,6 +29,10 @@ class NumbersFormTheRange implements TaskInterface
         return $this->data;
     }
 
+    //Переведем все числа из диапазона:
+    //{number_list}
+    //
+    //Ответ: {answer}
     public function replaceArray(): array
     {
         $number_list = [];
@@ -44,6 +48,8 @@ class NumbersFormTheRange implements TaskInterface
         ];
     }
 
+    //Переведите все числа из диапазона в двоичную систему исчисления
+    //Посчитайте числа подходящие под условия
     public function getAnswer(&$list = null)
     {
         $one_or_zero = $this->oneZero[0] == $this->data['one_or_zero'] ? 0 : 1;
@@ -53,7 +59,7 @@ class NumbersFormTheRange implements TaskInterface
             $number = (string)base_convert($start, $this->to_ci, 2);
             $list[] = $start.' – '.$number;
             $cnt = mb_substr_count($number, $one_or_zero);
-            if ($cnt >= $this->data['n']) {
+            if ($cnt > $this->data['n']) {
                 $answer += 1;
             }
             $start += 1;

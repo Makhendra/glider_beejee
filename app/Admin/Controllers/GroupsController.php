@@ -17,7 +17,7 @@ class GroupsController extends AdminController
      */
     protected $title;
 
-    protected function __construct()
+    public function __construct()
     {
         $this->title = __('messages.groups');
     }
@@ -32,6 +32,7 @@ class GroupsController extends AdminController
         $grid = new Grid(new GroupTask());
         $grid->column('name', __('messages.name'));
         $grid->column('active', __('messages.active'))->switch();
+        $grid->column('sort', __('messages.sort'))->editable();
         return $grid;
     }
 
@@ -47,9 +48,10 @@ class GroupsController extends AdminController
 
         $show->field('id', __('messages.id'));
         $show->field('name', __('messages.name'));
+        $show->field('active', __('messages.active'));
+        $show->field('sort', __('messages.sort'));
         $show->field('created_at', __('messages.created_at'));
         $show->field('updated_at', __('messages.updated_at'));
-        $show->field('active', __('messages.active'));
 
         return $show;
     }
@@ -66,6 +68,7 @@ class GroupsController extends AdminController
             __('messages.group'),
             function ($form) {
                 $form->text('name', __('messages.name'));
+                $form->text('sort', __('messages.sort'));
                 $form->switch('active', __('messages.active'))->default(1);
             }
         );
@@ -81,7 +84,7 @@ class GroupsController extends AdminController
                                 return 'unique:tasks,type';
                             }
                         });
-                        $form->textarea('task_text', __('messages.task_text'));
+                        $form->ckeditor('task_text', __('messages.task_text'));
                         $form->ckeditor('decision', __('messages.how_decision'));
                         $form->ckeditor('answer', __('messages.format_answer'));
                         $form->switch('active', __('messages.active'));

@@ -29,6 +29,26 @@ trait NumberSystemTrait
         'шестнадцатиричного',
     ];
 
+    public $formats2 = [
+        '0',
+        '1',
+        'двоичной',
+        'троичной',
+        'четверичной',
+        'пятеричной',
+        'шестеричной',
+        'семеричной',
+        'восьмеричной',
+        'девятеричной',
+        'десятичной',
+        'одинацатиричной',
+        'двенадцатиричной',
+        'тринадцатеричной',
+        'четырнадцатеричной',
+        'пятнадцятиричной',
+        'шестнадцатиричной',
+    ];
+
     public function generateList($count_letters)
     {
         $alpha = getAlpha();
@@ -67,7 +87,7 @@ trait NumberSystemTrait
         $text = '';
         $number_array = str_split($number);
 
-        if (in_array($from_ci, $number_array) or $number == $from_ci) {
+        if (in_array($from_ci, $number_array)) {
             return ['text' => 'Перевод невозможен', 'answer_format' => 'Ошибка', 'answer' => 0];
         }
         $high_power = count($number_array);
@@ -123,8 +143,8 @@ trait NumberSystemTrait
     public function getLists($list, $scale_of_notation = false) {
         $list_n = [];
         $list_n_decimal = [];
-        $scale_of_notation = $scale_of_notation ?: $list[0]['scale_of_notation'];
         foreach ($list as $key => $element) {
+            $scale_of_notation = $list[$key]['scale_of_notation'] ?? $scale_of_notation;
             $list_n[] = $element['number_scale'] . '<sub>' . $scale_of_notation . '</sub>';
             $format = $this->formatNumber(
                 $element['number_scale'],
@@ -140,10 +160,18 @@ trait NumberSystemTrait
     }
 
     public function formatAnswer($number, $from_ci, $to_ci) {
-        $answer = base_convert($number, $from_ci, $to_ci);
         if($from_ci > $to_ci) {
-            return $this->deleting($number, $to_ci);
+            $text = '';
+            if($from_ci != 10) {
+                $numberDemical = base_convert($number, $from_ci, $this->to_ci);
+                $textFormat = $this->formatNumber($numberDemical, $this->to_ci, $to_ci, '');
+                $text = $number.'<sub>'.$from_ci.'</sub> = '.$textFormat['text']. ' = '.$numberDemical.'<br><br>';
+                $number = $numberDemical;
+            }
+            $text .= $this->deleting($number, $to_ci);
+            return $text;
         } else {
+            $answer = base_convert($number, $from_ci, $to_ci);
             $format= $this->formatNumber($number, $from_ci, $to_ci, $answer);
             return $format['text'].'='.$format['answer_format'];
         }
@@ -162,7 +190,7 @@ trait NumberSystemTrait
         $expression['decimal_expression'] = '';
         for ($i = 0; $i < $cntElements; $i++) {
             $scale_of_notation = $this->getRandomScale();
-            $number_origin = rand(1, 1000);
+            $number_origin = round(rand(1, 1000) / 2);
             $number_scale = base_convert($number_origin, $this->to_ci, $scale_of_notation);
             $expression['elements'][$i] = compact('number_origin', 'number_scale', 'scale_of_notation');
             $expression['decimal_expression'] .= $number_origin;
@@ -202,6 +230,7 @@ trait NumberSystemTrait
             $expression['expression'] .= ')';
             $expression['decimal_expression'] .= ')';
         }
+        $expression = str_replace('()', '', $expression);
         return $expression;
     }
 }

@@ -4,7 +4,6 @@
         $table = array_map(function (&$item) {unset($item['not_use']);return $item;}, $table);
     }
     @endphp
-    <div class="col">
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -17,11 +16,10 @@
             @foreach($table as $key => $row)
                 <tr>
                     @foreach($row as $k => $item)
-                        <td>{!! $item !!}</td>
+                        <td class="not_wrap">{!! $item !!}</td>
                     @endforeach
                 </tr>
             @endforeach
             </tbody>
         </table>
-    </div>
 @endisset

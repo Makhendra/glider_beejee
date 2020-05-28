@@ -8,9 +8,8 @@ use App\Tasks\NumberSystems\NumberSystemTrait;
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
 
-//Вычислите значение выражения
-//11559 * 11859
-//В ответе запишите вычисленное значение в десятичной системе счисления.
+//Вычислите значение выражения {number1}{sub}{scale_of_notation1}{sub_end} {sign} {number2}{sub}{scale_of_notation2}{sub_end}
+//В ответе запишите вычисленное значение в десятичной системе счисления. Если число дробное округлите до 2 знака.
 class Computation implements TaskInterface
 {
     use TaskTrait, NumberSystemTrait;
@@ -18,7 +17,7 @@ class Computation implements TaskInterface
     public function initData()
     {
         $sign = $this->signs[rand(0, count($this->signs) - 1)];
-        $scale_of_notation1 = $this->getRandomScale();
+        $scale_of_notation1 = $this->getRandomScale(10);
         $scale_of_notation2 = $this->getRandomScale();
 
         $number1 = rand(1, 1000);
@@ -43,6 +42,8 @@ class Computation implements TaskInterface
         return $this->data;
     }
 
+    //Переведите все в десятичную систему исчисления
+    //Посчитайте значение выражения
     public function getAnswer()
     {
         $answer1 = base_convert($this->data['number1'], $this->data['scale_of_notation1'], $this->to_ci);
@@ -55,7 +56,7 @@ class Computation implements TaskInterface
                 $answer = $answer1 * $answer2;
                 break;
             case '/':
-                $answer = $answer1 / $answer2;
+                $answer = round($answer1 / $answer2, 2);
                 break;
             case '+':
             default:
@@ -65,6 +66,11 @@ class Computation implements TaskInterface
         return $answer;
     }
 
+    //Переведем числа в десятичную:
+    //{number1}{sub}{scale_of_notation1}{sub_end} = {format1_text} = {format1_answer}
+    //{number2}{sub}{scale_of_notation2}{sub_end} = {format2_text} = {format2_answer}
+    //Перепишем выражение:
+    //{format1_answer} {sign} {format2_answer} = {answer}
     public function replaceArray(): array
     {
         return [

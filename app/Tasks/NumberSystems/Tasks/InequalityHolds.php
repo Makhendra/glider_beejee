@@ -8,7 +8,8 @@ use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
 use App\Tasks\NumberSystems\NumberSystemTrait;
 
-// Сколько существует целых чисел x, для которых выполняется неравенство 2A16<x<618?
+// Сколько целых чисел x, для которых выполняется неравенство
+// {number1}{sub}{scale_of_notation1}{sub_end} < x < {number2}{sub}{scale_of_notation2}{sub_end} ?
 class InequalityHolds implements TaskInterface
 {
     use TaskTrait, NumberSystemTrait;
@@ -40,6 +41,17 @@ class InequalityHolds implements TaskInterface
     }
 
 
+    //Переведем в десятичную СИ
+    //
+    //{number1}{sub}{scale_of_notation1}{sub_end} = {format1_text} = {format1_answer}
+    //
+    //{number2}{sub}{scale_of_notation2}{sub_end} = {format2_text} = {format2_answer}
+    //
+    //Теперь наше неравенство будет выглядеть так: {format1_answer} < x < {format2_answer}
+    //
+    //Следовательно, существует {answer} целых чисел, для которых это неравенство выполнится.
+    //
+    //Ответ: {answer}
     public function replaceArray(): array
     {
         return [
@@ -55,6 +67,11 @@ class InequalityHolds implements TaskInterface
         ];
     }
 
+
+    //Для решения этой задачи необходимо:
+    //
+    //Перевести в десятичную систему счисления числа из неравенства
+    //Переписать неравенство и посчитать количество чисел
     public function getAnswer()
     {
         $answer1 = base_convert($this->data['number1'], $this->data['scale_of_notation1'], $this->to_ci);

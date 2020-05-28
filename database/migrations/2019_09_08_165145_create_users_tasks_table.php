@@ -17,7 +17,7 @@ class CreateUsersTasksTable extends Migration
             $table->bigIncrements('id');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('group_id')->constrained();
-            $table->foreignId('task_id')->constrained();
+            $table->foreignId('task_id')->constrained()->onDelete('cascade');
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('hint_use')->default(0);
             $table->json('data')->nullable();

@@ -12,3 +12,9 @@
 .hidden {
   display: none;
 }
+
+.not_wrap {
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}

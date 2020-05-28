@@ -41,6 +41,24 @@ class TasksController extends AdminController
         );
         $grid->column('task_text', __('messages.task_text'))->view('admin.components.html');
         $grid->column('active', __('messages.active'))->switch();
+        $grid->filter(
+            function ($filter) {
+                $filter->disableIdFilter();
+                $filter->like('name', __('messages.name'));
+                $filter->where(
+                    function ($query) {
+                        $input = $this->input;
+                        $query->whereHas(
+                            'group',
+                            function ($query) use ($input) {
+                                $query->whereIn('groups.id', array_values($input));
+                            }
+                        );
+                    },
+                    __('messages.groups')
+                )->multipleSelect(GroupTask::all()->pluck('name', 'id'));
+            }
+        );
 
         return $grid;
     }
@@ -80,8 +98,8 @@ class TasksController extends AdminController
             __('messages.task'),
             function ($form) {
                 $form->select('group_id', __('messages.group'))->options(GroupTask::pluck('name', 'id'));
-                $form->text('title', __('messages.task_title'));
-                $form->number('type', __('messages.type'))->help('Не рекомендуется изменять это параметр');
+                $form->text('title', __('messages.task_title'))->required();
+                $form->number('type', __('messages.type'))->help('Не рекомендуется изменять это параметр')->required();
                 $form->ckeditor('task_text', __('messages.task_text'));
                 $form->ckeditor('decision', __('messages.how_decision'));
                 $form->ckeditor('answer', __('messages.format_answer'));

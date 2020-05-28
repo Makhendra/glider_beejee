@@ -4,13 +4,17 @@
 namespace App\Tasks\Databases\Tasks;
 
 
+use App\Models\CustomSession;
 use App\Tasks\Databases\Services\FamilyDatabaseService;
 use App\Tasks\Databases\TableDatabaseTrait;
 use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
 use Throwable;
 
-// Определите количество женщин, рожавших ребёнка после достижения n полных лет?
+// Даны фрагменты двух таблиц из базы данных. Каждая строка таблицы 2 содержит информацию о ребёнке и об одном из его родителей.
+// Информация представлена значением поля ID в соответствующей строке таблицы 1
+//На основании имеющихся данных определите количество женщин, рожавших ребёнка после достижения {age} полных лет.
+//При вычислении ответа учитывайте только информацию из приведённых фрагментов таблиц.
 class NumberOfWomen implements TaskInterface
 {
     use TaskTrait, TableDatabaseTrait;
@@ -37,6 +41,10 @@ class NumberOfWomen implements TaskInterface
         return $this->data;
     }
 
+    //Весь список мам:
+    //{mother_list}
+    //Получилось {n} строк, {exception}
+    //Ответ: {answer}
     public function replaceArray(): array
     {
         $answer = 0;
@@ -74,12 +82,12 @@ class NumberOfWomen implements TaskInterface
             }
             $cnt = 0;
             foreach ($exception as $e) {
-                $textException .= $exception['mother'] . ' – ' . $e['cnt'] . '; ';
+                $textException .= $e['mother'] . ' – ' . $e['cnt'] . '; ';
                 $cnt += $e['cnt'] - 1;
             }
             $textException .= 'Поэтому нужно вычесть '.$cnt;
         }
-        $html = view('components.table_database', ['table' => session('motherList_'.$this->userTask->id)]);
+        $html = view('components.table_database', ['table' =>  CustomSession::getValue('motherList_'.$this->userTask->id)]);
         try {
             $html = $html->render();
         } catch (Throwable $e) {
@@ -94,6 +102,7 @@ class NumberOfWomen implements TaskInterface
         ];
     }
 
+    //Соотнести таблицы, и выписать список мам. По списку вычислить тех, кто удовлетворяет условию.
     public function getAnswer()
     {
         $answer = 0;

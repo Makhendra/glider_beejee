@@ -8,7 +8,8 @@ use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
 use App\Tasks\NumberSystems\NumberSystemTrait;
 
-//Сколько значащих нулей в двоичной записи значения выражения ...?
+//Сколько значащих нулей в двоичной записи значения выражения {expression}?
+//В ответе запишите только целое округленное число.
 class ZerosInBinary implements TaskInterface
 {
     use TaskTrait, NumberSystemTrait;
@@ -20,6 +21,13 @@ class ZerosInBinary implements TaskInterface
         return $this->data;
     }
 
+    //Переведем все числа в одну систему исчисления, для простоты в десятичную:
+    //{decimal_list}
+    //Новое выражение будет выглядеть:
+    //{decimal_expression} = {decimal_expression_answer}
+    //Переведем в двоичную СИ:
+    //{decimal_expression_answer} = {binary_expression_format}
+    //Ответ: {answer}
     public function replaceArray(): array
     {
         $decimal_list = [];
@@ -47,8 +55,8 @@ class ZerosInBinary implements TaskInterface
 
     public function getDecimal()
     {
-        $decimal = $this->data['decimal_expression'];
-        $value = eval('return ' . $decimal . ';');
+        $decimal = $this->data['decimal_expression'] ?? '';
+        $value = eval('return '.$decimal.';');
         return round($value);
     }
 
@@ -58,6 +66,10 @@ class ZerosInBinary implements TaskInterface
         return base_convert($decimal, $this->to_ci, 2);
     }
 
+    //Для решения этой задачи необходимо:
+    //Перевести все в одну систему исчисления
+    //Посчитать значение выражения
+    //Перевести его в двоичную СИ
     public function getAnswer()
     {
         return mb_substr_count($this->toBinary(), 0);

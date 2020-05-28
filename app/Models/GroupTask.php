@@ -12,6 +12,8 @@ use Illuminate\Support\Carbon;
  *
  * @property int $id
  * @property string $name
+ * @property boolean $active
+ * @property integer $sort
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @method static Builder|GroupTask newModelQuery()
@@ -20,6 +22,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|GroupTask whereCreatedAt($value)
  * @method static Builder|GroupTask whereId($value)
  * @method static Builder|GroupTask whereName($value)
+ * @method static Builder|GroupTask whereActive($value)
+ * @method static Builder|GroupTask whereSort($value)
  * @method static Builder|GroupTask whereUpdatedAt($value)
  * @method static Builder|GroupTask active()
  * @method static truncate()
@@ -30,6 +34,15 @@ class GroupTask extends Model
 {
     protected $table = 'groups';
     protected $guarded = [];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('active', 'desc')->orderBy('sort', 'asc');
+        });
+    }
 
     /**
      * @param Builder $query

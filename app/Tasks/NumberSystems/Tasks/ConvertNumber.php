@@ -6,7 +6,7 @@ use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
 use App\Tasks\NumberSystems\NumberSystemTrait;
 
-//Переведите число 10100102 в систему счисления с основанием 10.
+//Переведите число {number}{sub}{scale_notation1}{sub_end} в систему счисления с основанием {scale_notation2}.
 class ConvertNumber implements TaskInterface
 {
     use TaskTrait, NumberSystemTrait;
@@ -21,6 +21,9 @@ class ConvertNumber implements TaskInterface
         return $this->data;
     }
 
+    //Перевод:
+    //{format_answer}
+    //Ответ: {answer}
     public function replaceArray(): array
     {
         return [
@@ -36,6 +39,7 @@ class ConvertNumber implements TaskInterface
         ];
     }
 
+    //Проще всего переводить все в 10 СИ и из нее в нужную.
     public function getAnswer()
     {
         return base_convert($this->data['number'], $this->data['scale_notation1'], $this->data['scale_notation2']);

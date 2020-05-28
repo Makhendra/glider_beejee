@@ -11,7 +11,12 @@ use App\Tasks\TaskInterface;
 use App\Tasks\TaskTrait;
 use Throwable;
 
-// Определите количество жителей, имеющих как минимум одного старшего брата?
+//Ниже представлены два фрагмента таблиц из базы данных о жителях микрорайона.
+//Каждая строка Таблицы 2 содержит информацию о ребёнке и об одном из его родителей.
+//Информация представлена значением поля ID в соответствующей строке Таблицы 1.
+//
+//На основании приведённых данных определите количество жителей, имеющих как минимум {one_son_or_daughter}.
+//При вычислении ответа учитывайте только информацию из приведённых фрагментов таблиц.
 class OneOlderBrother implements TaskInterface
 {
     use TaskTrait, TableDatabaseTrait;
@@ -42,24 +47,32 @@ class OneOlderBrother implements TaskInterface
         return $this->data;
     }
 
+    //Выпишем таблицу семей:
+    //{son_list}
+    //Получилось {n} семей где 2 и более ребенка. Из них под условие подошли {answer}
     public function replaceArray(): array
     {
-        $n = CustomSession::getValue('sonList_'.$this->userTask->id) ?: [];
-        $table = CustomSession::getValue('sonList_'.$this->userTask->id);
         try {
-            $html = view('components.table_database', ['table' => $table])->render();
-        } catch (Throwable $e) {
-            $html = '';
+            $table = CustomSession::getValue('sonList_' . $this->userTask->id) ?: [];
+            try {
+                $html = view('components.table_database', ['table' => $table])->render();
+            } catch (Throwable $e) {
+                $html = '';
+            }
+            return [
+                '{one_son_or_daughter}' => $this->data['son_or_daughter']['text'],
+                '{answer}' => $this->getAnswer(),
+                '{son_list}' => $html,
+                '{n}' => count($table)
+            ];
+        } catch (\Exception $exception) {
+            dd('aaa');
         }
-        return [
-            '{one_son_or_daughter}' => $this->data['son_or_daughter']['text'],
-            '{son_or_daughter}' => $this->data['son_or_daughter']['text'],
-            '{answer}' => $this->getAnswer(),
-            '{son_list}' => $html,
-            '{n}' => count($n)
-        ];
     }
 
+    //Соотнесите таблицы
+    //Выпишете семьи у которых есть 2 и более ребенка
+    //Вычеркните те семьи, которые не удовлетворяют условию
     public function getAnswer()
     {
         $answer = 0;

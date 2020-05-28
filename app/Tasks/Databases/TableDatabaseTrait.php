@@ -39,13 +39,14 @@ trait TableDatabaseTrait
                     }
                 }
                 $table = array_merge($mothers, $fathers, $childrens);
+                $table = array_filter($table);
                 shuffle($table);
                 foreach ($table as $key => $people) {
                     $table1[] = [
                         'id' => $start,
                         'Фамилия_И.О.' => $this->familyService->fullName($people),
                         'Пол' => $people['gender'] == Family::WOMEN_GENDER ? 'Ж' : 'М',
-                        'Год_рождения' => $people['year'],
+                        'Год рождения' => $people['year'],
                         'not_use' => $people
                     ];
                     if (!$people['is_parent']) {
@@ -114,9 +115,9 @@ trait TableDatabaseTrait
                     );
                     $children = array_shift($children);
                     $motherList[$j] = [
-                        'ID и Год Рождения матери' => $mother['id'] . ' – ' . $mother['Год_рождения'],
-                        'ID_Ребёнка и Год Рождения' => $children['id'] . ' – ' . $children['Год_рождения'],
-                        $this->data['age'] . ' лет' => ($children['Год_рождения'] - $mother['Год_рождения']) > $this->data['age'] ? 'Да' : 'Нет'
+                        'ID и Год Рождения матери' => $mother['id'] . ' – ' . $mother['Год рождения'],
+                        'ID_Ребёнка и Год Рождения' => $children['id'] . ' – ' . $children['Год рождения'],
+                        $this->data['age'] . ' лет' => ($children['Год рождения'] - $mother['Год рождения']) > $this->data['age'] ? 'Да' : 'Нет'
                     ];
                 }
             }
@@ -164,7 +165,7 @@ trait TableDatabaseTrait
                             }
                         );
                         $childId = array_shift($childId);
-                        $childrens[] = $childId['id'] . ' ' . $childId['Пол'] . ' ' . $childId['Год_рождения'];
+                        $childrens[] = $childId['id'] . ' ' . $childId['Пол'] . ' ' . $childId['Год рождения'];
                     }
                     $sonList[] = [
                         'ID_Родителей' => implode(' – ', $ids),
@@ -175,6 +176,29 @@ trait TableDatabaseTrait
             sort($sonList);
             CustomSession::setValue('sonList_' . $userTaskId, $sonList);
         }
+    }
+
+    public function setChildrenList($userTaskId, $year)
+    {
+//        $childrenList = CustomSession::getValue("childrenList_$userTaskId");
+//        if (empty($childrenList)) {
+            $childrenList = [];
+            $table1 = CustomSession::getValue("table1_{$this->userTask->id}");
+            $table2 = CustomSession::getValue("table2_{$this->userTask->id}");
+            $childrenIds = array_column($table2, 'ID_Ребёнка');
+            $childrenIds = array_unique($childrenIds);
+            $table1 = array_filter($table1, function ($item) use($childrenIds) {
+                return in_array($item['id'], $childrenIds);
+            });
+            foreach ($table1 as $value) {
+                $childrenList[] = [
+                  'id' => $value['id'],
+                  'Год рождения' => $value['Год рождения'],
+                  'Сколько лет на '.$year => $year - $value['Год рождения'],
+                ];
+            }
+            CustomSession::setValue('childrenList_' . $userTaskId, $childrenList);
+//        }
     }
 
 }

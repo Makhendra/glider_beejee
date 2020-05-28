@@ -26,6 +26,11 @@
                     <div class="row no-gutters">
                         <div class="card-body">
                             <h5 class="card-title">Статистика</h5>
+                            <span class="badge badge-primary" style="width: 10px">&nbsp;</span> Начаты <br>
+                            <span class="badge badge-success" style="width: 10px">&nbsp;</span> Успешно решены <br>
+                            <span class="badge badge-danger" style="width: 10px">&nbsp;</span> Взяты подсказки <br>
+                            <hr>
+
                             @foreach($progress as $groupName => $progressUser)
                                 <div class="d-flex flex-row mb-2 align-items-center">
                                     <div class="col-4">{{$groupName}}</div>
@@ -33,15 +38,15 @@
                                         <div class="progress">
                                                 <div class="progress-bar" role="progressbar" style="width: {{$progressUser['all']}}%"
                                                  aria-valuenow="{{$progressUser['all']}}" aria-valuemin="0" aria-valuemax="100">
-                                                    Начаты {{$progressUser['all']}}%
+                                                    {{$progressUser['all']}}%
                                                 </div>
                                             <div class="progress-bar bg-success" role="progressbar" style="width: {{$progressUser['success']}}%"
                                                  aria-valuenow="{{$progressUser['success']}}" aria-valuemin="0" aria-valuemax="100">
-                                                Успешно решены {{$progressUser['success']}}%
+                                                 {{$progressUser['success']}}%
                                             </div>
                                             <div class="progress-bar bg-danger" role="progressbar" style="width: {{$progressUser['wrong']}}%"
                                                  aria-valuenow="{{$progressUser['wrong']}}" aria-valuemin="0" aria-valuemax="100">
-                                                Взяты подсказки {{$progressUser['wrong']}}%
+                                                {{$progressUser['wrong']}}%
                                             </div>
                                         </div>
                                     </div>
