@@ -180,25 +180,114 @@ trait TableDatabaseTrait
 
     public function setChildrenList($userTaskId, $year)
     {
-//        $childrenList = CustomSession::getValue("childrenList_$userTaskId");
-//        if (empty($childrenList)) {
+        $childrenList = CustomSession::getValue("childrenList_$userTaskId");
+        if (empty($childrenList)) {
             $childrenList = [];
             $table1 = CustomSession::getValue("table1_{$this->userTask->id}");
             $table2 = CustomSession::getValue("table2_{$this->userTask->id}");
             $childrenIds = array_column($table2, 'ID_Ребёнка');
             $childrenIds = array_unique($childrenIds);
-            $table1 = array_filter($table1, function ($item) use($childrenIds) {
-                return in_array($item['id'], $childrenIds);
-            });
+            $table1 = array_filter(
+                $table1,
+                function ($item) use ($childrenIds) {
+                    return in_array($item['id'], $childrenIds);
+                }
+            );
             foreach ($table1 as $value) {
                 $childrenList[] = [
-                  'id' => $value['id'],
-                  'Год рождения' => $value['Год рождения'],
-                  'Сколько лет на '.$year => $year - $value['Год рождения'],
+                    'id' => $value['id'],
+                    'Год рождения' => $value['Год рождения'],
+                    'Сколько лет на ' . $year => $year - $value['Год рождения'],
                 ];
             }
             CustomSession::setValue('childrenList_' . $userTaskId, $childrenList);
-//        }
+        }
+    }
+
+    public function setTablesWithRecourse($userTaskId, $start)
+    {
+        $table1 = CustomSession::getValue("table1_$userTaskId");
+        $table2 = CustomSession::getValue("table2_$userTaskId");
+        if (empty($table1) or empty($table2)) {
+            $table1 = [];
+            $table2 = [];
+            if (isset($this->data['families'])) {
+                $table = [];
+                $this->merge($table, $this->data['families']);
+                $table = array_filter($table);
+                sort($table);
+                shuffle($table);
+                foreach ($table as $key => $people) {
+                    $table1[] = [
+                        'id' => $start,
+                        'Фамилия_И.О.' => $this->familyService->fullName($people),
+                        'Пол' => $people['gender'] == Family::WOMEN_GENDER ? 'Ж' : 'М',
+                        'Год рождения' => $people['year'],
+                        'not_use' => $people
+                    ];
+                    if (!$people['is_parent']) {
+                        $table2[] = [
+                            'ID_Родителя' => 'Ж',
+                            'ID_Ребёнка' => $start,
+                            'not_use' => $people
+                        ];
+                        $table2[] = [
+                            'ID_Родителя' => 'М',
+                            'ID_Ребёнка' => $start,
+                            'not_use' => $people,
+                        ];
+                    }
+                    $start += 1;
+                }
+                foreach ($table2 as $key => &$item) {
+                    if (in_array($item['ID_Родителя'], ['М', 'Ж'])) {
+                        $parentL = array_filter(
+                            $table1,
+                            function ($element) use ($item) {
+                                $family_id = $element['not_use']['family_id'] == $item['not_use']['family_id'];
+                                $gender = $element['not_use']['gender'] == ($item['ID_Родителя'] == 'Ж' ? Family::WOMEN_GENDER : Family::MEN_GENDER);
+                                $is_parent = $element['not_use']['is_parent'];
+                                return $family_id && $gender && $is_parent;
+                            }
+                        );
+                        $parent = array_shift($parentL);
+                        if (isset($parent['id'])) {
+                            $item['ID_Родителя'] = $parent['id'];
+                        } else {
+                            unset($table2[$key]);
+                        }
+                    }
+                }
+                shuffle($table2);
+            }
+            CustomSession::setValue("table1_$userTaskId", $table1);
+            CustomSession::setValue("table2_$userTaskId", $table2);
+        }
+    }
+
+    public function merge(&$table, $families, $is_family = false) {
+        array_walk(
+            $families,
+            function ($item) use (&$table, $is_family) {
+                if(isset($item['mother'])) {
+                    $table[] = $item['mother'];
+                }
+                if(isset($item['father'])) {
+                    $table[] = $item['father'];
+                }
+                if(isset($item['childrens'])) {
+                    array_walk(
+                        $item['childrens'],
+                        function ($child) use (&$table) {
+                            $table[] = $child;
+                        }
+                    );
+                }
+                if(isset($item['family'])) {
+                    $this->merge($table, $item['family'], true);
+                }
+            }
+        );
     }
 
 }

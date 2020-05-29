@@ -15,8 +15,8 @@ class FamilyClass
     private $father;
     private $childrens = [];
 
-    private $maxYear;
-    private $minYear;
+    public $maxYear;
+    public $minYear;
     private $parentsDiff = 5;
     private $childrenParentDiff = 18;
 
