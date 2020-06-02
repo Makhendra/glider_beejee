@@ -14,17 +14,42 @@
                 <div class="modal-body">
                     @csrf
                     <div class="form-group mb-4">
+                        <label for="name">Ваше ИМЯ (необязательное поле)</label>
+                        <input type="text" name="name" class="form-control" id="name"/>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="class">Класс (необязательное поле)</label>
+                        <input type="text" name="class" class="form-control" id="class"/>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="age">Возраст</label>
+                        <input type="number" name="age" class="form-control" id="age" required/>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="gender">Пол</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="gender" type="radio" class="form-control"
+                                   id="genderMale" value="male" required>
+                            <label class="form-check-label" for="genderMale">М</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="gender" type="radio" class="form-control"
+                                   id="genderFemale" value="female">
+                            <label class="form-check-label" for="genderFemale">Ж</label>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
                         <label for="">На сколько удобен сервис?</label><br>
                         @for($i = 1; $i < 11; $i ++)
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" name="convenience" type="radio" class="form-control"
-                                       id="convenience{{$i}}" value="{{$i}}">
+                                       id="convenience{{$i}}" value="{{$i}}" {{$i == 1 ? 'required' : ''}}>
                                 <label class="form-check-label" for="convenience{{$i}}">{{$i}}</label>
                             </div>
                         @endfor
                     </div>
                     <div class="form-group mb-4">
-                        <label for="task">Какое задание нужно добавить в первую очередь?</label>
+                        <label for="task">Какое задание(номер ЕГЭ) нужно добавить в первую очередь? Или группу заданий, например "Математическая логика" или "Анализ алгоритма с циклами и условные операторы"?</label>
                         <textarea name="task" class="form-control" id="task" rows="3"></textarea>
                     </div>
                     <div class="form-group mb-4">
@@ -32,13 +57,13 @@
                         @for($i = 1; $i < 11; $i ++)
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" name="howTo" type="radio" class="form-control"
-                                       id="howTo{{$i}}" value="{{$i}}">
+                                       id="howTo{{$i}}" value="{{$i}}" {{$i == 1 ? 'required' : ''}}>
                                 <label class="form-check-label" for="howTo{{$i}}">{{$i}}</label>
                             </div>
                         @endfor
                     </div>
                     <div class="form-group mb-4">
-                        <label for="objects">Нужны ли другие предметы? Если да, то какие?</label>
+                        <label for="objects">Нужны ли другие предметы? Если да, то какие? К примеру математика</label>
                         <textarea name="objects" class="form-control" id="objects" rows="3"></textarea>
                     </div>
                     <div class="form-group mb-4">
@@ -47,7 +72,7 @@
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" name="solution" type="radio" class="form-control"
                                        id="solution{{$i}}" value="{{$i}}">
-                                <label class="form-check-label" for="solution{{$i}}">{{$i}}</label>
+                                <label class="form-check-label" for="solution{{$i}}" {{$i == 1 ? 'required' : ''}}>{{$i}}</label>
                             </div>
                         @endfor
                     </div>

@@ -63,6 +63,7 @@ class LetterSequence implements TaskInterface
     public function replaceArray(): array
     {
         return [
+            '{n}' => count($this->data['graph']),
             '{answer}' => $this->getAnswer(),
             '{points}' => $this->graphService->getPoints($this->data['random_keys']),
         ];
