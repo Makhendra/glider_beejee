@@ -132,4 +132,12 @@ trait TaskTrait
     public function setSession() {
 
     }
+
+    public function successText($text) {
+        return '<span class="text-success">'.$text.'</span>';
+    }
+
+    public function wrongText($text) {
+        return '<span class="text-danger">'.$text.'</span>';
+    }
 }

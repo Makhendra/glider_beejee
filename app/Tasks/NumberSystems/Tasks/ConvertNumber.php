@@ -36,6 +36,7 @@ class ConvertNumber implements TaskInterface
                 $this->data['scale_notation2']
             ),
             '{answer}' => $this->getAnswer(),
+            '{t_ci}' => $this->formatTernaryBinary($this->data['number'], $this->data['scale_notation1']),
         ];
     }
 

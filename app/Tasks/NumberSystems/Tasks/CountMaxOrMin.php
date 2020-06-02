@@ -21,19 +21,20 @@ class CountMaxOrMin implements TaskInterface
     {
         $n = rand(3, 10);
 
-        $number_origin = rand(1, 1000);
+        $number_origin = rand(1, 200);
         $scale_of_notation = $this->getRandomScale();
         $number_scale = mb_strtoupper(base_convert($number_origin, $this->to_ci, $scale_of_notation));
         $number = compact('number_origin', 'number_scale', 'scale_of_notation');
 
         $list_n = [
             'list' => [],
-            'scale_of_notation' => $this->getRandomScale(10)
+            'scale_of_notation' => $this->getRandomScale($scale_of_notation)
         ];
         $max_or_min = $this->maxOrMinText[rand(0, 1)];
         for ($i = 0; $i < $n; $i++) {
-            $number_origin = rand(1, 1000);
-            $number_scale = mb_strtoupper(base_convert($number_origin, $this->to_ci, $list_n['scale_of_notation']));
+            $number_origin = rand(1, 200);
+            $number_scale = base_convert($number_origin, $this->to_ci, $list_n['scale_of_notation']);
+            $number_scale = mb_strtoupper($number_scale);
             $list_n['list'][] = compact('number_origin', 'number_scale');
         }
         $this->data = compact('n', 'list_n', 'max_or_min', 'number');
@@ -48,32 +49,53 @@ class CountMaxOrMin implements TaskInterface
     //Ответ: {answer}
     public function replaceArray(): array
     {
-        list($list_n, $list_n_decimal) = $this->getLists(
-            $this->data['list_n']['list'] ?? [],
-            $this->data['list_n']['scale_of_notation']
-        );
+        $list_n = [];
         $answer = 0;
+        $m = $this->data['max_or_min'] == $this->maxOrMinText[0] ? '>' : '<';
+        $n = $this->data['number']['number_origin'];
         $max_or_min = $this->data['max_or_min'] == $this->maxOrMinText[0] ? 1 : 0;
         $checkListN = [];
+        $list_n_compare = [];
+        $format = $this->formatNumber(
+            $this->data['number']['number_scale'],
+            $this->data['number']['scale_of_notation'],
+            $this->data['list_n']['scale_of_notation'],
+            base_convert(
+                $this->data['number']['number_scale'],
+                $this->data['number']['scale_of_notation'],
+                $this->data['list_n']['scale_of_notation']
+            )
+        );
+
         foreach ($this->data['list_n']['list'] as $element) {
+            $check = false;
+            $list_n[] = $element['number_scale'] . '<sub>' . $this->data['list_n']['scale_of_notation'] . '</sub>';
             if ($max_or_min) {
                 //Наибольшее
-                if ($element['number_origin'] > $this->data['number']['number_origin']) {
-                    $answer += 1;
-                    $checkListN[] = $element['number_origin'];
+                if ($element['number_origin'] > $n) {
+                    $check = true;
                 }
             } else {
                 //Наименьшее
-                if ($element['number_origin'] < $this->data['number']['number_origin']) {
-                    $answer += 1;
-                    $checkListN[] = $element['number_origin'];
+                if ($element['number_origin'] < $n) {
+                    $check = true;
                 }
+            }
+            $scale = "{$element['number_scale']}<sub>{$this->data['list_n']['scale_of_notation']}</sub>";
+            $t = "$scale $m {$format['answer_format']}";
+            if ($check) {
+                $answer += 1;
+                $checkListN[] = $scale;
+                $list_n_compare[] = $this->successText($t);
+            } else {
+                $list_n_compare[] =  $this->wrongText($t);
             }
         }
         $checkListN = implode(', ', $checkListN);
-
+        $list_n = implode('<br>', $list_n);
+        $list_n_compare = implode('<br>', $list_n_compare);
         return [
-            '{n целых числа}' =>  $this->data['n'].' целых '.trans_choice('число|числа|чисел', $this->data['n']),
+            '{n целых числа}' => $this->data['n'] . ' целых ' . trans_choice('число|числа|чисел', $this->data['n']),
             '{ci}' => $this->formats2[$this->data['list_n']['scale_of_notation']],
             '{list_n}' => $list_n,
             '{max_or_min}' => $this->data['max_or_min'],
@@ -81,15 +103,10 @@ class CountMaxOrMin implements TaskInterface
             '{number}' => $this->data['number']['number_scale'],
             '{scale_of_notation}' => $this->data['number']['scale_of_notation'],
 
-            '{number_to_demical}' => $this->data['number']['number_origin'],
-            '{number_format}' => $this->formatNumber(
-                $this->data['number']['number_scale'],
-                $this->data['number']['scale_of_notation'],
-                $this->to_ci,
-                ''
-            )['text'],
-            '{list_n_to_demical}' => $list_n_decimal,
+            '{number_format}' => $format['text'],
+            '{number_to_сi}' => $format['answer_format'],
             '{check_list_n}' => $checkListN,
+            '{list_n_compare}' => $list_n_compare,
             '{answer}' => $answer,
         ];
     }

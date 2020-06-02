@@ -126,6 +126,8 @@ trait NumberSystemTrait
             $text = 'Число уже в десятичной системе исчисления.<br><br>';
         }
         $text .= $this->deleting($answer, 2);
+        $binaryAnswer = base_convert($answer, $this->to_ci, 2);
+        $text .= '<br> Получилось '.$binaryAnswer;
         return $text;
     }
 
@@ -138,6 +140,14 @@ trait NumberSystemTrait
             $number = $div;
         }
         return $deleting;
+    }
+
+    public function getFormatListN($list, $scale_of_notation = false) {
+        $list_n = [];
+        foreach ($list as $key => $element) {
+            $list_n[] = $element['number_scale'] . '<sub>' . $scale_of_notation . '</sub>';
+        }
+        return implode('<br>', $list_n);
     }
 
     public function getLists($list, $scale_of_notation = false) {
@@ -232,5 +242,29 @@ trait NumberSystemTrait
         }
         $expression = str_replace('()', '', $expression);
         return $expression;
+    }
+
+    public function formatTernaryBinary($number, $from_ci) {
+        if(in_array($from_ci, [4, 8, 16])) {
+            $result = 'Перевод с помощью треад/тетрад:<br><br>';
+            switch ($from_ci) {
+                case 4:
+                    $d = 2;
+                    break;
+                case 8:
+                    $d = 3;
+                    break;
+                case 16:
+                    $d = 4;
+                    break;
+            }
+            $number_array = str_split($number);
+            foreach ($number_array as $k => $n) {
+                $answer = base_convert($n, $from_ci, 2);
+                $format = sprintf("%'.0{$d}d, ", $answer);
+                $result .= mb_strtoupper($n) . ' = ' . $format;
+            }
+            return $result;
+        }
     }
 }
