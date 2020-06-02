@@ -23,7 +23,7 @@ class CountMaxOrMin implements TaskInterface
 
         $number_origin = rand(1, 1000);
         $scale_of_notation = $this->getRandomScale();
-        $number_scale = base_convert($number_origin, $this->to_ci, $scale_of_notation);
+        $number_scale = mb_strtoupper(base_convert($number_origin, $this->to_ci, $scale_of_notation));
         $number = compact('number_origin', 'number_scale', 'scale_of_notation');
 
         $list_n = [
@@ -33,7 +33,7 @@ class CountMaxOrMin implements TaskInterface
         $max_or_min = $this->maxOrMinText[rand(0, 1)];
         for ($i = 0; $i < $n; $i++) {
             $number_origin = rand(1, 1000);
-            $number_scale = base_convert($number_origin, $this->to_ci, $list_n['scale_of_notation']);
+            $number_scale = mb_strtoupper(base_convert($number_origin, $this->to_ci, $list_n['scale_of_notation']));
             $list_n['list'][] = compact('number_origin', 'number_scale');
         }
         $this->data = compact('n', 'list_n', 'max_or_min', 'number');

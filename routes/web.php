@@ -26,6 +26,7 @@ Route::get(
     ['as' => 'social_callback', 'uses' => 'Auth\LoginController@handleProviderCallback']
 );
 Route::post('report-bug', 'ReportsController@create')->name('report_bug');
+Route::post('questionnaire', 'ReportsController@questionnaire')->name('questionnaire');
 Route::get('lk', 'LkController@index')->name('lk')->middleware('auth');
 Route::group(
     ['prefix' => 'groups', 'middleware' => ['auth', 'active']],

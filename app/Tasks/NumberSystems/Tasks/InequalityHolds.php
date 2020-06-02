@@ -55,8 +55,8 @@ class InequalityHolds implements TaskInterface
     public function replaceArray(): array
     {
         return [
-            '{number1}' => $this->data['number1'],
-            '{number2}' => $this->data['number2'],
+            '{number1}' => mb_strtoupper($this->data['number1']),
+            '{number2}' => mb_strtoupper($this->data['number2']),
             '{scale_of_notation1}' => $this->data['scale_of_notation1'],
             '{scale_of_notation2}' => $this->data['scale_of_notation2'],
             '{format1_text}' => $this->data['format1']['text'],
@@ -74,8 +74,6 @@ class InequalityHolds implements TaskInterface
     //Переписать неравенство и посчитать количество чисел
     public function getAnswer()
     {
-        $answer1 = base_convert($this->data['number1'], $this->data['scale_of_notation1'], $this->to_ci);
-        $answer2 = base_convert($this->data['number2'], $this->data['scale_of_notation2'], $this->to_ci);
-        return abs($answer2 - $answer1);
+        return abs($this->data['answer2'] - $this->data['answer1']) - 1;
     }
 }

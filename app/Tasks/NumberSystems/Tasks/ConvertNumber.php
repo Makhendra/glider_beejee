@@ -27,7 +27,7 @@ class ConvertNumber implements TaskInterface
     public function replaceArray(): array
     {
         return [
-            '{number}' => $this->data['number'],
+            '{number}' => mb_strtoupper($this->data['number']),
             '{scale_notation1}' => $this->data['scale_notation1'],
             '{scale_notation2}' => $this->data['scale_notation2'],
             '{format_answer}' => $this->formatAnswer(

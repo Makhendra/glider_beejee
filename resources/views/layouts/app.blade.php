@@ -37,10 +37,22 @@
                 <h1>{{ $title }}</h1>
             </div>
         @else
-            <div class="col-4"><img src="{{asset('logo3.png')}}" alt=""></div>
-            <div class="col-8 text-center">
-                <h1>{{ $title }}</h1>
-            </div>
+            @if(isset($fullPage))
+                <div class="col-12 text-center mb-3">
+                    <a href="{{url('/')}}">
+                        <img src="{{asset('logo3.png')}}" alt="">
+                    </a>
+                </div>
+            @else
+                <div class="col-4">
+                    <a href="{{url('/')}}">
+                        <img src="{{asset('logo3.png')}}" alt="">
+                    </a>
+                </div>
+                <div class="col-8 text-center">
+                    <h1>{{ $title }}</h1>
+                </div>
+            @endif
         @endif
     </div>
     @yield('content')
@@ -65,9 +77,11 @@
                     </div>
                     <div class="modal-body">
                         @csrf
+                        <input type="hidden" name="url" value="{{url()->current()}}">
+                        <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::id()}}">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
+                            <input name="email" type="email" class="form-control" id="exampleInputEmail1"
                                    aria-describedby="emailHelp">
                         </div>
                         <div class="form-group">

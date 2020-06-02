@@ -101,7 +101,7 @@ trait NumberSystemTrait
                 $text .= '+';
             }
         }
-        return ['text' => $text, 'answer_format' => $answer . "<sub>$to_ci</sub>", 'answer' => $answer];
+        return ['text' => $text, 'answer_format' => mb_strtoupper($answer) . "<sub>$to_ci</sub>", 'answer' => mb_strtoupper($answer)];
     }
 
     public function getRandomScale($offset = false) {
@@ -194,7 +194,7 @@ trait NumberSystemTrait
             $number_scale = base_convert($number_origin, $this->to_ci, $scale_of_notation);
             $expression['elements'][$i] = compact('number_origin', 'number_scale', 'scale_of_notation');
             $expression['decimal_expression'] .= $number_origin;
-            $expression['expression'] .= $number_scale.'<sub>'.$scale_of_notation.'</sub>';
+            $expression['expression'] .= mb_strtoupper($number_scale.'<sub>'.$scale_of_notation.'</sub>');
             if($cntBrackets && $next) {
                 $cntBrackets -= 1;
                 if($open) {

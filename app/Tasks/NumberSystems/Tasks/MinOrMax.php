@@ -23,7 +23,7 @@ class MinOrMax implements TaskInterface
         for ($i = 0; $i < $n; $i++) {
             $scale_of_notation = $this->getRandomScale(10);
             $number_origin = rand(1, 1000);
-            $number_scale = base_convert($number_origin, $this->to_ci, $scale_of_notation);
+            $number_scale = mb_strtoupper(base_convert($number_origin, $this->to_ci, $scale_of_notation));
             $list_n[] = compact('number_origin', 'number_scale', 'scale_of_notation');
         }
         $this->data = compact('n', 'list_n', 'max_or_min');

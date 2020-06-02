@@ -20,8 +20,23 @@ class Computation implements TaskInterface
         $scale_of_notation1 = $this->getRandomScale(10);
         $scale_of_notation2 = $this->getRandomScale();
 
-        $number1 = rand(1, 1000);
-        $number2 = rand($number1, 1000);
+        switch ($sign) {
+            case '*':
+                $number1 = rand(1, 25);
+                $number2 = rand($number1, 25);
+                break;
+            case '/':
+                $number1 = round(rand(1, 99) / 2);
+                $number2 = round(rand($number1, 100) / 2);
+                break;
+            case '+':
+            case '-':
+            default:
+                $number1 = rand(1, 99);
+                $number2 = rand($number1, 100);
+                break;
+        }
+
         $number1 = base_convert($number1, $this->to_ci, $scale_of_notation1);
         $number2 = base_convert($number2, $this->to_ci, $scale_of_notation2);
 
@@ -30,8 +45,8 @@ class Computation implements TaskInterface
 
         $this->data = [
             'sign' => $sign,
-            'number1' => $number1,
-            'number2' => $number2,
+            'number1' => mb_strtoupper($number1),
+            'number2' => mb_strtoupper($number2),
             'scale_of_notation1' => $scale_of_notation1,
             'scale_of_notation2' => $scale_of_notation2,
             'answer1' => $answer1,

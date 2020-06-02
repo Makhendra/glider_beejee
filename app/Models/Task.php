@@ -50,6 +50,14 @@ class Task extends Model
             ->select('id');
     }
 
+    public function wrongUserTask(){
+        return $this->hasMany(UserTask::class)
+            ->whereIN('status', [UserTask::WRONG, UserTask::NEXT])
+            ->where('hint_use', '=', 1)
+            ->where('user_id', Auth::id())
+            ->select('id');
+    }
+
     public function group() {
         return $this->belongsTo(GroupTask::class);
     }

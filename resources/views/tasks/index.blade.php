@@ -7,6 +7,11 @@
 @endsection
 
 @section('content')
+    <div class="alert alert-warning">Сайт еще находиться в разработке. Для улучшения сервиса, просим пройти
+        <a href="#"  data-toggle="modal" data-target="#questionnaire">опрос</a>. Об ошибке можно сообщить
+        <a href="#" data-toggle="modal" data-target="#reportAbug">тут</a>.
+    </div>
+    @include('components.questionnaire')
     <div class="row">
         <div class="col-md-3">
             @isset($groups)
@@ -48,7 +53,7 @@
                                     <a href="{{route('tasks.show', ['id' => $task->id])}}">{{$task->title}}</a>
                                 </td>
                                 <td><b>Успешно решено:</b> {{$task->successUserTask()->count()}} <br>
-                                    <b>Взято подсказок:</b> {{$task->userTask->sum('hint_use')}}</td>
+                                    <b>Взято подсказок:</b> {{$task->wrongUserTask()->sum('hint_use')}}</td>
                             </tr>
 
                         @endforeach

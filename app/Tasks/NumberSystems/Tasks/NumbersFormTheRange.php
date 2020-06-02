@@ -35,6 +35,12 @@ class NumbersFormTheRange implements TaskInterface
     //Ответ: {answer}
     public function replaceArray(): array
     {
+        $one_or_zero = $this->oneZero[0] == $this->data['one_or_zero'] ? 0 : 1;
+        if($one_or_zero == 0) {
+            $nOneOrZero = trans_choice('ноль|ноля|нулей', $one_or_zero);
+        } else {
+            $nOneOrZero = trans_choice('единицу|единицы|единиц', $one_or_zero);
+        }
         $number_list = [];
         $answer = $this->getAnswer($number_list);
         $number_list = implode(',<br> ', $number_list);
@@ -43,6 +49,7 @@ class NumbersFormTheRange implements TaskInterface
             '{number2}' => $this->data['number2'],
             '{n}' => $this->data['n'],
             '{one_or_zero}' => $this->data['one_or_zero'],
+            '{n_one_or_zero}'=> $nOneOrZero,
             '{answer}' => $answer,
             '{number_list}' => $number_list,
         ];

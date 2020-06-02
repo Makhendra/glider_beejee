@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Регистрация'])
+@extends('layouts.app', ['title' => 'Регистрация',  'fullPage' => true])
 
 @section('content')
 <div class="container">

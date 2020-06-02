@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Восстановление пароля'])
+@extends('layouts.app', ['title' => 'Восстановление пароля', 'fullPage' => true])
 
 @section('content')
 <div class="container">
