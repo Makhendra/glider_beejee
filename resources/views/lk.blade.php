@@ -3,7 +3,7 @@
 @section('content')
     @isset($user)
         <div class="row">
-            <div class="col-4">
+            <div class="col-xl-4 col-sm-12">
                 <div class="card mb-3">
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-8">
+            <div class="col-xl-8 col-sm-12">
                 <div class="card mb-3">
                     <div class="row no-gutters">
                         <div class="card-body">
@@ -33,8 +33,8 @@
 
                             @foreach($progress as $groupName => $progressUser)
                                 <div class="d-flex flex-row mb-2 align-items-center">
-                                    <div class="col-4">{{$groupName}}</div>
-                                    <div class="col-8">
+                                    <div class="col-xl-4 col-sm-12">{{$groupName}}</div>
+                                    <div class="col-xl-8 col-sm-12">
                                         <div class="progress">
                                                 <div class="progress-bar" role="progressbar" style="width: {{$progressUser['all']}}%"
                                                  aria-valuenow="{{$progressUser['all']}}" aria-valuemin="0" aria-valuemax="100">

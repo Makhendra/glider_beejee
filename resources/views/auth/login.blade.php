@@ -3,8 +3,8 @@
 @section('content')
     <div class="container mt-4">
         <div class="row">
-            <div class="card-deck">
-                <div class="card col-4">
+            <div class="d-flex flex-column-reverse flex-md-row">
+                <div class="card col-xl-4 col-sm-12 mr-4">
                     <div class="card-body">
                         Если вы не зарегистрированы и не хотите регистрироваться, можете воспользоваться тестовым
                         аккаунтом
@@ -15,7 +15,7 @@
                         <b>password</b>: test@test.ru <br>
                     </div>
                 </div>
-                <div class="card col-6">
+                <div class="card col-xl-6 col-sm-12">
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf

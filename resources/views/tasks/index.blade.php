@@ -7,7 +7,8 @@
 @endsection
 
 @section('content')
-    <div class="alert alert-warning">Сайт еще находиться в разработке. Для улучшения сервиса, просим пройти
+    <div class="alert alert-warning d-none d-md-block">
+        Сайт еще находиться в разработке. Для улучшения сервиса, просим пройти
         <a href="#"  data-toggle="modal" data-target="#questionnaire">опрос</a>. Об ошибке можно сообщить
         <a href="#" data-toggle="modal" data-target="#reportAbug">тут</a>.
     </div>
@@ -23,7 +24,7 @@
                         </td>
                     </tr>
                     @foreach($groups as $group)
-                        <tr>
+                        <tr class="d-none d-sm-table-row">
                             <td class="{{$group_id == $group->id ? 'table-success': ''}}">
                                 <a href="{{route('groups.tasks',  $group->id)}}">{{$group->name}}</a>
                             </td>
@@ -43,7 +44,7 @@
                         <thead>
                         <tr>
                             <th>Задача</th>
-                            <th>Статистика</th>
+                            <th class="d-none d-md-block">Статистика</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -52,7 +53,7 @@
                                 <td>
                                     <a href="{{route('tasks.show', ['id' => $task->id])}}">{{$task->title}}</a>
                                 </td>
-                                <td><b>Успешно решено:</b> {{$task->successUserTask()->count()}} <br>
+                                <td class="d-none d-md-block"><b>Успешно решено:</b> {{$task->successUserTask()->count()}} <br>
                                     <b>Взято подсказок:</b> {{$task->wrongUserTask()->sum('hint_use')}}</td>
                             </tr>
 

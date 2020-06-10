@@ -132,7 +132,7 @@ trait NumberSystemTrait
     }
 
     public function deleting($number, $ci) {
-        $deleting = '';
+        $deleting = '<br>';
         while( $number > 0) {
             $div = intdiv($number, $ci);
             $mod = $number % $ci;
@@ -175,16 +175,22 @@ trait NumberSystemTrait
             if($from_ci != 10) {
                 $numberDemical = base_convert($number, $from_ci, $this->to_ci);
                 $textFormat = $this->formatNumber($numberDemical, $this->to_ci, $to_ci, '');
-                $text = $number.'<sub>'.$from_ci.'</sub> = '.$textFormat['text']. ' = '.$numberDemical.'<br><br>';
+                $text = $this->wrapScaleNumber($number, $from_ci).' = '.$textFormat['text']. ' = '.$numberDemical.'<sub>10</sub><br>';
                 $number = $numberDemical;
             }
-            $text .= $this->deleting($number, $to_ci);
+            if($to_ci != 10) {
+                $text .= $this->deleting($number, $to_ci);
+            }
             return $text;
         } else {
             $answer = base_convert($number, $from_ci, $to_ci);
             $format= $this->formatNumber($number, $from_ci, $to_ci, $answer);
             return $format['text'].'='.$format['answer_format'];
         }
+    }
+
+    public function wrapScaleNumber($number, $from_ci) {
+        return mb_strtoupper($number).'<sub>'.$from_ci.'</sub>';
     }
 
     public function getRandomExpression() {
@@ -244,27 +250,45 @@ trait NumberSystemTrait
         return $expression;
     }
 
-    public function formatTernaryBinary($number, $from_ci) {
+    public function formatTernary($number, $from_ci, $to_ci) {
         if(in_array($from_ci, [4, 8, 16])) {
-            $result = 'Перевод с помощью треад/тетрад:<br><br>';
-            switch ($from_ci) {
-                case 4:
-                    $d = 2;
-                    break;
-                case 8:
-                    $d = 3;
-                    break;
-                case 16:
-                    $d = 4;
-                    break;
-            }
+            $result = 'Перевод с помощью треад/тетрад:<br>';
+            $d = $this->getCountBinaryDigit($from_ci);
             $number_array = str_split($number);
             foreach ($number_array as $k => $n) {
                 $answer = base_convert($n, $from_ci, 2);
                 $format = sprintf("%'.0{$d}d, ", $answer);
-                $result .= mb_strtoupper($n) . ' = ' . $format;
+                $result .= mb_strtoupper($n) . '<sub>'.$from_ci.'</sub> = ' . $format;
+            }
+            if ($to_ci != 2) {
+                $answer = base_convert($number, $from_ci, 2);
+                $result .= $this->wrapScaleNumber($number, $from_ci).' = '.$this->wrapScaleNumber($answer, 2);
+                $result .= '<br>';
+                $d = $this->getCountBinaryDigit($to_ci);
+                $number_array = array_chunk(str_split($answer), $d);
+                $answer = base_convert($number, $from_ci, $to_ci);
+                foreach ($number_array as $k => $n) {
+                    $format = sprintf("%'.0{$d}d = {$answer[$k]}, ", implode($n), );
+                    $result .= $format;
+                }
             }
             return $result;
         }
+    }
+
+    public function getCountBinaryDigit($from_ci) {
+        switch ($from_ci) {
+            case 8:
+                $d = 3;
+                break;
+            case 16:
+                $d = 4;
+                break;
+            case 4:
+            default:
+                $d = 2;
+                break;
+        }
+        return $d;
     }
 }

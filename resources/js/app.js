@@ -62,6 +62,10 @@ document.addEventListener('DOMContentLoaded', function () {
     $('.table tr').filter(function() {
         return $.trim($(this).text()) === '';
     }).hide();
+
+    if (document.location.href.indexOf('#questionnaire') != -1) {
+        $("#questionnaire").modal('show');
+    }
 });
 
 // FB.getLoginStatus(function(response) {

@@ -35,7 +35,7 @@ class OneOfZero implements TaskInterface
             '{one_or_zero}' => $this->data['one_or_zero'],
             '{format_binary}' => $this->formatToBinary($this->data['number'], $this->data['scale_of_notation']),
             '{answer}' => $this->getAnswer(),
-            '{t_ci}' => $this->formatTernaryBinary($this->data['number'], $this->data['scale_of_notation']),
+            '{t_ci}' => $this->formatTernary($this->data['number'], $this->data['scale_of_notation'], 2),
         ];
     }
 

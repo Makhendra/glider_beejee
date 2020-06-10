@@ -1,13 +1,11 @@
-// Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
-// Variables
 @import 'variables';
-
-// Bootstrap
+@import '~@fancyapps/fancybox/dist/jquery.fancybox.css';
 @import '~bootstrap/scss/bootstrap';
 
-@import '~@fancyapps/fancybox/dist/jquery.fancybox.css';
+img {
+  max-width: 100%;
+}
 
 .hidden {
   display: none;
@@ -17,4 +15,30 @@
    white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
+}
+
+.navbar {
+  padding: 0.5rem 0rem;
+}
+
+.logo-full {
+  max-width: 100%;
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 1.1Rem;
+  }
+  .mobile-logo:not(.logo-full) {
+    max-width: 75%;
+  }
+  .flex-row {
+    flex-direction: column !important;
+  }
+
+  .btn-sm {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+  }
 }

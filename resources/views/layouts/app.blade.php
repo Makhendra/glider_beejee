@@ -4,6 +4,7 @@
     @php $title = isset($title) ? $title : ($data['title'] ?? 'Авторизация'); @endphp
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}" id="meta">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{$title}}</title>
     <link rel="stylesheet" href="{{asset('css/app.css').'?ver='.date('dmy-h')}}">
     <link href="{{request()->url()}}" rel="canonical">
@@ -12,49 +13,36 @@
 </head>
 <body>
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light nav-fill row">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            @if (Auth::id())
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="navbar-brand" href="{{route('groups.main')}}">
-                            <img src="{{asset('logo3.png')}}" alt="">
-                        </a>
-                    </li>
-                </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light nav-fill text-lg-center">
+        <a class="navbar-brand mobile-logo d-inline-block {{Auth::id() ? '' : 'logo-full'}}" href="{{route('groups.main')}}">
+            <img src="{{asset('logo3.png')}}" alt="">
+        </a>
+        @if (Auth::id())
+            <button class="navbar-toggler d-inline-block d-lg-none" type="button"
+                    data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse flex-row-reverse" id="navbarSupportedContent">
                 @yield('back')
-                <a href="{{route('lk')}}" class="btn btn-outline-primary mr-3">Личный кабинет</a>
                 <form class="form-inline" action="{{route('logout')}}" method="POST">
                     @csrf
                     <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Выйти из аккаунта</button>
                 </form>
-            @endif
-        </div>
+                <a href="{{route('lk')}}" class="btn btn-outline-primary mr-3">Личный кабинет</a>
+            </div>
+        @endif
     </nav>
-    <div class="row mt-4 mb-2">
-        @if (Auth::id())
+    @if (Auth::id())
+        <div class="row mt-4 mb-2">
             <div class="col-12 text-center">
                 <h1>{{ $title }}</h1>
             </div>
-        @else
-            @if(isset($fullPage))
-                <div class="col-12 text-center mb-3">
-                    <a href="{{url('/')}}">
-                        <img src="{{asset('logo3.png')}}" alt="">
-                    </a>
-                </div>
-            @else
-                <div class="col-4">
-                    <a href="{{url('/')}}">
-                        <img src="{{asset('logo3.png')}}" alt="">
-                    </a>
-                </div>
-                <div class="col-8 text-center">
-                    <h1>{{ $title }}</h1>
-                </div>
-            @endif
-        @endif
-    </div>
+
+        </div>
+    @endif
     @yield('content')
 </div>
 <footer class="container">
